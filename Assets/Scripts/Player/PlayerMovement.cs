@@ -7,11 +7,9 @@ public class PlayerMovement
 {
     private Player _player;
 
-    public void ManualStart()
-    {
-        
-    }
-    [SerializeField]private float _speed = 2;
+    [SerializeField] private CharacterController _controller;
+
+    [SerializeField] private float _speed = 2;
 
     private Vector3 movement;
 
@@ -19,12 +17,14 @@ public class PlayerMovement
 
     public void ManualUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal"); 
-        float moveVertical = Input.GetAxis("Vertical"); 
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
-        movement = new Vector3(moveHorizontal, 0.0f, moveVertical); 
+        movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        _player.transform.Translate(movement * _speed * Time.deltaTime, Space.World); 
+        movement = _player.transform.TransformDirection(movement);
+
+        _controller.Move(movement * Time.deltaTime * _speed);
     }
 
     public void SetPlayer(Player player)
