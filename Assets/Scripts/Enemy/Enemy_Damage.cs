@@ -6,6 +6,7 @@ public class Enemy_Damage : MonoBehaviour
 {
 	[SerializeField] private int _maxLife = 100;
 	[SerializeField] public int _currentHealth;
+	[SerializeField] public float _amountofdamage;
 	private Player _player;
 
 	public void ManualStart()
