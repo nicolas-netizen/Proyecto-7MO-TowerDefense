@@ -35,8 +35,5 @@ public class PlayerHealth
 		if (_currentHealth <= 0)
 			_player.gameObject.SetActive(false);
 	}
-	public void RecibirDaño(float daño)
-	{
-		_currentHealth -= daño;
-	}
+
 }

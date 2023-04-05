@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     {
         _movementController.SetPlayer(this);
         _rotationController.SetPlayer(this);
+        _healthController.SetPlayer(this);
     }
 
     void Start()

@@ -17,6 +17,7 @@ public class AI_Enemy
     [SerializeField] private Transform _objetivo;
     [SerializeField] private float _velocidad;
     [SerializeField] private NavMeshAgent _ai;
+    [SerializeField] private float _rotSpeed;
 
     [SerializeField] private MovementState _state;
 
@@ -45,6 +46,12 @@ public class AI_Enemy
             _state = MovementState.Moving;
         } else
         {
+
+            Vector3 targetPostition = new Vector3(_objetivo.position.x,
+                                       _ai.transform.position.y,
+                                       _objetivo.position.z);
+            _ai.transform.LookAt(targetPostition);
+
             _state = MovementState.Combat;
         }
 

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Enemy_Damage damage;
+    [SerializeField] private Enemy_Damage _damageController;
     [SerializeField] private Enemy_Health _healthController;
     [SerializeField] private AI_Enemy _aiController;
     [SerializeField] private Enemy_Animation _animationController;
 
     public Enemy_Animation AnimationController { get => _animationController; set => _animationController = value; }
     public AI_Enemy AiController { get => _aiController; set => _aiController = value; }
+    public Enemy_Damage DamageController { get => _damageController; set => _damageController = value; }
 
     private void Awake()
     {
@@ -30,4 +31,5 @@ public class Enemy : MonoBehaviour
         _animationController.ManualUpdate();
         _aiController.ManualUpdate();
     }
+
 }
