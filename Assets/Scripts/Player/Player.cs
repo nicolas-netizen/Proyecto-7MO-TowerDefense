@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     {
         _rotationController.ManualUpdate();
         _movementController.ManualUpdate();
+        _healthController.ManualUpdate();
         _animationController.ChangeVel(_movementController.Movement.magnitude);
     }
 }

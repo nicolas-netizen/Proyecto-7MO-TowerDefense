@@ -7,14 +7,22 @@ using UnityEngine.UI;
 public class PlayerHealth
 {
 	[SerializeField] private int _maxLife = 100;
-	[SerializeField] public int _currentHealth;
-	[SerializeField] private Slider _lifeBar;
+	[SerializeField] public float _currentHealth;
+	[SerializeField] private Image _lifeBar;
+	[SerializeField] public Text _Textlife;
 	private Player _player;
 
+
 	public void ManualStart()
-    {
+	{
 		_currentHealth = _maxLife;
-    }
+	}
+
+	public void ManualUpdate()
+	{
+		_lifeBar.fillAmount = _currentHealth / 100;
+		_Textlife.text = "salud: " + _currentHealth.ToString("f0");
+	}
 
 	public void SetPlayer(Player player)
 	{
@@ -22,12 +30,13 @@ public class PlayerHealth
 	}
 
 	public void UpdateHealth(int mod)
-    {
+	{
 		_currentHealth += mod;
-		_lifeBar.value = _currentHealth;
 		if (_currentHealth <= 0)
 			_player.gameObject.SetActive(false);
-    }
-
-
+	}
+	public void RecibirDaño(float daño)
+	{
+		_currentHealth -= daño;
+	}
 }
