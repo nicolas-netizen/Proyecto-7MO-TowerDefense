@@ -19,11 +19,6 @@ public class PlayerState
         _player.MovementController.Idle();
     }
 
-    public void Walk()
-    {
-        _player.MovementController.Walk();
-    }
-
     public void Run()
     {
         _player.MovementController.Run();

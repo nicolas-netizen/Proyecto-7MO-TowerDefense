@@ -25,10 +25,10 @@ public class PlayerInput
         }
         else
         {
-            if(Input.GetKey(_run))
+            //if(Input.GetKey(_run))
+            //    _player.StateController.Run();
+            //else
                 _player.StateController.Run();
-            else
-                _player.StateController.Walk();
 
             _player.MovementController.Move(move.normalized);
         }

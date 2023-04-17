@@ -17,8 +17,6 @@ public struct Speeds
 public enum MovementState
 {
     Idle,
-    Walking,
-    Fighting,
     Running
 }
 
@@ -116,16 +114,13 @@ public class PlayerMovement
 
     #region STATES
     private float velocity;
+
+    public MovementState MovementState { get => _movementState; set => _movementState = value; }
+
     public void Idle()
     {
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, 0, ref velocity, _speeds.idleTransition);
         _movementState = MovementState.Idle;
-    }
-
-    public void Walk()
-    {
-        _currentSpeed = Mathf.SmoothDamp(_currentSpeed, _speeds.walkSpeed, ref velocity, _speeds.walkTransition);
-        _movementState = MovementState.Walking;
     }
 
     public void Run()
