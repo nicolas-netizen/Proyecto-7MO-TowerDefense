@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GeneralStates:
     LoadedProjectGUID:
-      valueInternal: 
+      valueInternal: c07724cd610ca9c4c80c2924e99755d9
     RecentlyOpenedProjectPath:
       valueInternal: Assets\UIMotion Project\Player
     RecentlyOpenedProjectGUIDsList:
