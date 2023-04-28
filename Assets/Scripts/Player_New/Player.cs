@@ -9,12 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerState _stateController;
     [SerializeField] private PlayerRotation _rotationController;
     [SerializeField] private PlayerAnimation _animationController;
-    [SerializeField] private PlayerAnimation _PlayerCombat;
+    [SerializeField] private PlayerCombo _playerCombo;
 
     public PlayerMovement MovementController { get => _movementController; set => _movementController = value; }
     public PlayerInput InputController { get => _inputController; set => _inputController = value; }
     public PlayerState StateController { get => _stateController; set => _stateController = value; }
     public PlayerRotation RotationController { get => _rotationController; set => _rotationController = value; }
+    public PlayerCombo PlayerCombo { get => _playerCombo; set => _playerCombo = value; }
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
         _stateController.SetPlayer(this);
         _rotationController.SetPlayer(this);
         _animationController.SetPlayer(this);
-        _PlayerCombat.SetPlayer(this);
+        _playerCombo.SetPlayer(this);
     }
 
     // Update is called once per frame
@@ -31,5 +32,7 @@ public class Player : MonoBehaviour
     {
         _inputController.ManualUpdate();
         _animationController.ManualUpdate();
+        _playerCombo.ManualUpdate();
+        
     }
 }

@@ -33,7 +33,6 @@ public class PlayerMovement
     [Header("SPEEDS")]
     [SerializeField] private Speeds _speeds;
     [SerializeField] private MovementState _movementState;
-    [SerializeField] private GroundedState _groundedState;
 
     Vector3 vel;
 
@@ -80,11 +79,11 @@ public class PlayerMovement
             if(vel.y < 0)
                 vel.y = 0f;
 
-            _groundedState = GroundedState.Ground;
+            //_groundedState = GroundedState.Ground;
         }
         else
         {
-            _groundedState = GroundedState.Air;
+            //_groundedState = GroundedState.Air;
         }
     }
 
