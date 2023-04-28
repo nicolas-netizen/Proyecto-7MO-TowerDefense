@@ -34,7 +34,6 @@ public class PlayerCombo
 
     public void OnComboMiddle()
     {
-        Debug.Log("ACA");
         _animator.SetInteger("Attack", 0);
     }
 
