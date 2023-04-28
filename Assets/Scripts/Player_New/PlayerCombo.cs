@@ -28,10 +28,16 @@ public class PlayerCombo
 
     public void OnComboEnd()
     {
-        _animator.SetInteger("Attack", 0);
         clickCount = 0;
         canClick = true;
     }
+
+    public void OnComboMiddle()
+    {
+        Debug.Log("ACA");
+        _animator.SetInteger("Attack", 0);
+    }
+
     public void OnAttack()
     {
         canClick = false;

@@ -10,6 +10,12 @@ public class PlayerHandlerAnimation : MonoBehaviour
     {
         _player.PlayerCombo.OnAttack();
     }
+
+    public void ComboMiddle()
+    {
+        _player.PlayerCombo.OnComboMiddle();
+    }
+
     public void OnComboEndo()
     {
         _player.PlayerCombo.OnComboEnd();
