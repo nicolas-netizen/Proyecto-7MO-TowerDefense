@@ -33,6 +33,5 @@ public class Player : MonoBehaviour
         _inputController.ManualUpdate();
         _animationController.ManualUpdate();
         _playerCombo.ManualUpdate();
-        
     }
 }
