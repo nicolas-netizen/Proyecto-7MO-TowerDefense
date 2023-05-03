@@ -1,82 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Abilitygent : MonoBehaviour
-{
+
+    public class Abilitygent : MonoBehaviour
+
+    {
     [SerializeField]
-    public float speed = 10f; 
-    public float damage = 10f;
-    public float chargeTime = 1f; 
 
-    public Animator animator; 
-    public ParticleSystem particles; 
+        public float speed = 10f;
+        public float damage = 10f; 
 
-    private bool _charging = false; 
-    private Vector3 _chargeDirection; 
+       // public ParticleSystem chargeParticle; 
+        public Animator animator; 
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R) && !_charging) 
+        private bool charging = false; 
+        private Vector3 chargeDirection; 
+
+        private void Update()
         {
-            animator.SetTrigger("Charge");
+            if (Input.GetKeyDown(KeyCode.R) && !charging) 
+            {
+                charging = true;
+                chargeDirection = transform.forward; 
 
-            StartCoroutine(Charge());
-        }
-    }
-
-    private IEnumerator Charge()
-    {
-       
-        float currentSpeed = speed;
-
-       
-        yield return new WaitForSeconds(chargeTime);
-
-        particles.Play(); 
-
-       
-        while (_charging)
-        {
-           
-            transform.position += _chargeDirection * currentSpeed * Time.deltaTime;
-
-           
-            currentSpeed -= Time.deltaTime * speed * 0.5f;
-
-            yield return null;
+                StartCoroutine(Charge()); 
+            }
         }
 
-        particles.Stop(); 
-    }
+        private IEnumerator Charge()
+        {
+            animator.SetBool("IsCharging", true); 
+           // chargeParticle.Play(); 
 
-  //  private void OnTriggerEnter(Collider other)
-    //{
-       // if (charging)
-       // {
-           // Enemy enemy = other.GetComponent<Enemy>();
+            
+            float currentSpeed = speed;
 
-           // if (enemy != null)
-            //{
-              //  enemy.TakeDamage(damage); // Infligir daño al enemigo
+           
+            while (charging)
+            {
+               
+                transform.position += chargeDirection * currentSpeed * Time.deltaTime;
+
+               
+                currentSpeed -= Time.deltaTime * speed * 0.5f;
+
+                yield return null;
+            }
+
+            animator.SetBool("IsCharging", false); 
+           // chargeParticle.Stop();
+        }
+
+      //  private void OnTriggerEnter(Collider other)
+        //{
+           // if (charging)
+           // {
+              //  Enemy enemy = other.GetComponent<Enemy>();
+
+               // if (enemy != null)
+              //  {
+                   // enemy.TakeDamage(damage); // Infligir daño al enemigo
+                //}
             //}
-       // }
-   // }
+        //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (_charging)
+        private void OnTriggerExit(Collider other)
         {
-           
-            _charging = false;
+            if (charging)
+            {
+                charging = false;
+            }
         }
     }
 
-   
-    private void StartCharge()
-    {
-        _charging = true;
-        _chargeDirection = transform.forward; 
-    }
-}
+
+
 
 
