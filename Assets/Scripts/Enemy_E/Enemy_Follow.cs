@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Enemy_Follow : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float rangoDeAlerta;
+    public LayerMask capaDelJugador;
+    public void ManualUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Physics.CheckSphere(transform.position, rangoDeAlerta, capaDelJugador);
     }
 }
