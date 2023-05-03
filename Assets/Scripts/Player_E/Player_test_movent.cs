@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Player_test_movent : MonoBehaviour
 {
-    public float horizontalMove:
-    public float verticalMove:
-    public CharacterController player;
+    //public float horizontalMove:
+    //public float verticalMove:
+    //public CharacterController player;
 
     void Start()
     {
-
-
+        //player = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -19,4 +18,8 @@ public class Player_test_movent : MonoBehaviour
     {
         
     }
+    //private void fixedUpdate()
+    //{
+
+    //}
 }
