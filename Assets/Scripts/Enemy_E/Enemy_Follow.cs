@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Enemy_Follow : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float rangoDeAlerta;
+    public LayerMask capaDelJugador;
+    bool estarAlerta;
+    public Transform player;
+    public void ManualUpdate()
     {
-        
+        estarAlerta=Physics.CheckSphere(transform.position, rangoDeAlerta, capaDelJugador);
+        if(estarAlerta == true)
+        {
+            transform.LookAt(new Vector3(transform.position.x, player.position.y, player.position.z));
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void EnemyGizmos()
     {
-        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, rangoDeAlerta);
     }
 }
