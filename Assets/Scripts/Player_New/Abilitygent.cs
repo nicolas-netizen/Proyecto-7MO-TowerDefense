@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
     public class Abilitygent : MonoBehaviour
-
     {
     [SerializeField]
-
         public float speed = 10f;
-        public float damage = 10f; 
+        public float damage = 10f;
+       //public ParticleSystem chargeParticle;  
+      [SerializeField]  private bool _charging = false; 
+      [SerializeField]  private Vector3 _chargeDirection;
+        
+    public Animator animator;
 
-       // public ParticleSystem chargeParticle; 
-        public Animator animator; 
-
-        private bool charging = false; 
-        private Vector3 chargeDirection; 
-
-        private void Update()
+    private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.R) && !charging) 
+            if (Input.GetKeyDown(KeyCode.R) && !_charging) 
             {
-                charging = true;
-                chargeDirection = transform.forward; 
+            _charging = true;
+            _chargeDirection = transform.forward; 
 
                 StartCoroutine(Charge()); 
             }
@@ -36,10 +33,10 @@ using UnityEngine;
             float currentSpeed = speed;
 
            
-            while (charging)
+            while (_charging)
             {
                
-                transform.position += chargeDirection * currentSpeed * Time.deltaTime;
+                transform.position += _chargeDirection * currentSpeed * Time.deltaTime;
 
                
                 currentSpeed -= Time.deltaTime * speed * 0.5f;
@@ -66,9 +63,9 @@ using UnityEngine;
 
         private void OnTriggerExit(Collider other)
         {
-            if (charging)
+            if (_charging)
             {
-                charging = false;
+            _charging = false;
             }
         }
     }
