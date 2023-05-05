@@ -47,27 +47,6 @@ using UnityEngine;
             animator.SetBool("IsCharging", false); 
            // chargeParticle.Stop();
         }
-
-      //  private void OnTriggerEnter(Collider other)
-        //{
-           // if (charging)
-           // {
-              //  Enemy enemy = other.GetComponent<Enemy>();
-
-               // if (enemy != null)
-              //  {
-                   // enemy.TakeDamage(damage); // Infligir daño al enemigo
-                //}
-            //}
-        //}
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (_charging)
-            {
-            _charging = false;
-            }
-        }
     }
 
 
