@@ -17,16 +17,15 @@ public class EnemyHealth
     {
         _currentHealth = _enemyHealth;
     }
-    public void TakeDamage(float damage) {
-        _currentHealth -= damage;
+    public void UpdateHealth(float mod) {
+        _currentHealth += mod;
         if(_currentHealth <= 0)
         {
             Die();
         }
     }
     void Die() {
-
-
+        GameObject.Destroy(_enemy.gameObject);
     }
 
     

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
 
     [SerializeField] private EnemyChase _enemyChase;
@@ -36,5 +36,15 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void TakeDamage(float mod)
+    {
+        _enemyHealth.UpdateHealth(-mod);
+    }
+
+    public GameObject GetObject()
+    {
+        return gameObject;
     }
 }

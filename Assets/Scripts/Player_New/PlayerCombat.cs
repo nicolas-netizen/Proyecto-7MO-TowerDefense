@@ -2,30 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CombatState
-{
-    Passive,
-    Combat
-}
+
 
 [System.Serializable]
 public class PlayerCombat
 {
     private Player _player;
 
-    [SerializeField] private CombatState _combatState;
+    [Header("DAMAGES")]
+    [SerializeField] private float _basicDamage;
+    private bool _isAttacking;
 
-    public CombatState CombatState { get => _combatState; set => _combatState = value; }
+    public float BasicDamage { get => _basicDamage; set => _basicDamage = value; }
+    public bool IsAttacking { get => _isAttacking; set => _isAttacking = value; }
 
     public void SetPlayer(Player player)
     {
         _player = player;
     }
 
-    public void ChangeState(CombatState state)
-    {
-        _combatState = state;
-    }
-    
-
+   
 }

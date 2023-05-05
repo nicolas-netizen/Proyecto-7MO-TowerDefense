@@ -117,6 +117,8 @@ MonoBehaviour:
     _animator: {fileID: 5919985467989954955}
   _playerCombo:
     _animator: {fileID: 5919985467989954955}
+  _playerCombat:
+    _basicDamage: 25
 --- !u!143 &234915896726556677
 CharacterController:
   m_ObjectHideFlags: 0

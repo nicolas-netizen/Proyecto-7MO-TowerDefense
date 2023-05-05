@@ -21,5 +21,14 @@ public class PlayerHandlerAnimation : MonoBehaviour
         _player.PlayerCombo.OnComboEnd();
     }
 
+    public void StartAttacking()
+    {
+        _player.PlayerCombat.IsAttacking = true;
+    }
+
+    public void StopAttacking()
+    {
+        _player.PlayerCombat.IsAttacking = false;
+    }
 
 }

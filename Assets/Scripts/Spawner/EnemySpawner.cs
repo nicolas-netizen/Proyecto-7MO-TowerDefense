@@ -15,14 +15,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-
         for (int i = 0; i < _maxEnemies; i++)
         {
             Vector3 spawnPos = transform.position + Random.insideUnitSphere * _spawnRadius;
             Instantiate(_enemyprefab, spawnPos, Quaternion.identity);
         }
-
-
     }
 
     private void OnDrawGizmosSelected() {

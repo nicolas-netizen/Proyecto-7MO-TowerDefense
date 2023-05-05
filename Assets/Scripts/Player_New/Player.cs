@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISwordOwner
 {
     [SerializeField] private PlayerMovement _movementController;
     [SerializeField] private PlayerInput _inputController;
@@ -10,12 +10,14 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerRotation _rotationController;
     [SerializeField] private PlayerAnimation _animationController;
     [SerializeField] private PlayerCombo _playerCombo;
+    [SerializeField] private PlayerCombat _playerCombat;
 
     public PlayerMovement MovementController { get => _movementController; set => _movementController = value; }
     public PlayerInput InputController { get => _inputController; set => _inputController = value; }
     public PlayerState StateController { get => _stateController; set => _stateController = value; }
     public PlayerRotation RotationController { get => _rotationController; set => _rotationController = value; }
     public PlayerCombo PlayerCombo { get => _playerCombo; set => _playerCombo = value; }
+    public PlayerCombat PlayerCombat { get => _playerCombat; set => _playerCombat = value; }
 
     void Start()
     {
@@ -33,5 +35,20 @@ public class Player : MonoBehaviour
         _inputController.ManualUpdate();
         _animationController.ManualUpdate();
         _playerCombo.ManualUpdate();
+    }
+
+    public float GetDamage()
+    {
+        return _playerCombat.BasicDamage;
+    }
+
+    public GameObject GetOwner()
+    {
+        return gameObject;
+    }
+
+    public bool CheckAttacking()
+    {
+        return _playerCombat.IsAttacking;
     }
 }
