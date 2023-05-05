@@ -29,4 +29,12 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _enemyChase.RangeChase);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "EndPoint")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

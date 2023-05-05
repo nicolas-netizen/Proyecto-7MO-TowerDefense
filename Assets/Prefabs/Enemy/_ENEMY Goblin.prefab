@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3698604246159871900}
   - component: {fileID: 3698604246159871906}
   - component: {fileID: 3698604246159871907}
+  - component: {fileID: -6716634991948883621}
   m_Layer: 0
   m_Name: _ENEMY Goblin
   m_TagString: Untagged
@@ -48,13 +49,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyChase:
     _runSpeed: 7
-    _rangeChase: 3
+    _rangeChase: 1.5
     _playerMask:
       serializedVersion: 2
       m_Bits: 128
-    _target: {fileID: 0}
-    _endPoint: {fileID: 0}
     _agent: {fileID: 3698604246159871907}
+  _enemyHealth:
+    _currentHealth: 0
+    _enemyHealth: 100
 --- !u!195 &3698604246159871907
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -77,6 +79,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &-6716634991948883621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698604246159871901}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3698604245514112317
 PrefabInstance:
   m_ObjectHideFlags: 0
