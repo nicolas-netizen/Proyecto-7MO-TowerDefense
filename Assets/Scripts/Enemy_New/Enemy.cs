@@ -6,12 +6,16 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] private EnemyChase _enemyChase;
+    [SerializeField] private EnemyHealth _enemyHealth;
 
     public EnemyChase EnemyChase { get => _enemyChase; set => _enemyChase = value; }
+    public EnemyHealth EnemyHealth { get => _enemyHealth; set => _enemyHealth = value; }
 
     void Start()
     {
         _enemyChase.SetEnemy(this);
+        _enemyHealth.SetEnemy(this);
+        _enemyHealth.ManualStart();
     }
 
     // Update is called once per frame
