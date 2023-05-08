@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, ISwordOwner
     [SerializeField] private PlayerAnimation _animationController;
     [SerializeField] private PlayerCombo _playerCombo;
     [SerializeField] private PlayerCombat _playerCombat;
-    [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private PlayerHealth _PlayerHealth;
 
     public PlayerMovement MovementController { get => _movementController; set => _movementController = value; }
     public PlayerInput InputController { get => _inputController; set => _inputController = value; }
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour, ISwordOwner
     public PlayerRotation RotationController { get => _rotationController; set => _rotationController = value; }
     public PlayerCombo PlayerCombo { get => _playerCombo; set => _playerCombo = value; }
     public PlayerCombat PlayerCombat { get => _playerCombat; set => _playerCombat = value; }
-    public PlayerHealth PlayerHealth { get => _playerHealth; set => _playerHealth = value; }
+    public PlayerHealth PlayerHealth { get => _PlayerHealth; set => _PlayerHealth = value; }
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour, ISwordOwner
         _rotationController.SetPlayer(this);
         _animationController.SetPlayer(this);
         _playerCombo.SetPlayer(this);
-        _playerHealth.SetPlayer(this);
+        _PlayerHealth.SetPlayer(this);
     }
 
     // Update is called once per frame
