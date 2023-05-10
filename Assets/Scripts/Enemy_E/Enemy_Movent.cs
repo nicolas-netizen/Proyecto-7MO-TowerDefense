@@ -4,42 +4,19 @@ using UnityEngine;
 
 public class Enemy_Movent : MonoBehaviour
 {
-    public int routine;
-    public float nchronometer;
-    public Animation ani;
-    public Quaternion angle;
-    public float degree;
-
-    public void SetEnemy() 
-    {
-        ani = GetComponent<Animation>();
-    }
+    public Transform Player; // Referencia al Transform del jugador
+    public float speed = 5f; // Velocidad del enemigo
 
     public void ManualUpdate()
     {
-        nchronometer += 1 * Time.deltaTime;
-        if(nchronometer>4)
-        {
-            routine = Random.Range(100,200);
-            nchronometer = 0;
-        }
-        switch(routine)
-        {
-            case 0:
-                ani.SetBool("walk",false);
-                break;
-            case 1:
-                degree = Random.Range(0, 360);
-                angle = Quaternion.Euler(0, degree, 0);
-                routine++;
-                break;
-            case 2:
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f);
-                transform.Translate(Vector3.forward * 1 * Time.deltaTime);
-                ani.SetBool("walk", true);
-                break;
-        }
+        // Calcula la dirección hacia el jugador
+        Vector3 direction = Player.position - transform.position;
 
+        // Normaliza la dirección para obtener una velocidad constante
+        direction.Normalize();
+
+        // Mueve el enemigo hacia el jugador a la velocidad especificada
+        transform.position += direction * speed * Time.deltaTime;
     }
-
 }
+
