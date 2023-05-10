@@ -20488,6 +20488,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.033333335
+    functionName: StartAttacking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.1
     functionName: ComboMiddle
     data: 
@@ -20497,6 +20504,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.23333333
     functionName: OnComboEndo
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.3
+    functionName: StopAttacking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
