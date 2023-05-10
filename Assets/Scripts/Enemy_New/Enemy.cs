@@ -52,14 +52,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private void SetStart()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Explosion"))
-        {
-            rb.AddForce(Vector3.up * explosionForce, ForceMode.Impulse);
-        }
+        rb.AddForce(Vector3.forward * explosionForce, ForceMode.Impulse);
     }
 }
 
