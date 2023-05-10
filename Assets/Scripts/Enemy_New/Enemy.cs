@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField] private EnemyChase _enemyChase;
     [SerializeField] private EnemyHealth _enemyHealth;
+    [SerializeField] public float explosionForce = 10f;
+    [SerializeField] private Rigidbody rb;
 
     public EnemyChase EnemyChase { get => _enemyChase; set => _enemyChase = value; }
     public EnemyHealth EnemyHealth { get => _enemyHealth; set => _enemyHealth = value; }
@@ -47,4 +49,17 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         return gameObject;
     }
+    private void SetStart()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Explosion"))
+        {
+            rb.AddForce(Vector3.up * explosionForce, ForceMode.Impulse);
+        }
+    }
 }
+
