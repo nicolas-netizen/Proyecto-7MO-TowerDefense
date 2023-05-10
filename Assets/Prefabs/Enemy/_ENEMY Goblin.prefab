@@ -58,8 +58,6 @@ MonoBehaviour:
   _enemyHealth:
     _currentHealth: 0
     _enemyHealth: 1
-  explosionForce: 10
-  rb: {fileID: 827608361585402547}
 --- !u!195 &3698604246159871907
 NavMeshAgent:
   m_ObjectHideFlags: 0
