@@ -25,7 +25,8 @@ public class EnemyHealth
         }
     }
     void Die() {
-        GameObject.Destroy(_enemy.gameObject);
+        _enemy.EnemyRig.ActiveRagdoll();
+        GameObject.Destroy(_enemy.gameObject,2);
     }
 
     

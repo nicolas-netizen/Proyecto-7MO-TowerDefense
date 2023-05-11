@@ -1,62 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [System.Serializable]
-
-public class EnemyRig : MonoBehaviour
+public class EnemyRig
 {
-    public void Start()
-    {
-        setRigidbodyState(true);
-        setColliderState(false);
-       //GetComponent<Animator>().enabled = true;
-    }
+    //[SerializeField] public Animator _animator;
+    //[SerializeField] public Rigidbody _rb;
+
+    [SerializeField] private GameObject _rig;
+    [SerializeField] private Collider _mainCollider;
+    [SerializeField] private Collider _player;
+
+    private NavMeshAgent _agent;
     private Enemy _enemy;
+
     public void SetEnemy(Enemy enemy)
     {
         _enemy = enemy;
+        _agent = enemy.EnemyChase.Agent;
     }
 
-    public void die()
+    Collider[] ragDollCols;
+    Rigidbody[] ragDollRb;
+    public void ManualStart()
     {
-        GetComponent<Animator>().enabled = false;
-        setRigidbodyState(false);
-        setColliderState(true);
+        ragDollCols = _rig.GetComponentsInChildren<Collider>(); 
+        ragDollRb = _rig.GetComponentsInChildren<Rigidbody>();
+        DisableRagdoll();
+        
 
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.AddForce(Vector3.up * 500f, ForceMode.Impulse);
-            Destroy(gameObject, 3f);
-        }
     }
 
-    void setRigidbodyState(bool state)
+    public void ActiveRagdoll()
     {
-        Rigidbody[] rigidbodies = GetComponentsInChildren<Rigidbody>();
+        //_animator.enabled = false;
+        //_rb.constraints = RigidbodyConstraints.None;
+        _agent.isStopped = true;
+        _agent.speed = 0;
 
-        foreach (Rigidbody rigidbody in rigidbodies)
+        _rig.GetComponent<Animator>().enabled = false;
+        foreach (var item in ragDollCols)
         {
-            rigidbody.isKinematic = state;
+            item.gameObject.layer = LayerMask.NameToLayer("Ignore");
+            item.enabled = true;
         }
 
-        GetComponent<Rigidbody>().isKinematic = !state;
+        foreach (var item in ragDollRb)
+        {
+            item.isKinematic = false;
+        }
+
+        _mainCollider.enabled = false;
+        _enemy.GetComponent<Rigidbody>().isKinematic = true;
+
     }
 
 
-    public void setColliderState(bool state)
+    public void DisableRagdoll()
     {
-        Collider[] colliders = GetComponentsInChildren<Collider>();
-
-        foreach (Collider collider in colliders)
+        foreach (var item in ragDollCols)
         {
-            collider.enabled = state;
+            item.enabled = false;
         }
 
-        GetComponent<Collider>().enabled = !state;
+        foreach (var item in ragDollRb)
+        {
+            item.isKinematic = true;
+        }
+
+        _rig.GetComponent<Animator>().enabled = true;
+        _mainCollider.enabled = true;
+        _enemy.GetComponent<Rigidbody>().isKinematic = false;
     }
 
 }
 
- 

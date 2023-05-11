@@ -22,6 +22,7 @@ public class EnemyChase
     private Enemy _enemy;
 
     public float RangeChase { get => _rangeChase;}
+    public NavMeshAgent Agent { get => _agent;}
 
     public void SetEnemy(Enemy enemy)
     {
