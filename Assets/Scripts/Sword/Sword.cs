@@ -19,7 +19,17 @@ public class Sword : MonoBehaviour
         {
             if (col.GetObject() != _owner.GetOwner() && _owner.CheckAttacking())
             {
-                col.TakeDamage(_owner.GetDamage());
+                switch (_owner.CheckAttackDir())
+                {
+                    case AttackDir.Right:
+                        col.TakeDamage(_owner.GetDamage(), -_owner.GetOwner().transform.forward);
+                        break;
+                    case AttackDir.Left:
+                        col.TakeDamage(_owner.GetDamage(), _owner.GetOwner().transform.forward);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -31,7 +41,17 @@ public class Sword : MonoBehaviour
         {
             if (col.GetObject() != _owner.GetOwner() && _owner.CheckAttacking())
             {
-                col.TakeDamage(_owner.GetDamage());
+                switch (_owner.CheckAttackDir())
+                {
+                    case AttackDir.Right:
+                        col.TakeDamage(_owner.GetDamage(), -_owner.GetOwner().transform.forward);
+                        break;
+                    case AttackDir.Left:
+                        col.TakeDamage(_owner.GetDamage(), _owner.GetOwner().transform.forward);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void TakeDamage(float mod);
+    void TakeDamage(float mod, Vector3 dir);
     GameObject GetObject();
 }

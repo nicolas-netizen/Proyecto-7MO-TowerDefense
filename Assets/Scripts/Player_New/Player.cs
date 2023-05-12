@@ -53,4 +53,9 @@ public class Player : MonoBehaviour, ISwordOwner
     {
         return _playerCombat.IsAttacking;
     }
+
+    public AttackDir CheckAttackDir()
+    {
+        return _playerCombat.AttackDirection;
+    }
 }
