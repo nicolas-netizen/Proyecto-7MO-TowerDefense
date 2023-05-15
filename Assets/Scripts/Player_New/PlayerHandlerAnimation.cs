@@ -31,4 +31,14 @@ public class PlayerHandlerAnimation : MonoBehaviour
         _player.PlayerCombat.IsAttacking = false;
     }
 
+    public void AttackSideLeft()
+    {
+        _player.PlayerCombat.AttackDirection = AttackDir.Left;
+    }
+
+    public void AttackSideRight()
+    {
+        _player.PlayerCombat.AttackDirection = AttackDir.Right;
+    }
+
 }

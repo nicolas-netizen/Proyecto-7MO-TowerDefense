@@ -17,16 +17,16 @@ public class EnemyHealth
     {
         _currentHealth = _enemyHealth;
     }
-    public void UpdateHealth(float mod) {
+    public void UpdateHealth(float mod, Vector3 dir) {
         _currentHealth += mod;
         if(_currentHealth <= 0)
         {
             Die();
+            _enemy.EnemyRig.ActiveRagdoll(dir);
         }
     }
     void Die() {
-        _enemy.EnemyRig.ActiveRagdoll();
-        GameObject.Destroy(_enemy.gameObject,2);
+        GameObject.Destroy(_enemy.gameObject,5);
     }
 
     

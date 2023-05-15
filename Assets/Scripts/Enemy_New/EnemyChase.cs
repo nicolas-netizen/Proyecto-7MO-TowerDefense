@@ -22,7 +22,7 @@ public class EnemyChase
     private Enemy _enemy;
 
     public float RangeChase { get => _rangeChase;}
-    public NavMeshAgent Agent { get => _agent;}
+    public NavMeshAgent Agent { get => _agent; set => _agent = value; }
 
     public void SetEnemy(Enemy enemy)
     {
@@ -35,17 +35,20 @@ public class EnemyChase
 
     public void ManualUpdate()
     {
-        _agent.speed = _currentSpeed;
-
-        var checkPlayer = Physics.OverlapSphere(_enemy.transform.position, _rangeChase, _playerMask);
-
-        if (checkPlayer.Length > 0 && _agent.CalculatePath(_target.position,_path))
+        if(_agent != null)
         {
-            _agent.SetDestination(_target.position);
-        }
-        else
-        {
-            _agent.SetDestination(_endPoint.transform.position);
+            _agent.speed = _currentSpeed;
+
+            var checkPlayer = Physics.OverlapSphere(_enemy.transform.position, _rangeChase, _playerMask);
+
+            if (checkPlayer.Length > 0 && _agent.CalculatePath(_target.position, _path))
+            {
+                _agent.SetDestination(_target.position);
+            }
+            else
+            {
+                _agent.SetDestination(_endPoint.transform.position);
+            }
         }
     }
 }

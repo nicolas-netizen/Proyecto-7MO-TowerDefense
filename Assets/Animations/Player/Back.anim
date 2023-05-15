@@ -20495,6 +20495,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.06666667
+    functionName: AttackSideRight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.1
     functionName: ComboMiddle
     data: 
@@ -20511,6 +20518,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.3
     functionName: StopAttacking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: AttackSideLeft
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

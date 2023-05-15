@@ -42,9 +42,9 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(float mod)
+    public void TakeDamage(float mod, Vector3 dir)
     {
-        _enemyHealth.UpdateHealth(-mod);
+        _enemyHealth.UpdateHealth(-mod, dir);
     }
 
     public GameObject GetObject()
