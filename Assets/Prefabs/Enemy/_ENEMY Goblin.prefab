@@ -63,7 +63,7 @@ MonoBehaviour:
     _hips: {fileID: 5325408249445013748}
     _mainCollider: {fileID: 6304770039719744152}
     _player: {fileID: 6304770039719744152}
-    magnitude: 20
+    magnitude: 40
 --- !u!195 &5107827491753722976
 NavMeshAgent:
   m_ObjectHideFlags: 0

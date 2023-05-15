@@ -1,53 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-    public class Abilitygent : MonoBehaviour
-    {
-    [SerializeField]
-        public float speed = 10f;
-        public float damage = 10f;
-       //public ParticleSystem chargeParticle;  
-      [SerializeField]  private bool _charging = false; 
-      [SerializeField]  private Vector3 _chargeDirection;
-        
+public class Abilitygent : MonoBehaviour
+{
+    public float attackRange = 2f;
+    public int attackDamage = 10;
     public Animator animator;
 
-    private void Update()
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.R) && !_charging) 
+            animator.SetTrigger("SpecialAttack");
+
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange);
+
+            foreach (Collider enemy in hitEnemies)
             {
-            _charging = true;
-            _chargeDirection = transform.forward; 
-
-                StartCoroutine(Charge()); 
+                //if (enemy.CompareTag("Enemy"))
+                //{
+                //    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                //}
             }
-        }
-
-        private IEnumerator Charge()
-        {
-            animator.SetBool("IsCharging", true); 
-           // chargeParticle.Play(); 
-
-            
-            float currentSpeed = speed;
-
-           
-            while (_charging)
-            {
-               
-                transform.position += _chargeDirection * currentSpeed * Time.deltaTime;
-
-               
-                currentSpeed -= Time.deltaTime * speed * 0.5f;
-
-                yield return null;
-            }
-
-            animator.SetBool("IsCharging", false); 
-           // chargeParticle.Stop();
         }
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+}
 
 
 
