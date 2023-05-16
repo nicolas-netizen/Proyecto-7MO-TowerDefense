@@ -2591,5 +2591,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 234915896726556675, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
