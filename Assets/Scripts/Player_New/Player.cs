@@ -12,7 +12,6 @@ public class Player : MonoBehaviour, ISwordOwner
     [SerializeField] private PlayerCombo _playerCombo;
     [SerializeField] private PlayerCombat _playerCombat;
     [SerializeField] private PlayerHealth _PlayerHealth;
-
     public PlayerMovement MovementController { get => _movementController; set => _movementController = value; }
     public PlayerInput InputController { get => _inputController; set => _inputController = value; }
     public PlayerState StateController { get => _stateController; set => _stateController = value; }

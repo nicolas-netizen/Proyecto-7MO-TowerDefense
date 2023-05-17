@@ -387,7 +387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321643021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.14, y: 0, z: 3.8}
+  m_LocalPosition: {x: 52.06, y: 0, z: 3.8}
   m_LocalScale: {x: 15.321811, y: 1, z: 25.501768}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2591,5 +2591,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 234915896726556675, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
