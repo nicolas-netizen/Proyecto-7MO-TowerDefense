@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 _offset = new Vector3(0, 2, -10);
     [SerializeField] private float smoothTime = 0.25f;
     private Vector3 currentVelocity;
+
     private void LateUpdate()
     {
         transform.position = Vector3.SmoothDamp(

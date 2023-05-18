@@ -26,4 +26,9 @@ public class PlayerAnimation
                 _animator.SetFloat("Speed", 2, 0.1f, Time.deltaTime);
         }
     }
+
+    public void AbilityExpansive()
+    {
+        _animator.SetTrigger("AbilityTrigger");
+    }
 }

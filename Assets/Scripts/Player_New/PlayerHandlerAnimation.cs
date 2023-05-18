@@ -41,4 +41,18 @@ public class PlayerHandlerAnimation : MonoBehaviour
         _player.PlayerCombat.AttackDirection = AttackDir.Right;
     }
 
+    public void ActivateExpansiveAbility()
+    {
+        _player.KnightAbility.ActivateAbility();
+    }
+
+    public void StartExpansive()
+    {
+        _player.InputController.BlockInputs();
+    }
+
+    public void StopExpansive()
+    {
+        _player.InputController.UnlockInputs();
+    }
 }

@@ -27,7 +27,5 @@ public class EnemyHealth
     }
     void Die() {
         GameObject.Destroy(_enemy.gameObject,5);
-    }
-
-    
+    }  
 }

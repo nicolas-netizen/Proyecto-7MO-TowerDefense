@@ -23,4 +23,9 @@ public class PlayerState
     {
         _player.MovementController.Run();
     }
+
+    public void AbilityExpansive()
+    {
+        _player.AnimationController.AbilityExpansive();
+    }
 }

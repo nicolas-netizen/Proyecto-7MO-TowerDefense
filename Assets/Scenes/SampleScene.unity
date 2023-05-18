@@ -748,6 +748,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413354139}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &482589508 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5919985467989954955, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
+  m_PrefabInstance: {fileID: 234915896055637054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &645390593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1138,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921340665}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &928178665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 234915896726556680, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
+  m_PrefabInstance: {fileID: 234915896055637054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &940028986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 234915896726556676, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
@@ -1143,12 +1153,31 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 234915896726556674, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
   m_PrefabInstance: {fileID: 234915896055637054}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 928178665}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef345b1e06d05f449219b7174a5db5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &940028993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928178665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86efc2d49b9d3974f9379fe0299c065a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 940028988}
+  damage: 10
+  range: 20
+  cooldown: 10
+  sword: {fileID: 31136177}
+  isCooldown: 0
+  animator: {fileID: 482589508}
 --- !u!1 &954768715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,6 +2548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 234915896726556674, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
+      propertyPath: _knightAbility
+      value: 
+      objectReference: {fileID: 940028993}
     - target: {fileID: 234915896726556675, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2590,6 +2623,22 @@ PrefabInstance:
     - target: {fileID: 1118017588717854263, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
       propertyPath: m_TagString
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118017589332250955, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534195791723685899, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195523738100434349, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919985467989954955, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 234915896726556675, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}

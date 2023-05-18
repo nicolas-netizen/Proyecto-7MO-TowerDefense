@@ -12,6 +12,8 @@ public class Player : MonoBehaviour, ISwordOwner
     [SerializeField] private PlayerCombo _playerCombo;
     [SerializeField] private PlayerCombat _playerCombat;
     [SerializeField] private PlayerHealth _PlayerHealth;
+    [SerializeField] private KnightAbility _knightAbility;
+
     public PlayerMovement MovementController { get => _movementController; set => _movementController = value; }
     public PlayerInput InputController { get => _inputController; set => _inputController = value; }
     public PlayerState StateController { get => _stateController; set => _stateController = value; }
@@ -19,6 +21,8 @@ public class Player : MonoBehaviour, ISwordOwner
     public PlayerCombo PlayerCombo { get => _playerCombo; set => _playerCombo = value; }
     public PlayerCombat PlayerCombat { get => _playerCombat; set => _playerCombat = value; }
     public PlayerHealth PlayerHealth { get => _PlayerHealth; set => _PlayerHealth = value; }
+    public PlayerAnimation AnimationController { get => _animationController; set => _animationController = value; }
+    public KnightAbility KnightAbility { get => _knightAbility; set => _knightAbility = value; }
 
     void Start()
     {
