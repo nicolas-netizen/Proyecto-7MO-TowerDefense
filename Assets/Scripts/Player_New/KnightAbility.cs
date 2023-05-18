@@ -13,7 +13,7 @@ public class KnightAbility : MonoBehaviour
     [SerializeField] private GameObject sword;
 
     [SerializeField] private bool isCooldown = false;
-    [SerializeField] private Animator animator; 
+    [SerializeField] private Animator animator;
 
     void Update()
     {
@@ -47,8 +47,12 @@ public class KnightAbility : MonoBehaviour
                     }
                 }
             }
-            StartCoroutine(CooldownRoutine());
         }
+    }
+
+    public void CooldownStart()
+    {
+        StartCoroutine(CooldownRoutine());
     }
 
     IEnumerator CooldownRoutine()

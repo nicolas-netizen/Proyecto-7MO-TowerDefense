@@ -26,6 +26,7 @@ public class PlayerState
 
     public void AbilityExpansive()
     {
+        _player.KnightAbility.CooldownStart();
         _player.AnimationController.AbilityExpansive();
     }
 }
