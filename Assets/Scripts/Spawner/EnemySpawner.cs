@@ -4,28 +4,42 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] public GameObject _enemyprefab;
-    [SerializeField] public int _maxEnemies = 10;
-    [SerializeField] public float _spawnDelay = 1f;
-    [SerializeField] public float _spawnRadius = 5f;
+    [SerializeField] private float spawnDelay = 1f;
+    [SerializeField] private float spawnRadius = 5f;
+    [SerializeField] private int _spawnAtSameTime;
 
-    private void Start() {
-        InvokeRepeating("SpawnEnemy", 0f, _spawnDelay);
-    }
+    private bool isSpawning = false;
 
-    public void SpawnEnemy()
+    public void SpawnEnemy(GameObject enemyPrefab, int enemyCount)
     {
-        for (int i = 0; i < _maxEnemies; i++)
-        {
-            Vector3 spawnPos = transform.position + Random.insideUnitSphere * _spawnRadius;
-            Instantiate(_enemyprefab, spawnPos, Quaternion.identity);
-        }
+        StartCoroutine(SpawnEnemies(enemyPrefab, enemyCount));
     }
 
-    private void OnDrawGizmosSelected() {
+    private IEnumerator SpawnEnemies(GameObject enemyPrefab, int enemyCount)
+    {
+        isSpawning = true;
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            for (int j = 0; j < _spawnAtSameTime; j++)
+            {
+                Vector3 spawnPos = transform.position + Random.insideUnitSphere * spawnRadius;
+                Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(spawnDelay);
+        }
+
+        isSpawning = false;
+    }
+
+    public bool IsSpawning
+    {
+        get { return isSpawning; }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, _spawnRadius);
+        Gizmos.DrawSphere(transform.position, spawnRadius);
     }
 }
-    
-     

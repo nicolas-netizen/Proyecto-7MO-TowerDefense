@@ -15,7 +15,7 @@ public class EnemyChase
 
     [Header("ATTACH")]
     private Transform _target;
-    private Transform _endPoint;
+    [SerializeField] private Node _nextPoint;
     [SerializeField] private NavMeshAgent _agent;
 
     private NavMeshPath _path;
@@ -23,6 +23,7 @@ public class EnemyChase
 
     public float RangeChase { get => _rangeChase;}
     public NavMeshAgent Agent { get => _agent; set => _agent = value; }
+    public Node NextPoint { get => _nextPoint; set => _nextPoint = value; }
 
     public void SetEnemy(Enemy enemy)
     {
@@ -30,7 +31,7 @@ public class EnemyChase
         _path = new NavMeshPath();
         _currentSpeed = _runSpeed;
         _target = EnemyManager.Instance.Player.transform;
-        _endPoint = EnemyManager.Instance.EndPoint;
+        _nextPoint = EnemyManager.Instance.GetStartNode();
     }
 
     public void ManualUpdate()
@@ -39,16 +40,16 @@ public class EnemyChase
         {
             _agent.speed = _currentSpeed;
 
-            var checkPlayer = Physics.OverlapSphere(_enemy.transform.position, _rangeChase, _playerMask);
+            //var checkPlayer = Physics.OverlapSphere(_enemy.transform.position, _rangeChase, _playerMask);
 
-            if (checkPlayer.Length > 0 && _agent.CalculatePath(_target.position, _path))
-            {
-                _agent.SetDestination(_target.position);
-            }
-            else
-            {
-                _agent.SetDestination(_endPoint.transform.position);
-            }
+            //if (checkPlayer.Length > 0 && _agent.CalculatePath(_target.position, _path))
+            //{
+            //    _agent.SetDestination(_target.position);
+            //}
+            //else
+            //{
+                _agent.SetDestination(_nextPoint.transform.position);
+            //}
         }
     }
 }

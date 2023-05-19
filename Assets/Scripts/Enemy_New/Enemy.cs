@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour, IDamageable, IWaveable
 {
 
     [SerializeField] private EnemyChase _enemyChase;
@@ -52,5 +52,9 @@ public class Enemy : MonoBehaviour, IDamageable
         return gameObject;
     }
 
+    public void NextNode(Node node)
+    {
+        _enemyChase.NextPoint = node;
+    }
 }
 

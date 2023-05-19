@@ -38,6 +38,7 @@ public class Player : MonoBehaviour, ISwordOwner
     // Update is called once per frame
     void Update()
     {
+        _movementController.ManualUpdate();
         _inputController.ManualUpdate();
         _animationController.ManualUpdate();
         _playerCombo.ManualUpdate();
