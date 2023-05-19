@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDelay: 1
   spawnRadius: 5
-  _spawnAtSameTime: 2
+  _spawnAtSameTime: 5
 --- !u!4 &188022112
 Transform:
   m_ObjectHideFlags: 0
@@ -629,12 +629,12 @@ MonoBehaviour:
   enemySpawner: {fileID: 188022111}
   waves:
   - enemyPrefab: {fileID: 5107827491753722974, guid: 0d9418c088c40ce44b60c3e8a44c2c6b, type: 3}
-    enemyCount: 10
-  - enemyPrefab: {fileID: 5107827491753722974, guid: 0d9418c088c40ce44b60c3e8a44c2c6b, type: 3}
     enemyCount: 20
   - enemyPrefab: {fileID: 5107827491753722974, guid: 0d9418c088c40ce44b60c3e8a44c2c6b, type: 3}
     enemyCount: 30
-  timeBetweenWaves: 20
+  - enemyPrefab: {fileID: 5107827491753722974, guid: 0d9418c088c40ce44b60c3e8a44c2c6b, type: 3}
+    enemyCount: 40
+  timeBetweenWaves: 10
 --- !u!1 &200001399
 GameObject:
   m_ObjectHideFlags: 0
