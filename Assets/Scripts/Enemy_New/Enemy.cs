@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private EnemyRig _enemyRig;
 
+    private Rigidbody rb;
+
     public EnemyChase EnemyChase { get => _enemyChase; set => _enemyChase = value; }
     public EnemyHealth EnemyHealth { get => _enemyHealth; set => _enemyHealth = value; }
     public EnemyRig EnemyRig { get => _enemyRig; set => _enemyRig = value; }
@@ -56,5 +58,11 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
     {
         _enemyChase.NextPoint = node;
     }
+    public void ApplyKnockback(Vector3 direction, float force)
+    {
+        // Aplicar fuerza de knockback al enemigo
+        rb.AddForce(direction * force, ForceMode.Impulse);
+    }
+
 }
 
