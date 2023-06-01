@@ -2,30 +2,46 @@ using UnityEngine;
 
 public class ChargeAbility : MonoBehaviour
 {
-    public float damage = 20f; // Daño causado por la habilidad
-    public float knockbackForce = 10f; // Fuerza de empuje hacia atrás
+    [SerializeField]
+    private float _attackDamage = 10f;
+    [SerializeField]
+    private float _attackRange = 2f;
+    [SerializeField]
+    private LayerMask _enemyLayer;
 
-    public void DefensiveCharge()
+    private bool isAttacking = false;
+
+    void Update()
     {
-        // Detectar los enemigos en el área frontal
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.forward, 3f); // Ajusta el radio según tus necesidades
-
-        // Aplicar daño y empuje a los enemigos
-        foreach (Collider hitCollider in hitColliders)
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
-            Enemy enemy = hitCollider.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                // Aplicar daño al enemigo
-                enemy.TakeDamage(damage);
-
-                // Empujar al enemigo hacia atrás
-                Vector3 knockbackDirection = (enemy.transform.position - transform.position).normalized;
-                enemy.ApplyKnockback(knockbackDirection, knockbackForce);
-            }
+            StartCoroutine(PerformAttack());
         }
     }
+
+    System.Collections.IEnumerator PerformAttack()
+    {
+        isAttacking = true;
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, _attackRange, _enemyLayer);
+
+        foreach (Collider enemyCollider in hitEnemies)
+        {
+            Enemy enemy = enemyCollider.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                Vector3 dir = enemy.transform.position - transform.position;
+                enemy.TakeDamage(_attackDamage, dir);
+            }
+        }
+
+        yield return new WaitForSeconds(0.5f); 
+
+        isAttacking = false;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _attackRange);
+    }
 }
-
-
-

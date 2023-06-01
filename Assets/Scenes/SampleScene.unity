@@ -36776,12 +36776,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3985555885a244aa0fc3c4591f317b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeSpeed: 10
-  chargeDuration: 10
-  chargeCooldown: 5
-  damage: 10
-  knockbackForce: 100
-  chargeEffectPrefab: {fileID: 0}
+  _attackDamage: 10
+  _attackRange: 10
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 2147483647
 --- !u!114 &940029003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36800,7 +36799,7 @@ MonoBehaviour:
   ability1Cooldown: 10
   abilityImage2: {fileID: 1973984666}
   abilityText2: {fileID: 1222027236}
-  ability2Key: 114
+  ability2Key: 32
   ability2Cooldown: 10
   abilityImage3: {fileID: 0}
   abilityText3: {fileID: 0}
