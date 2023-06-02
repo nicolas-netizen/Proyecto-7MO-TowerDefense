@@ -8,6 +8,7 @@ public class PlayerAnimation
     private Player _player;
     [SerializeField]private Animator _animator;
 
+    public Animator Animator { get => _animator; }
 
     public void SetPlayer(Player player)
     {

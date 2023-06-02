@@ -33,13 +33,13 @@ public class Ability : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        abilityImage1.fillAmount = 0;
-        abilityImage2.fillAmount = 0;
-        abilityImage3.fillAmount = 0;
+        //abilityImage1.fillAmount = 0;
+        //abilityImage2.fillAmount = 0;
+        //abilityImage3.fillAmount = 0;
 
-        abilityText1.text = "";
-        abilityText2.text = "";
-        abilityText3.text = "";
+        //abilityText1.text = "";
+        //abilityText2.text = "";
+        //abilityText3.text = "";
 
     }
 

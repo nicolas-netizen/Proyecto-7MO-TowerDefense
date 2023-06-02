@@ -115,6 +115,7 @@ public class PlayerMovement
     private float velocity;
 
     public MovementState MovementState { get => _movementState; set => _movementState = value; }
+    public CharacterController Controller { get => _controller; set => _controller = value; }
 
     public void Idle()
     {

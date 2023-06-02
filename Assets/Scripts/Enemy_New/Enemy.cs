@@ -60,9 +60,7 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
     }
     public void ApplyKnockback(Vector3 direction, float force)
     {
-        // Aplicar fuerza de knockback al enemigo
         rb.AddForce(direction * force, ForceMode.Impulse);
     }
-
 }
 

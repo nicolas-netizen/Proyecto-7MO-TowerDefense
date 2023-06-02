@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -24,8 +22,9 @@ public class EnemyHealth
             Die();
             _enemy.EnemyRig.ActiveRagdoll(dir);
         }
+
     }
     void Die() {
         GameObject.Destroy(_enemy.gameObject,5);
-    }  
+    }
 }
