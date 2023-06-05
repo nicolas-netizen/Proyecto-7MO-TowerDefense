@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Hovl Studio.meta
 guid: 5dac3db8c65380d43abdc095aa040c33
+========
+guid: 892ea1269774d9c46918090d6dfd578e
+>>>>>>>> parent of 17e60fb (VFX):Assets/VFX/CAMPO.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
