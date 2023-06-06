@@ -276,7 +276,6 @@ GameObject:
   m_Component:
   - component: {fileID: 121402141}
   - component: {fileID: 121402140}
-  - component: {fileID: 121402139}
   - component: {fileID: 121402138}
   - component: {fileID: 121402137}
   - component: {fileID: 121402136}
@@ -351,26 +350,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &121402139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121402135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb977b126bc1b4f15813dcf9da9bb600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Points:
-  - {x: 0, y: 0, z: 0}
-  - {x: -0.04628563, y: 0, z: 2.711606}
-  - {x: -2.6110325, y: 0, z: 0.9765277}
-  m_Extrude: 3.4337246
-  m_EditMode: 0
-  m_FlipNormals: 0
-  isOnGrid: 1
 --- !u!114 &121402140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2850,7 +2829,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1030504413}
   - component: {fileID: 1030504412}
-  - component: {fileID: 1030504411}
   - component: {fileID: 1030504410}
   - component: {fileID: 1030504409}
   - component: {fileID: 1030504408}
@@ -2925,26 +2903,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1030504411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030504407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb977b126bc1b4f15813dcf9da9bb600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Points:
-  - {x: 0, y: 0, z: 0}
-  - {x: -0.04628563, y: 0, z: 2.711606}
-  - {x: -2.6110325, y: 0, z: 0.9765277}
-  m_Extrude: 3.4337246
-  m_EditMode: 0
-  m_FlipNormals: 0
-  isOnGrid: 1
 --- !u!114 &1030504412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3690,7 +3648,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh196408
+  m_Name: pb_Mesh27490
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4106,7 +4064,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh192868
+  m_Name: pb_Mesh27232
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
