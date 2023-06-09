@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class Ability2 : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _lightningParticles;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private KeyCode _activationKey = KeyCode.R;
     [SerializeField] private Animator _animator;
-    [SerializeField] private string _animationTrigger = "AbilityTrigger";
+    [SerializeField] private string _animationTrigger = "Ability2";
 
     private void Update()
     {
