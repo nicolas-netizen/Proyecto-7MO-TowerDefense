@@ -32,7 +32,7 @@ public class KnightAbility : MonoBehaviour
             CameraShake cameraShake = Camera.main.GetComponent<CameraShake>();
             if (cameraShake != null)
             {
-                cameraShake.Shake();
+                cameraShake.Shake(cameraShake.ShakeMagnitudeAbility);
             }
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
             foreach (Collider hitCollider in hitColliders)

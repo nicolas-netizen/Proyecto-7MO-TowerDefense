@@ -1,14 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
     private ISwordOwner _owner;
+    private CameraShake _cameraShake;
 
     private void Start()
     {
         _owner = transform.root.GetComponent<ISwordOwner>();
+        _cameraShake = Camera.main.GetComponent<CameraShake>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,6 +30,11 @@ public class Sword : MonoBehaviour
                         break;
                     default:
                         break;
+                }
+
+                if (_cameraShake != null)
+                {
+                    _cameraShake.Shake(_cameraShake.ShakeMagnitude);
                 }
             }
         }
@@ -52,7 +58,14 @@ public class Sword : MonoBehaviour
                     default:
                         break;
                 }
+
+                if (_cameraShake != null)
+                {
+                    _cameraShake.Shake(_cameraShake.ShakeMagnitude);
+
+                }
             }
         }
     }
 }
+
