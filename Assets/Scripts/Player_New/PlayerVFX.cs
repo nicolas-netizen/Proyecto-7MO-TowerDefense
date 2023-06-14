@@ -8,6 +8,7 @@ public class PlayerVFX
     [SerializeField] private ParticleSystem _hitParticles;
     [SerializeField] private ParticleSystem _dashParticles;
     [SerializeField] private ParticleSystem _groundParticles;
+    [SerializeField] private ParticleSystem _DownParticles;
 
     [Header("CAMERA")]
     [SerializeField] private CameraFollow _shake;
@@ -25,6 +26,10 @@ public class PlayerVFX
     public void Ground()
     {
         _groundParticles.Play();
+    }
+    public void Downshot()
+    {
+        _DownParticles.Play();
     }
     
     //public void CutHit(Quaternion direction)
