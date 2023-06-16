@@ -14,6 +14,7 @@ public class Player : MonoBehaviour, ISwordOwner
     [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private PlayerVFX _playerVFX;
     [SerializeField] private KnightAbility _knightAbility;
+    [SerializeField] private ChargeAbility _chargeAbility;
 
     public PlayerMovement MovementController { get => _movementController; set => _movementController = value; }
     public PlayerInput InputController { get => _inputController; set => _inputController = value; }
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour, ISwordOwner
     public PlayerAnimation AnimationController { get => _animationController; set => _animationController = value; }
     public KnightAbility KnightAbility { get => _knightAbility; set => _knightAbility = value; }
     public PlayerVFX PlayerVFX { get => _playerVFX; set => _playerVFX = value; }
+    public ChargeAbility ChargeAbility { get => _chargeAbility; set => _chargeAbility = value; }
 
     void Start()
     {

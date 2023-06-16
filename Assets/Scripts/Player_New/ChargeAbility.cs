@@ -27,6 +27,7 @@ public class ChargeAbility : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _canDash)
         {
             Dash(movement.normalized);
+            _player.StateController.AbilityExpansive();
         }
     }
 
@@ -35,7 +36,7 @@ public class ChargeAbility : MonoBehaviour
         StartCoroutine(PerformDash(direction));
     }
 
-    private IEnumerator PerformDash(Vector3 direction)
+    public IEnumerator PerformDash(Vector3 direction)
     {
         _canDash = false;
         float elapsedTime = 0f;
