@@ -61162,14 +61162,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: 
+    functionName: StartExpansive
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.6
-    functionName: 
+    functionName: ActivateExpansiveAbility
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1333333
+    functionName: StopExpansive
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
