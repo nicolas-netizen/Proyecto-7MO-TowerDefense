@@ -9,14 +9,14 @@
 //    [SerializeField] private float range;
 //    [SerializeField] private float cooldown;
 
-//    [SerializeField] private GameObject sword;
+//    [SerializeField] private Animator _animator;
+//    [SerializeField] private string _abilityTrigger = "Ability2";
 
-//    [SerializeField] private bool isCooldown = false;
-//    [SerializeField] private Animator animator;
+//    private bool isCooldown = false;
 
 //    private void Update()
 //    {
-//        if (!isCooldown && Input.GetKeyDown(KeyCode.F))
+//        if (!isCooldown && Input.GetKeyDown(KeyCode.R))
 //        {
 //            ActivateAbility();
 //        }
@@ -24,32 +24,23 @@
 
 //    private void ActivateAbility()
 //    {
-//        if (sword != null)
+//        _animator.SetTrigger(_abilityTrigger);
+
+//        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
+//        foreach (Collider hitCollider in hitColliders)
 //        {
-//            sword.SetActive(true);
-
-//            CameraShake cameraShake = Camera.main.GetComponent<CameraShake>();
-//            if (cameraShake != null)
+//            if (hitCollider.CompareTag("Enemy"))
 //            {
-//                cameraShake.Shake();
-//            }
-
-//            Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
-//            foreach (Collider hitCollider in hitColliders)
-//            {
-//                if (hitCollider.CompareTag("Enemy"))
+//                Enemy enemy = hitCollider.GetComponent<Enemy>();
+//                if (enemy != null)
 //                {
-//                    Enemy enemy = hitCollider.GetComponent<Enemy>();
-//                    if (enemy != null)
-//                    {
-//                        Vector3 dir = hitCollider.transform.position - transform.position;
-//                        enemy.TakeDamage(damage, dir);
-//                    }
+//                    Vector3 dir = hitCollider.transform.position - transform.position;
+//                    enemy.TakeDamage(damage, dir);
 //                }
 //            }
-
-//            StartCoroutine(CooldownRoutine());
 //        }
+
+//        StartCoroutine(CooldownRoutine());
 //    }
 
 //    private IEnumerator CooldownRoutine()
@@ -59,3 +50,5 @@
 //        isCooldown = false;
 //    }
 //}
+
+

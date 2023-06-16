@@ -25,6 +25,18 @@ public class EnemyHealth
         }
 
     }
+
+    public void UpdateHealth(float mod)
+    {
+        _currentHealth += mod;
+        _enemy.EnemyVFX.Blood();
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
+
+    }
+
     void Die() {
         GameObject.Destroy(_enemy.gameObject,5);
     }

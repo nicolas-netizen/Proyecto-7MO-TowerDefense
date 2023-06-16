@@ -51,6 +51,11 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
         _enemyHealth.UpdateHealth(-mod, dir);
     }
 
+    public void TakeDamage(float mod)
+    {
+        _enemyHealth.UpdateHealth(-mod);
+    }
+
     public GameObject GetObject()
     {
         return gameObject;
