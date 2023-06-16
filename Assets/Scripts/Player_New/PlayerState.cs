@@ -28,4 +28,8 @@ public class PlayerState
         _player.KnightAbility.CooldownStart();
         _player.AnimationController.AbilityExpansive();
     }
+    //public void Dash()
+    //{
+    //    _player.ChargeAbility.D();
+    //}
 }

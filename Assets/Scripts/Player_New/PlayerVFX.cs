@@ -7,6 +7,8 @@ public class PlayerVFX
     [SerializeField] private ParticleSystem _bloodParticles;
     [SerializeField] private ParticleSystem _hitParticles;
     [SerializeField] private ParticleSystem _dashParticles;
+    [SerializeField] private ParticleSystem _dashCamera;
+    [SerializeField] private ParticleSystem _dashAir;
     [SerializeField] private ParticleSystem _groundParticles;
     [SerializeField] private ParticleSystem _DownParticles;
 
@@ -16,6 +18,8 @@ public class PlayerVFX
     public void Dash()
     {
         _dashParticles.Play();
+        _dashCamera.Play();
+        _dashAir.Play();
     }
 
     public void Blood()
