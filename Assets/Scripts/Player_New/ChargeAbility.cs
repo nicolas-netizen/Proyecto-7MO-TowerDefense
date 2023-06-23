@@ -27,7 +27,6 @@ public class ChargeAbility : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _canDash)
         {
             Dash(movement.normalized);
-            _player.StateController.AbilityExpansive();
         }
     }
 
@@ -40,7 +39,7 @@ public class ChargeAbility : MonoBehaviour
     {
         _canDash = false;
         float elapsedTime = 0f;
-
+        _player.PlayerVFX.Dashs();
         _shieldBackObject.SetActive(false);
         _shieldHandObject.SetActive(true);
 
@@ -62,7 +61,7 @@ public class ChargeAbility : MonoBehaviour
         _player.AnimationController.Animator.SetBool("BlockAbility", false);
         _shieldBackObject.SetActive(true);
         _shieldHandObject.SetActive(false);
-
+        _player.PlayerVFX.StopDash();
         yield return new WaitForSeconds(_dashCooldown);
         _canDash = true;
     }

@@ -15,11 +15,16 @@ public class PlayerVFX
     [Header("CAMERA")]
     [SerializeField] private CameraFollow _shake;
 
-    public void Dash()
+    public void Dashs()
     {
         _dashParticles.Play();
         _dashCamera.Play();
-        _dashAir.Play();
+    }
+
+    public void StopDash()
+    {
+        _dashParticles.Stop();
+        _dashCamera.Stop();
     }
 
     public void Blood()
