@@ -11,6 +11,8 @@ public class ChargeAbility : MonoBehaviour
     [SerializeField] private GameObject _shieldHandObject;
     [SerializeField] private Player _player;
     [SerializeField] private float _damage;
+    [SerializeField] private CameraShake _cameraShake;
+
 
     public float cameraShiftAmount = 0.5f;
     public float cameraShiftSpeed = 5f;
@@ -40,6 +42,7 @@ public class ChargeAbility : MonoBehaviour
         _canDash = false;
         float elapsedTime = 0f;
         _player.PlayerVFX.Dashs();
+        _cameraShake.Shake(0.5f);
         _shieldBackObject.SetActive(false);
         _shieldHandObject.SetActive(true);
 

@@ -1,54 +1,60 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using System.Collections;
+using UnityEngine;
 
-//public class Ability2 : MonoBehaviour
-//{
-//    [SerializeField] private Player _player;
-//    [SerializeField] private float damage;
-//    [SerializeField] private float range;
-//    [SerializeField] private float cooldown;
+public class Ability2 : MonoBehaviour
+{
+    [SerializeField] private float _duration = 3f;
+    [SerializeField] private float _tickInterval = 0.5f;
+    [SerializeField] private float _damagePerTick = 10f;
 
-//    [SerializeField] private Animator _animator;
-//    [SerializeField] private string _abilityTrigger = "Ability2";
+    private bool _isAbilityActive = false;
 
-//    private bool isCooldown = false;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G) && !_isAbilityActive)
+        {
+            ActivateAbility();
+        }
+    }
 
-//    private void Update()
-//    {
-//        if (!isCooldown && Input.GetKeyDown(KeyCode.R))
-//        {
-//            ActivateAbility();
-//        }
-//    }
+    private void ActivateAbility()
+    {
+        StartCoroutine(StartAbility());
+    }
 
-//    private void ActivateAbility()
-//    {
-//        _animator.SetTrigger(_abilityTrigger);
+    private IEnumerator StartAbility()
+    {
+        _isAbilityActive = true;
 
-//        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
-//        foreach (Collider hitCollider in hitColliders)
-//        {
-//            if (hitCollider.CompareTag("Enemy"))
-//            {
-//                Enemy enemy = hitCollider.GetComponent<Enemy>();
-//                if (enemy != null)
-//                {
-//                    Vector3 dir = hitCollider.transform.position - transform.position;
-//                    enemy.TakeDamage(damage, dir);
-//                }
-//            }
-//        }
 
-//        StartCoroutine(CooldownRoutine());
-//    }
+        float elapsedTime = 0f;
 
-//    private IEnumerator CooldownRoutine()
-//    {
-//        isCooldown = true;
-//        yield return new WaitForSeconds(cooldown);
-//        isCooldown = false;
-//    }
-//}
+        while (elapsedTime < _duration)
+        {
+            ApplyDamageToEnemies();
+
+            yield return new WaitForSeconds(_tickInterval);
+            elapsedTime += _tickInterval;
+        }
+
+        _isAbilityActive = false;
+    }
+
+    private void ApplyDamageToEnemies()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, /*radius*/ 5f);
+
+        foreach (Collider collider in colliders)
+        {
+
+            Enemy enemy = collider.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(_damagePerTick);
+            }
+        }
+    }
+}
+
 
 

@@ -4,35 +4,33 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public EnemySpawner enemySpawner;
     public List<Wave> waves;
     public float timeBetweenWaves = 5f;
 
     private int currentWaveIndex = 0;
     private bool isSpawningWave = false;
 
-    private bool _firstFlag;
-    private void Start()
+    private IEnumerator Start()
     {
-        StartCoroutine(SpawnWaves());
-    }
+        yield return new WaitForSeconds(timeBetweenWaves);
 
-    private IEnumerator SpawnWaves()
-    {
-        if (_firstFlag)
-        {
-            yield return new WaitForSeconds(timeBetweenWaves);
-        }
-        
-        _firstFlag = true;
         while (currentWaveIndex < waves.Count)
         {
             Wave currentWave = waves[currentWaveIndex];
             isSpawningWave = true;
 
-            enemySpawner.SpawnEnemy(currentWave.enemyPrefab, currentWave.enemyCount);
+            for (int i = 0; i < currentWave.enemyCount; i++)
+            {
+                Vector3 spawnPos = transform.position + Random.insideUnitSphere * 5f;
+                Instantiate(currentWave.enemyPrefab, spawnPos, Quaternion.identity);
 
-            while (enemySpawner.IsSpawning)
+                if (i < currentWave.enemyCount - 1)
+                {
+                    yield return new WaitForSeconds(currentWave.spawnDelay);
+                }
+            }
+
+            while (GameObject.FindWithTag("Enemy") != null)
             {
                 yield return null;
             }
@@ -44,5 +42,3 @@ public class WaveManager : MonoBehaviour
         }
     }
 }
-
-
