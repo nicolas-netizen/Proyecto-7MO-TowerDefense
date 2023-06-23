@@ -24,6 +24,7 @@ public class PlayerHandlerAnimation : MonoBehaviour
     public void StartAttacking()
     {
         _player.PlayerCombat.IsAttacking = true;
+        _player.PlayerVFX.Slash();
     }
 
     public void StopAttacking()
