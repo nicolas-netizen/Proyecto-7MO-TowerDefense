@@ -2,48 +2,29 @@ using UnityEngine;
 
 public class EnemyColorChange : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject _targget;
+    public Color enemyApproachColor;
+    private Color originalColor;
+    private Light lightComponent;
 
-    [SerializeField] private GameObject _light;
-    [SerializeField] private GameObject _light2;
-
-    const float MAX_DISTANCE = 100;
-
-    private void OnTriggerStay(Collider other)
+    private void Start()
     {
-        if (other.tag == "Player")
+        lightComponent = GetComponent<Light>();
+        originalColor = lightComponent.color;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
         {
-            float val = GetLerpValue();
-            _light.SetActive(false);
-            _light2.SetActive(true);
+            lightComponent.color = enemyApproachColor;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Enemy"))
         {
-            _light.SetActive(true);
-            _light2.SetActive(false);
+            lightComponent.color = originalColor;
         }
     }
-    public float GetLerpValue()
-    {
-        float distanceApart = GetSqrDistance(_player.transform.position, _targget.transform.position);
-
-        float lerp = MapValue(distanceApart, 0, MAX_DISTANCE, 0f, 1f);
-
-        return lerp;
-    }
-
-    public float GetSqrDistance(Vector3 v1, Vector3 v2)
-    {
-        return (v1 - v2).sqrMagnitude;
-    }
-
-    float MapValue(float mainValue, float inValueMin, float inValueMax, float outValueMin, float outValueMax)
-    {
-        return 1f - ((mainValue - inValueMin) * (outValueMax - outValueMin) / (inValueMax - inValueMin)) + outValueMin;
-    }
-
 }
