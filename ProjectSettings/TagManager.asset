@@ -18,9 +18,9 @@ TagManager:
   - Player
   - Ignore
   - Ground
-  - 
-  - 
-  - 
+  - Enemy
+  - Node
+  - Minimap
   - 
   - 
   - 

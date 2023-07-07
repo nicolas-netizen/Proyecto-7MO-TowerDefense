@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IWaveable
 {
-    void NextNode(Node node);
+    void NextNode(Node nextNode, Node thisNode, List<Node> ignoreNodes);
 }
+

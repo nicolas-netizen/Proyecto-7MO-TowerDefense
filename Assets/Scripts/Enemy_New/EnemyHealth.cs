@@ -38,6 +38,7 @@ public class EnemyHealth
     }
 
     void Die() {
+        _enemy.gameObject.layer = LayerMask.NameToLayer("Ignore");
         GameObject.Destroy(_enemy.gameObject,5);
     }
 }

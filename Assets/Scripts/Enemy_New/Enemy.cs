@@ -61,13 +61,18 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
         return gameObject;
     }
 
-    public void NextNode(Node node)
+    [SerializeField] private List<Node> _visitedNode;
+    public void NextNode(Node nextNode, Node thisNode, List<Node> ignoreNextNodes)
     {
-        _enemyChase.NextPoint = node;
-    }
-    public void ApplyKnockback(Vector3 direction, float force)
-    {
-        rb.AddForce(direction * force, ForceMode.Impulse);
-    }
+        if (!_visitedNode.Contains(thisNode))
+        {
+            foreach (var item in ignoreNextNodes)
+            {
+                _visitedNode.Add(item);
+            }
+            _visitedNode.Add(thisNode);
+            _enemyChase.NextPoint = nextNode;
+        }
+    } 
 }
 
