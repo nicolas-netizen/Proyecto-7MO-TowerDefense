@@ -9,7 +9,7 @@ public class Node : MonoBehaviour
     [SerializeField] private List<Node> _ignoreNextNodes; 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") && !_endNode);
+        if (other.CompareTag("Enemy") && !_endNode)
         {
             other.GetComponent<IWaveable>().NextNode(_nextNode, this, _ignoreNextNodes);
         }

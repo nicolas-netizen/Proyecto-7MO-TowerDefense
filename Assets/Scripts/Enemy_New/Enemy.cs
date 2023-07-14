@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
     {
         if(other.tag == "EndPoint")
         {
+            ObjetiveManager.Instance.AddEnemyAtEnd();
             Destroy(gameObject);
         }
     }
