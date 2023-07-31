@@ -5,19 +5,16 @@ public class Ability : MonoBehaviour
 {
     [Header("Ability 1")]
     public Image abilityImage1;
-    public Text abilityText1;
     public KeyCode ability1Key;
     public float ability1Cooldown = 5;
 
     [Header("Ability 2")]
     public Image abilityImage2;
-    public Text abilityText2;
     public KeyCode ability2Key;
     public float ability2Cooldown = 7;
 
     [Header("Ability 3")]
     public Image abilityImage3;
-    public Text abilityText3;
     public KeyCode ability3Key;
     public float ability3Cooldown = 10;
 
@@ -50,9 +47,9 @@ public class Ability : MonoBehaviour
         Ability2Input();
         Ability3Input();
 
-        AbilityCooldown(ref currentAbility1Cooldown, ability1Cooldown, ref isAbility1Cooldown, abilityImage1, abilityText1);
-        AbilityCooldown(ref currentAbility2Cooldown, ability2Cooldown, ref isAbility2Cooldown, abilityImage2, abilityText2);
-        AbilityCooldown(ref currentAbility3Cooldown, ability3Cooldown, ref isAbility3Cooldown, abilityImage3, abilityText3);
+        AbilityCooldown(ref currentAbility1Cooldown, ability1Cooldown, ref isAbility1Cooldown, abilityImage1);
+        AbilityCooldown(ref currentAbility2Cooldown, ability2Cooldown, ref isAbility2Cooldown, abilityImage2);
+        AbilityCooldown(ref currentAbility3Cooldown, ability3Cooldown, ref isAbility3Cooldown, abilityImage3);
     }
 
     private void Ability1Input()
@@ -82,7 +79,7 @@ public class Ability : MonoBehaviour
         }
     }
 
-    private void AbilityCooldown(ref float currentCooldown, float maxCooldown, ref bool isCooldown, Image skillImage, Text skillText)
+    private void AbilityCooldown(ref float currentCooldown, float maxCooldown, ref bool isCooldown, Image skillImage)
     {
         if (isCooldown)
         {
@@ -97,20 +94,12 @@ public class Ability : MonoBehaviour
                 {
                     skillImage.fillAmount = 0f;
                 }
-                if (skillText != null)
-                {
-                    skillText.text = "";
-                }
             }
             else
             {
                 if (skillImage != null)
                 {
                     skillImage.fillAmount = currentCooldown / maxCooldown;
-                }
-                if (skillText != null)
-                {
-                    skillText.text = Mathf.Ceil(currentCooldown).ToString();
                 }
             }
         }

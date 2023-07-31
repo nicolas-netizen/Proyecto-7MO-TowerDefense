@@ -7,6 +7,9 @@ public class PlayerHealth
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
+    [SerializeField] private Animator _animator;
+
+    public EnemySpawner enemySpawner;
 
     public void Start()
     {
@@ -26,11 +29,13 @@ public class PlayerHealth
             Die();
         }
     }
-
-    void Die()
+    public void Die()
     {
         Debug.Log("Player died.");
-       
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Death"); 
+        }
     }
 }
 

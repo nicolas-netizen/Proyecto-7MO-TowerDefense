@@ -10,6 +10,7 @@ public class WaveManager : MonoBehaviour
     private int currentWaveIndex = 0;
     private bool isSpawningWave = false;
 
+
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(timeBetweenWaves);
