@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "EndPoint")
+        if (other.CompareTag("EndPoint"))
         {
             ObjetiveManager.Instance.AddEnemyAtEnd();
             Destroy(gameObject);

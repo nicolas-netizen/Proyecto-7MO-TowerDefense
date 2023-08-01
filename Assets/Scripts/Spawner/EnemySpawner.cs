@@ -19,9 +19,9 @@ public class EnemySpawner : MonoBehaviour
         {
             isSpawning = true;
 
-            for (int i = 0; i < enemyCount; i++)
+            for (int i = 0; i < enemyCount ; i++)
             {
-                for (int j = 0; j < _spawnAtSameTime; j++)
+                for (int j = 0; j < _spawnAtSameTime ; j++)
                 {
                     if (!isSpawning)
                         yield break;

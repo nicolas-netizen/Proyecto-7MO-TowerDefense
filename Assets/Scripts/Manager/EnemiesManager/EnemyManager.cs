@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Transform _endPoint;
     [SerializeField] private Node[] _startNodes;
+    
 
     public static EnemyManager Instance;
 

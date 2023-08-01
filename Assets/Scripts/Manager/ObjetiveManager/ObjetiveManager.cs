@@ -8,10 +8,11 @@ public class ObjetiveManager : MonoBehaviour
     private int _countEnemiesAtEnd;
     [SerializeField] private int _enemiesAtEndMax;
     private bool _gameIsOver;
+    private int _enemiesAtEnd;
 
     public static ObjetiveManager Instance;
 
-    [SerializeField] private EnemySpawner _enemySpawner; // Referencia al script EnemySpawner
+    [SerializeField] private EnemySpawner _enemySpawner;
 
     private void Awake()
     {
@@ -23,8 +24,16 @@ public class ObjetiveManager : MonoBehaviour
 
     private void Start()
     {
+        _enemySpawner = FindObjectOfType<EnemySpawner>();
+        if (_enemySpawner == null)
+        {
+            Debug.LogError("EnemySpawner not found! Make sure you have assigned the EnemySpawner component to the ObjetciveManager script in the Inspector.");
+            return;
+        }
+
         UIManager.Instance.SetEnemyAtEndCounter(0, _enemiesAtEndMax);
     }
+
 
     private void Update()
     {
@@ -43,9 +52,11 @@ public class ObjetiveManager : MonoBehaviour
             return;
 
         _countEnemiesAtEnd++;
+        _enemiesAtEnd++;
+
         UIManager.Instance.SetEnemyAtEndCounter(_countEnemiesAtEnd, _enemiesAtEndMax);
 
-        if (_countEnemiesAtEnd >= _enemiesAtEndMax)
+        if (_enemiesAtEnd >= _enemiesAtEndMax)
         {
             _gameIsOver = true;
             GameOver();

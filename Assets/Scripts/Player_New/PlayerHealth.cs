@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerHealth
 {
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int currentHealth;
+    [SerializeField] public int maxHealth = 100;
+    [SerializeField] public int currentHealth;
     [SerializeField] private Animator _animator;
 
     public EnemySpawner enemySpawner;
