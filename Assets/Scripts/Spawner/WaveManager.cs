@@ -11,12 +11,29 @@ public class WaveManager : MonoBehaviour
     private bool isSpawningWave = false;
 
 
+    Coroutine _coroutineWave;
 
-    private IEnumerator Start()
+    public static WaveManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
+
+    private void Start()
+    {
+        _coroutineWave = StartCoroutine(StartWave());
+    }
+
+    IEnumerator StartWave()
     {
         yield return new WaitForSeconds(timeBetweenWaves);
 
-        while (currentWaveIndex < waves.Count)
+        while (currentWaveIndex < waves.Count && !ObjetiveManager.Instance.GameIsOver)
         {
             Wave currentWave = waves[currentWaveIndex];
             isSpawningWave = true;
@@ -42,5 +59,10 @@ public class WaveManager : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenWaves);
         }
+    }
+
+    public void GameOver()
+    {
+        StopCoroutine(_coroutineWave);
     }
 }

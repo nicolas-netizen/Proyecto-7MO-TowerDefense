@@ -21,7 +21,7 @@ public class EGA_EffectSound : MonoBehaviour
         if (RandomVolume == true)
         {
             soundComponent.volume = Random.Range(minVolume, maxVolume);
-            RepeatSound();
+            //RepeatSound();
         }
         if (Repeating == true)
         {
@@ -29,8 +29,8 @@ public class EGA_EffectSound : MonoBehaviour
         }
     }
 
-    void RepeatSound()
-    {
-        soundComponent.PlayOneShot(clip);
-    }
+    //void RepeatSound()
+    //{
+    //    soundComponent.PlayOneShot(clip);
+    //}
 }

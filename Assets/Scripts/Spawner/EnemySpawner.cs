@@ -17,26 +17,6 @@ public class EnemySpawner : MonoBehaviour
 
         private IEnumerator SpawnEnemies(GameObject enemyPrefab, int enemyCount)
         {
-            isSpawning = true;
-
-            for (int i = 0; i < enemyCount ; i++)
-            {
-                for (int j = 0; j < _spawnAtSameTime ; j++)
-                {
-                    if (!isSpawning)
-                        yield break;
-
-                    Vector3 spawnPos = transform.position + Random.insideUnitSphere * spawnRadius;
-                    Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-                }
-                yield return new WaitForSeconds(spawnDelay);
-            }
-
-            isSpawning = false;
-        }
-
-        public void StopSpawning()
-        {
-            isSpawning = false;
+        yield return new WaitForSeconds(spawnDelay);;
         }
 }

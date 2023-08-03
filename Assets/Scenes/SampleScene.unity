@@ -27002,7 +27002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemiesAtEndMax: 50
-  _enemySpawner: {fileID: 0}
 --- !u!1 &935341299
 GameObject:
   m_ObjectHideFlags: 0
@@ -46806,7 +46805,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemiesAtEndMax: 50
-  _enemySpawner: {fileID: 0}
 --- !u!4 &1316615177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a24bd1bbbcfd12d44a34da2c81929209, type: 3}
@@ -61646,7 +61644,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemiesAtEndMax: 50
-  _enemySpawner: {fileID: 0}
 --- !u!1 &1989841988 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: a5a7c9431493f1b468ab423f6710b355, type: 3}
