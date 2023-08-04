@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ObjetiveManager : MonoBehaviour
 {
+    [SerializeField] private Player _player;
+    
     [Header("DEBUG")]
-    private int _countEnemiesAtEnd;
     [SerializeField] private int _enemiesAtEndMax;
+ 
+    private int _countEnemiesAtEnd;
     private bool _gameIsOver = false;
     private int _enemiesAtEnd;
 
@@ -54,6 +57,9 @@ public class ObjetiveManager : MonoBehaviour
             _gameIsOver = true;
             Debug.Log("Game over");
             WaveManager.Instance.GameOver();
+            CameraManager.Instance.GameOver();
+            _player.InputController.BlockInputs();
+            _player.AnimationController.Animator.SetTrigger("Praying");
         }
     }
 }
