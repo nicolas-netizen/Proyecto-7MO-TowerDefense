@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
     public static CameraManager Instance;
 
     [SerializeField] private Animator _camera;
+
     private void Awake()
     {
         if (Instance == null)
@@ -18,5 +19,10 @@ public class CameraManager : MonoBehaviour
     public void GameOver()
     {
         _camera.Play("Lose");
+    }
+
+    public void Win()
+    {
+        _camera.Play("Win");
     }
 }

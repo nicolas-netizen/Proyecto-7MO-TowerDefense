@@ -9,9 +9,7 @@ public class KnightAbility : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float range;
     [SerializeField] private float cooldown;
-
     [SerializeField] private GameObject sword;
-
     [SerializeField] private bool isCooldown = false;
     [SerializeField] private Animator animator;
 

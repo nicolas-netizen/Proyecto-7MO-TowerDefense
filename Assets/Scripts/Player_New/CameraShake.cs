@@ -5,8 +5,6 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] private float _shakeDuration = 0.5f; 
-
-
     [SerializeField] private float _shakeMagnitude = 0.5f;
     [SerializeField] private float _shakeMagnitudeAbility = 0.5f;
 

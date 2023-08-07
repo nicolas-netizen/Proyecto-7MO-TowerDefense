@@ -36,6 +36,10 @@ public class ObjetiveManager : MonoBehaviour
         {
             GameOver();
         }
+        else if (_countEnemiesAtEnd <= _enemiesAtEndMax && WaveManager.Instance.AllWavesCompleted())
+        {
+            Win();
+        }
     }
 
     public void AddEnemyAtEnd()
@@ -59,6 +63,18 @@ public class ObjetiveManager : MonoBehaviour
             CameraManager.Instance.GameOver();
             _player.InputController.BlockInputs();
             _player.AnimationController.Animator.SetTrigger("Praying");
+        }
+    }
+
+    public void Win()
+    {
+        if (_gameIsOver == false)
+        {
+            _gameIsOver = true;
+            Debug.Log("You win!");
+            CameraManager.Instance.Win();
+            _player.InputController.BlockInputs();
+            _player.AnimationController.Animator.SetTrigger("Victory");
         }
     }
 }
