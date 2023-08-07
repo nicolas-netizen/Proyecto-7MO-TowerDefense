@@ -5,17 +5,17 @@ using UnityEngine;
 public class ObjetiveManager : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    
+
     [Header("DEBUG")]
     [SerializeField] private int _enemiesAtEndMax;
- 
+
     private int _countEnemiesAtEnd;
     private bool _gameIsOver = false;
     private int _enemiesAtEnd;
 
     public static ObjetiveManager Instance;
 
-    public bool GameIsOver { get => _gameIsOver;}
+    public bool GameIsOver { get => _gameIsOver; }
 
     private void Awake()
     {
@@ -30,13 +30,12 @@ public class ObjetiveManager : MonoBehaviour
         UIManager.Instance.SetEnemyAtEndCounter(0, _enemiesAtEndMax);
     }
 
-
     private void Update()
     {
-        if (_countEnemiesAtEnd < _enemiesAtEndMax)
-            return;
-
-        GameOver();
+        if (_countEnemiesAtEnd >= _enemiesAtEndMax)
+        {
+            GameOver();
+        }
     }
 
     public void AddEnemyAtEnd()
@@ -63,4 +62,3 @@ public class ObjetiveManager : MonoBehaviour
         }
     }
 }
-

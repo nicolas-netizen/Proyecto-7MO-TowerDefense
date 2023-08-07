@@ -7,8 +7,8 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float _shakeDuration = 0.5f; 
 
 
-    [SerializeField] private float _shakeMagnitude = 0.1f;
-    [SerializeField] private float _shakeMagnitudeAbility = 0.1f;
+    [SerializeField] private float _shakeMagnitude = 0.5f;
+    [SerializeField] private float _shakeMagnitudeAbility = 0.5f;
 
     private Transform cameraTransform;
     private Vector3 originalPosition;

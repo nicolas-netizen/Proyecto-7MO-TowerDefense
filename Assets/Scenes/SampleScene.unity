@@ -28048,7 +28048,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   - component: {fileID: 963194231}
   - component: {fileID: 963194232}
   - component: {fileID: 963194233}
@@ -28126,21 +28125,6 @@ Transform:
   m_Father: {fileID: 1604742625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 30, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83312a56719e5e14881a30569674f05d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 940028986}
-  _offset: {x: -4.5, y: 12, z: -10}
-  smoothTime: 0.25
 --- !u!65 &963194231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28166,9 +28150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e55f14b91900e49a98555a962fb4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shakeDuration: 0.1
-  _shakeMagnitude: 0.1
-  _shakeMagnitudeAbility: 0.5
+  _shakeDuration: 0.2
+  _shakeMagnitude: 0.2
+  _shakeMagnitudeAbility: 0.2
 --- !u!95 &963194233
 Animator:
   serializedVersion: 4
@@ -28177,7 +28161,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1a467bbfde6a0b84295652ac0ca5eff4, type: 2}
   m_CullingMode: 0
@@ -65691,7 +65675,7 @@ PrefabInstance:
     - target: {fileID: 234915896726556674, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
       propertyPath: _playerVFX._shake
       value: 
-      objectReference: {fileID: 963194229}
+      objectReference: {fileID: 1604742626}
     - target: {fileID: 234915896726556674, guid: f9fb8821439cf67429e29d7f10e98b77, type: 3}
       propertyPath: _playerVFX._dashAir
       value: 
