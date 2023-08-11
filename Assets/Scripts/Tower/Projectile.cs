@@ -6,62 +6,71 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _damage = 10f;
-    [SerializeField] private float _lifetime = 2f;
+    [SerializeField] private float explosionRadius = 0f;
 
-    private Transform _target;
+    private Transform target;
+    public GameObject impactEffect;
 
-    public void SetTarget(Transform target)
+    public void Seek(Transform _target)
     {
-        _target = target;
+        target = _target;
     }
-
-    void Update()
+    private void Update()
     {
-        if (_target == null)
+        if (target = null)
         {
             Destroy(gameObject);
             return;
         }
 
-        MoveToTarget();
-
-        _lifetime -= Time.deltaTime;
-        if (_lifetime <= 0f)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    void MoveToTarget()
-    {
-        Vector3 direction = _target.position - transform.position;
+        Vector3 dir = target.position - target.position;
         float distanceThisFrame = _speed * Time.deltaTime;
 
-        if (direction.magnitude <= distanceThisFrame)
+        if (dir.magnitude <= distanceThisFrame)
         {
             HitTarget();
             return;
         }
-
-        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-        transform.LookAt(_target);
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        transform.LookAt(target);
     }
-
     void HitTarget()
     {
-        Destroy(gameObject);
-        DealDamage();
-    }
+        GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectIns, 5f);
 
-    void DealDamage()
-    {
-        if (_target != null)
+        if (explosionRadius > 0f)
         {
-            IDamageable damageableObject = _target.GetComponent<IDamageable>();
-            if (damageableObject != null)
+            Explode();
+        }
+        else
+        {
+            Damage(target);
+        }
+        Destroy(gameObject);
+    }
+    void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.tag == "Enemy")
             {
-                //damageableObject.TakeDamage(_damage);
+                Damage(collider.transform);
             }
         }
+    }
+    void Damage (Transform enemy)
+    {
+        Enemy e =  enemy.GetComponent<Enemy>();
+        if (e != null)
+        {
+            e.TakeDamage(_damage);
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

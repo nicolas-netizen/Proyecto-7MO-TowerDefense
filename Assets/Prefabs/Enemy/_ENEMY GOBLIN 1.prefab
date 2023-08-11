@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4914151405710312359}
-  - component: {fileID: 1678213878214949853}
   - component: {fileID: 5145739521671644413}
   - component: {fileID: 5669103571123745610}
   - component: {fileID: 4080054500818206459}
+  - component: {fileID: 7602942966834420415}
   m_Layer: 0
   m_Name: _ENEMY GOBLIN 1
   m_TagString: Untagged
@@ -36,37 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1678213878214949853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347767555620973028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acf5b3c74c47a5f418bf72f8dd1aec67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyChase:
-    _runSpeed: 1
-    _rangeChase: 1
-    _playerMask:
-      serializedVersion: 2
-      m_Bits: 128
-    _nextPoint: {fileID: 0}
-    _agent: {fileID: 4080054500818206459}
-  _enemyHealth:
-    _currentHealth: 0
-    _enemyHealth: 100
-  _enemyRig:
-    _rig: {fileID: 3751512418297097026}
-    _hips: {fileID: 4022952407199729689}
-    _mainCollider: {fileID: 5145739521671644413}
-    _player: {fileID: 5145739521671644413}
-    magnitude: 40
-  _enemyVFX:
-    _bloodParticles: {fileID: 0}
 --- !u!65 &5145739521671644413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,6 +87,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7602942966834420415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347767555620973028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ea45796b630984c8a0632aae22b666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 3
+  _fleeRange: 5
+  _moveSpeed: 3
 --- !u!1001 &4094165114727274003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,11 +486,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!1 &3751512418297097026 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dcf1e4fd166cc264da6467085624af3f, type: 3}
-  m_PrefabInstance: {fileID: 4094165114727274003}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4022952407199729689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1082271958561512970, guid: dcf1e4fd166cc264da6467085624af3f, type: 3}

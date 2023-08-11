@@ -75,5 +75,10 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
             _enemyChase.NextPoint = nextNode;
         }
     } 
+
+    public void NextNodeMenu(Node nextNode)
+    {
+        _enemyChase.NextPoint = nextNode;
+    }
 }
 

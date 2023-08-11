@@ -18,6 +18,7 @@ public class CameraManager : MonoBehaviour
 
     public void GameOver()
     {
+        _camera.enabled = true;
         _camera.Play("Lose");
     }
 
