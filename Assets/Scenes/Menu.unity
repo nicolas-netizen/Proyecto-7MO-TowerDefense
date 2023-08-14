@@ -595,6 +595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Level_1
+  fadeAnimator: {fileID: 745044891}
+  _imgFade: {fileID: 745044892}
 --- !u!1001 &183010415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1542,7 +1544,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745044889}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3d7aebe9e9993ee4f8826760a27d99cd, type: 2}
   m_CullingMode: 0
