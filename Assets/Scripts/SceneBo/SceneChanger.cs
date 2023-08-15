@@ -1,19 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class SceneChanger : MonoBehaviour
 {
     public string sceneName;
-    public Animator fadeAnimator; 
-    [SerializeField] private RawImage _imgFade;
-
+    [SerializeField] private Animator fadeAnimator;
 
     public void PlayWithFade()
     {
-        _imgFade.GetComponent<Animator>().Play("FadeOut");
+        fadeAnimator.SetTrigger("FadeinMenu");
+        Invoke("ChangeScene", fadeAnimator.GetCurrentAnimatorStateInfo(0).length);
     }
 
     public void ChangeScene()
