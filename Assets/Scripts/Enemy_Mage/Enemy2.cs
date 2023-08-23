@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
 {
-    public float _attackRange = 3f;
-    public float _fleeRange = 5f;
-    public float _moveSpeed = 3f;
+   [SerializeField] public float _attackRange = 3f;
+   [SerializeField] public float _fleeRange = 5f;
+   [SerializeField] public float _moveSpeed = 3f;
 
     private Transform player;
 
