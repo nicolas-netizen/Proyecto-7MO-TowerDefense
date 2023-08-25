@@ -62,7 +62,15 @@ public class EnemyM : MonoBehaviour
 
     private void Escape()
     {
-        Debug.Log("Escaping!");
-        isAttacking = false;
+        Vector3 escapeDirection = (transform.position - player.position).normalized;
+        Vector3 newPosition = transform.position + escapeDirection * _followSpeed * Time.deltaTime;
+
+        float distanceToNewPosition = Vector3.Distance(newPosition, player.position);
+
+        if (distanceToNewPosition > _escapeRange)
+        {
+            Vector3 newNewPosition = newPosition - newPosition.normalized * _escapeRange;
+            transform.position = newNewPosition;
+        }
     }
 }

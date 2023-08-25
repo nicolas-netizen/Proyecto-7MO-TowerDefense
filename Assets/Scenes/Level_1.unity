@@ -14772,7 +14772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 238996820981607741, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 768049895814836131, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_RootOrder
@@ -14822,6 +14822,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 940028986}
+    - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
+      propertyPath: escapeRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
+      propertyPath: _escapeRange
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2901189424da3242b57681c3a7073d5, type: 3}
 --- !u!1001 &588958326
@@ -39387,6 +39395,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190050614}
   m_Mesh: {fileID: 8691828619499670502, guid: d8fd1b5f697acf14e931ae77309f3ad8, type: 3}
+--- !u!1 &1191707690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 238996820981607741, guid: c2901189424da3242b57681c3a7073d5, type: 3}
+  m_PrefabInstance: {fileID: 587121300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1191707695
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191707690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de953c001085dfb4a981d5d680328841, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1193546352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 95a433bf1b346da4b8724d5bff6cdf03, type: 3}
