@@ -10,8 +10,6 @@ public class Enemy : MonoBehaviour, IDamageable, IWaveable
     [SerializeField] private EnemyRig _enemyRig;
     [SerializeField] private EnemyVFX _enemyVFX;
 
-    private Rigidbody rb;
-
     public EnemyChase EnemyChase { get => _enemyChase; set => _enemyChase = value; }
     public EnemyHealth EnemyHealth { get => _enemyHealth; set => _enemyHealth = value; }
     public EnemyRig EnemyRig { get => _enemyRig; set => _enemyRig = value; }

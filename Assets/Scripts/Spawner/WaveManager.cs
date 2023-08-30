@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    [SerializeField] private List<Transform> _spawnPoints;
+
     public List<Wave> waves;
     public float timeBetweenWaves = 5f;
 
@@ -40,7 +42,7 @@ public class WaveManager : MonoBehaviour
 
             for (int i = 0; i < currentWave.enemyCount; i++)
             {
-                Vector3 spawnPos = transform.position + Random.insideUnitSphere * 5f;
+                Vector3 spawnPos = _spawnPoints[Random.Range(0,_spawnPoints.Count)].position + Random.insideUnitSphere * 5f;
                 Instantiate(currentWave.enemyPrefab, spawnPos, Quaternion.identity);
 
                 if (i < currentWave.enemyCount - 1)
