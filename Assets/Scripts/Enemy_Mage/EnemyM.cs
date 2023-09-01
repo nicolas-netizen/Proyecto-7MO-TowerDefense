@@ -29,6 +29,10 @@ public class EnemyM : MonoBehaviour
         _agent.speed = _followSpeed;
     }
 
+    private bool _movement;
+
+    public bool Movement { get => _movement; set => _movement = value; }
+
     private void Update()
     {
         var escapeRangeColliders = Physics.OverlapSphere(transform.position, _escapeRange, _playerMask);
@@ -50,12 +54,21 @@ public class EnemyM : MonoBehaviour
 
             if (attackRangeColliders.Length <= 0) // SI NO ESTÁ CERCA DEL PLAYER
             {
-                _agent.SetDestination(_player.position);
+                if (!_movement)
+                {
+                    _agent.speed = _followSpeed;
+                    _agent.SetDestination(_player.position);
+                    _animator.SetBool("Attack", false);
+                }
             }
             else // SI ESTÁ CERCA DEL PLAYER
             {
                 Attack();
             }
+        }
+        if (_movement)
+        {
+            _agent.speed = 0;
         }
     }
 
@@ -63,16 +76,22 @@ public class EnemyM : MonoBehaviour
     {
         if (isEscaping)
         {
+            _animator.SetBool("Attack", false);
+
             if (_targetNode == null)
             {
                 LookForClosestEmptyNode();
             }
             else
             {
-                transform.DOLookAt(_targetNode.transform.position, 0.5f, AxisConstraint.Y);
 
-                _agent.speed = _followSpeed;
-                _agent.SetDestination(_targetNode.transform.position);
+                if (!_movement)
+                {
+                    transform.DOLookAt(_targetNode.transform.position, 0.5f, AxisConstraint.Y);
+                    _agent.speed = _followSpeed;
+                    _agent.SetDestination(_targetNode.transform.position);
+
+                }
 
                 var a = new Vector3(transform.position.x, 0, transform.position.z);
                 var b = new Vector3(_targetNode.transform.position.x, 0, _targetNode.transform.position.z);
@@ -89,6 +108,7 @@ public class EnemyM : MonoBehaviour
     public void Attack()
     {
         _agent.SetDestination(transform.position);
+        _animator.SetBool("Attack", true);
         // Aquí puedes agregar lógica para el ataque al jugador si estás en rango de ataque.
     }
 
