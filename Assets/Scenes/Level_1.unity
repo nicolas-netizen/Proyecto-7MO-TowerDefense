@@ -55033,17 +55033,6 @@ Transform:
   m_Father: {fileID: 916556662}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &1509321843 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
-  m_PrefabInstance: {fileID: 2073940838}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238769e0fc5c74341ac04a5e1d11027a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1510120341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -940782308251351383, guid: bc6ed10f6d3968e4bb46d65dcc0c440f, type: 3}
@@ -65583,6 +65572,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 635406912931ecf4385c58599551d26b, type: 3}
+--- !u!1 &1937412531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1019054629656254, guid: 0dd71cf1c4378844fae81b273f0ba817, type: 3}
+  m_PrefabInstance: {fileID: 2053600393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1937412539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937412531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d92815635888b4094c8a7d4bed9d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileSpeed: 10
 --- !u!1 &1937515476
 GameObject:
   m_ObjectHideFlags: 0
@@ -65927,6 +65934,11 @@ MeshCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 082ed62050357b04babe4d67dd43ce73, type: 3}
   m_PrefabInstance: {fileID: 430253295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1945474755 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f26c63a59fd97a548a12579589ae4918, type: 3}
+  m_PrefabInstance: {fileID: 1301036239}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1946225109 stripped
 Transform:
@@ -66530,7 +66542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1562539374}
-  _enemy: {fileID: 1509321843}
+  _projectilePrefab: {fileID: 1937412539}
+  _projectileSpawnPoint: {fileID: 1945474755}
+  _projectileSpeed: 10
 --- !u!1 &1977001922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 95a433bf1b346da4b8724d5bff6cdf03, type: 3}
@@ -68469,7 +68483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668949983824316, guid: 0dd71cf1c4378844fae81b273f0ba817, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 64.53
+      value: 64.94
       objectReference: {fileID: 0}
     - target: {fileID: 4668949983824316, guid: 0dd71cf1c4378844fae81b273f0ba817, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68503,7 +68517,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114422448839044770, guid: 0dd71cf1c4378844fae81b273f0ba817, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0dd71cf1c4378844fae81b273f0ba817, type: 3}
 --- !u!4 &2054569826 stripped
 Transform:
