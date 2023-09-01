@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ObjetiveManager : MonoBehaviour
 {
@@ -12,8 +11,6 @@ public class ObjetiveManager : MonoBehaviour
 
     private int _countEnemiesAtEnd;
     private bool _gameIsOver = false;
-    [SerializeField] private Image _progressBar;
-
     private int _enemiesAtEnd;
 
     public static ObjetiveManager Instance;
@@ -53,19 +50,7 @@ public class ObjetiveManager : MonoBehaviour
         _countEnemiesAtEnd++;
         _enemiesAtEnd++;
 
-        float progressPercentage = (float)_countEnemiesAtEnd / _enemiesAtEndMax;
-        _progressBar.fillAmount = progressPercentage; // Actualizar la barra de progreso
-
         UIManager.Instance.SetEnemyAtEndCounter(_countEnemiesAtEnd, _enemiesAtEndMax);
-
-        if (_countEnemiesAtEnd >= _enemiesAtEndMax)
-        {
-            GameOver();
-        }
-        else if (_countEnemiesAtEnd <= _enemiesAtEndMax && WaveManager.Instance.AllWavesCompleted())
-        {
-            Win();
-        }
     }
 
     public void GameOver()

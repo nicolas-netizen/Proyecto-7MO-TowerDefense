@@ -41,7 +41,7 @@ public class EnemyHealth
     {
         _enemy.gameObject.layer = LayerMask.NameToLayer("Ignore");
         GameObject.Destroy(_enemy.gameObject, 5);
-        ObjetiveManager.Instance.AddEnemyAtEnd(); // Llamar a la función para aumentar el progreso
     }
+
 
 }

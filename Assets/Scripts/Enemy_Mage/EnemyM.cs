@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class EnemyM : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class EnemyM : MonoBehaviour
 
     private NodeEscape _lastNode;
     private NodeEscape _targetNode;
+    private bool isEscaping = false;
 
     private void Start()
     {
@@ -33,17 +35,24 @@ public class EnemyM : MonoBehaviour
 
         if (escapeRangeColliders.Length > 0)
         {
+            isEscaping = true; // Activar el modo de escape.
             Escape();
-        } else
+        }
+        else
         {
+            isEscaping = false; // Desactivar el modo de escape.
+
             var attackRangeColliders = Physics.OverlapSphere(transform.position, _attackRange, _playerMask);
-            transform.LookAt(new Vector3(0, _player.position.y, 0));
-            transform.LookAt(_player.position);
+
+            transform.DOLookAt(_player.position, 0.2f, AxisConstraint.Y);
+
             _targetNode = null;
-            if (attackRangeColliders.Length <= 0) // SI NO ESTA CERCA AL PLAYER
+
+            if (attackRangeColliders.Length <= 0) // SI NO ESTÁ CERCA DEL PLAYER
             {
                 _agent.SetDestination(_player.position);
-            } else // SI ESTÁ CERCA DEL PLAYER
+            }
+            else // SI ESTÁ CERCA DEL PLAYER
             {
                 Attack();
             }
@@ -52,34 +61,42 @@ public class EnemyM : MonoBehaviour
 
     public void Escape()
     {
-        if (_targetNode == null)
-            LookForClosestEmptyNode();
-        else
+        if (isEscaping)
         {
-           
-            transform.LookAt(new Vector3(0, _targetNode.transform.position.y, 0));
-            _agent.SetDestination(_targetNode.transform.position);
-            var a = new Vector3(transform.position.x,0,transform.position.z);
-            var b = new Vector3(_targetNode.transform.position.x, 0, _targetNode.transform.position.z);
-
-
-            if (Vector3.Distance(a, b) <= 0.3f)
+            if (_targetNode == null)
             {
-                _targetNode = null;
+                LookForClosestEmptyNode();
+            }
+            else
+            {
+                transform.DOLookAt(_targetNode.transform.position, 0.5f, AxisConstraint.Y);
+
+                _agent.speed = _followSpeed;
+                _agent.SetDestination(_targetNode.transform.position);
+
+                var a = new Vector3(transform.position.x, 0, transform.position.z);
+                var b = new Vector3(_targetNode.transform.position.x, 0, _targetNode.transform.position.z);
+
+                if (Vector3.Distance(a, b) <= 0.3f)
+                {
+                    _targetNode = null;
+                }
             }
         }
-
     }
+
 
     public void Attack()
     {
         _agent.SetDestination(transform.position);
+        // Aquí puedes agregar lógica para el ataque al jugador si estás en rango de ataque.
     }
 
     public void LookForClosestEmptyNode()
     {
         float distance = float.MaxValue;
         NodeEscape targetNode = null;
+
         if (_targetNode != null)
             _lastNode = _targetNode;
 
@@ -97,8 +114,8 @@ public class EnemyM : MonoBehaviour
         }
 
         _targetNode = targetNode;
-
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
