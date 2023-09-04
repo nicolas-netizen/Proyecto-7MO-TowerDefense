@@ -23,7 +23,6 @@ public class EnemyM : MonoBehaviour
     private NodeEscape _lastNode;
     private NodeEscape _targetNode;
     private bool isEscaping = false;
-
     private void Start()
     {
         _agent.speed = _followSpeed;
@@ -103,8 +102,6 @@ public class EnemyM : MonoBehaviour
             }
         }
     }
-
-
     public void Attack()
     {
         _agent.SetDestination(transform.position);
