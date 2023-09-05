@@ -13,9 +13,13 @@ public class ProjectileMover : MonoBehaviour
     private Rigidbody rb;
     public GameObject[] Detached;
 
+    private Transform playerTransform; // Referencia al transform del jugador
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Encuentra al jugador por etiqueta
+
         if (flash != null)
         {
             var flashInstance = Instantiate(flash, transform.position, Quaternion.identity);
@@ -31,17 +35,20 @@ public class ProjectileMover : MonoBehaviour
                 Destroy(flashInstance, flashPsParts.main.duration);
             }
         }
-        Destroy(gameObject,5);
-	}
+        Destroy(gameObject, 5);
+    }
 
-    void FixedUpdate ()
+    void FixedUpdate()
     {
-		if (speed != 0)
+        if (speed != 0)
         {
-            rb.velocity = transform.forward * speed;
-            //transform.position += transform.forward * (speed * Time.deltaTime);         
+            // Calcula la dirección hacia el jugador
+            Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+
+            rb.velocity = directionToPlayer * speed;
+            transform.position += directionToPlayer * (speed * Time.deltaTime);
         }
-	}
+    }
 
     //https ://docs.unity3d.com/ScriptReference/Rigidbody.OnCollisionEnter.html
     void OnCollisionEnter(Collision collision)

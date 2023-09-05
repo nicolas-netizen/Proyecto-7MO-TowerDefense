@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyMageAnimationHandler : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private ProjectileMage _projectilePrefab;
+    [SerializeField] private ProjectileMover _projectilePrefab;
     [SerializeField] private Transform _projectileSpawnPoint;
     [SerializeField] private float _projectileSpeed = 10f;
 
@@ -21,7 +21,7 @@ public class EnemyMageAnimationHandler : MonoBehaviour
     {
         if (_projectilePrefab != null && _projectileSpawnPoint != null)
         {
-            ProjectileMage newProjectile = Instantiate(_projectilePrefab, _projectileSpawnPoint.position, _projectileSpawnPoint.rotation);
+            ProjectileMover newProjectile = Instantiate(_projectilePrefab, _projectileSpawnPoint.position, _projectileSpawnPoint.rotation);
             Rigidbody projectileRigidbody = newProjectile.GetComponent<Rigidbody>();
 
             if (projectileRigidbody != null)
