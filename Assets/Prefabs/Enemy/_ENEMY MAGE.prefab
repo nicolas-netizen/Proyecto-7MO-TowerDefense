@@ -64,12 +64,13 @@ MonoBehaviour:
   _player: {fileID: 0}
   _playerMask:
     serializedVersion: 2
-    m_Bits: 0
-  _agent: {fileID: 0}
-  _followSpeed: 3
-  _attackRange: 2
+    m_Bits: 128
+  _agent: {fileID: 1102973285593154933}
+  _animator: {fileID: 3057699505439031706}
+  _followSpeed: 5
+  _attackRange: 10
   _attackCooldown: 2
-  _escapeRange: 5
+  _escapeRange: 6
 --- !u!54 &4455511060554841974
 Rigidbody:
   m_ObjectHideFlags: 0

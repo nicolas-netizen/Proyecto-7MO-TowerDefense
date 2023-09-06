@@ -97,6 +97,7 @@ public class EnemyM : MonoBehaviour
 
                 if (Vector3.Distance(a, b) <= 0.3f)
                 {
+                    _lastNode = _targetNode;
                     _targetNode = null;
                 }
             }

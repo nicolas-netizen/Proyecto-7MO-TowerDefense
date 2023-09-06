@@ -13,12 +13,13 @@ public class ProjectileMover : MonoBehaviour
     private Rigidbody rb;
     public GameObject[] Detached;
 
-    private Transform playerTransform; // Referencia al transform del jugador
+    private Transform playerTransform;
+    private bool hasHitPlayer = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Encuentra al jugador por etiqueta
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (flash != null)
         {
@@ -40,9 +41,9 @@ public class ProjectileMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (speed != 0)
+        if (speed != 0 && !hasHitPlayer)
         {
-            // Calcula la dirección hacia el jugador
+
             Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
 
             rb.velocity = directionToPlayer * speed;
@@ -50,17 +51,15 @@ public class ProjectileMover : MonoBehaviour
         }
     }
 
-    //https ://docs.unity3d.com/ScriptReference/Rigidbody.OnCollisionEnter.html
     void OnCollisionEnter(Collision collision)
     {
-        //Lock all axes movement and rotation
         rb.constraints = RigidbodyConstraints.FreezeAll;
         speed = 0;
 
         ContactPoint contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
         Vector3 pos = contact.point + contact.normal * hitOffset;
-
+        Debug.Log("Proyectil ha colisionado con: " + collision.gameObject.tag);
         if (hit != null)
         {
             var hitInstance = Instantiate(hit, pos, rot);

@@ -1762,7 +1762,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &57799887
 MeshRenderer:
@@ -3875,7 +3875,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &114641200
 MeshRenderer:
@@ -4005,7 +4005,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &117295671
 MeshRenderer:
@@ -6026,7 +6026,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &186299277
 MeshRenderer:
@@ -6642,7 +6642,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &216988663
 MeshRenderer:
@@ -9009,7 +9009,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &310307821
 MeshRenderer:
@@ -9876,7 +9876,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &338822343
 MeshRenderer:
@@ -12138,11 +12138,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -77104264238628522, guid: bc6ed10f6d3968e4bb46d65dcc0c440f, type: 3}
---- !u!195 &419074991 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 1102973285593154933, guid: c2901189424da3242b57681c3a7073d5, type: 3}
-  m_PrefabInstance: {fileID: 2073940838}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &422028698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15367,7 +15362,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &545995259
 MeshRenderer:
@@ -18922,7 +18917,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &740669125
 MeshRenderer:
@@ -19249,7 +19244,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &748534396
 MeshRenderer:
@@ -24397,7 +24392,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &766402449
 MeshRenderer:
@@ -24755,7 +24750,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &787056161
 MeshRenderer:
@@ -26686,7 +26681,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &851029880
 MeshRenderer:
@@ -26797,7 +26792,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &853040466
 MeshRenderer:
@@ -27167,7 +27162,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &874014624
 MeshRenderer:
@@ -27278,7 +27273,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &875498085
 MeshRenderer:
@@ -37157,7 +37152,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1050075104
 MeshRenderer:
@@ -39105,7 +39100,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1110307501
 MeshRenderer:
@@ -40842,7 +40837,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1171237651
 MeshRenderer:
@@ -41512,7 +41507,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1192691828
 MeshRenderer:
@@ -42576,7 +42571,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1230201622
 MeshRenderer:
@@ -42891,7 +42886,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1246602504
 MeshRenderer:
@@ -48902,6 +48897,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Content
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f26c63a59fd97a548a12579589ae4918, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 951011102456138778, guid: f26c63a59fd97a548a12579589ae4918, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f26c63a59fd97a548a12579589ae4918, type: 3}
 --- !u!1 &1302813479
@@ -48948,7 +48951,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1302813482
 MeshRenderer:
@@ -51265,7 +51268,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1374178844
 MeshRenderer:
@@ -51496,7 +51499,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1391920276
 MeshRenderer:
@@ -53589,7 +53592,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1446744351
 MeshRenderer:
@@ -53804,7 +53807,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1457795223
 MeshRenderer:
@@ -53958,7 +53961,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1462353602
 MeshRenderer:
@@ -57177,7 +57180,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1579965455
 MeshRenderer:
@@ -58007,7 +58010,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1631217297
 MeshRenderer:
@@ -58622,7 +58625,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1637345820
 MeshRenderer:
@@ -59973,7 +59976,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1686603031
 MeshRenderer:
@@ -60089,7 +60092,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1690727814
 MeshRenderer:
@@ -60294,7 +60297,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1693454131
 MeshRenderer:
@@ -60803,7 +60806,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1717236865
 MeshRenderer:
@@ -60914,7 +60917,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1717651747
 MeshRenderer:
@@ -62296,7 +62299,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1827494233
 MeshRenderer:
@@ -62628,7 +62631,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1842687319
 MeshRenderer:
@@ -62862,7 +62865,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1846641332
 MeshRenderer:
@@ -63487,7 +63490,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1859710322
 MeshRenderer:
@@ -65736,7 +65739,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1941337223
 MeshRenderer:
@@ -69007,7 +69010,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 14}
+  m_Size: {x: 18, y: 1, z: 18}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2070406960
 MeshRenderer:
@@ -69193,19 +69196,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 238996820981607741, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 238996820981607741, guid: c2901189424da3242b57681c3a7073d5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 391669674819286943, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 625638953900741155, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 766242462720428687, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 768049895814836131, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_RootOrder
@@ -69253,11 +69260,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795528714885464307, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 997129841340551947, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1102973285593154933, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_BaseOffset
@@ -69273,23 +69280,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1435531136680950712, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1709710586212924520, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1774786342818182989, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2281344679990137391, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2726793115576978311, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3057699505439031706, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Avatar
@@ -69301,12 +69308,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3684620857252844100, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
-      propertyPath: _agent
-      value: 
-      objectReference: {fileID: 419074991}
     - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: player
       value: 
@@ -69316,29 +69319,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 940028986}
     - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 1562539374}
-    - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
-      propertyPath: _attackRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
-      propertyPath: _escapeRange
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
-      propertyPath: _followSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: _playerTransform
       value: 
       objectReference: {fileID: 940028986}
-    - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
-      propertyPath: _playerMask.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 4194683281156730137, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: _mageAnimationHandler
       value: 
@@ -69353,87 +69336,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478937211757887953, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4768223971976847259, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4815639701721828613, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5057587435193182791, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5123477572208380532, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5177958958091437072, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5573724212950650273, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5664406905670858432, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5754742720548479185, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6148227567343849997, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6297629297655381249, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6396311643821935304, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6530443883450858764, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6561624379671334984, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6591091565147288865, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6924765655207105080, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7090975216952543457, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7297004347541263287, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7576209153783643491, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8132885428813738485, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8278292725886106954, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8952079594340500061, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Name
@@ -69441,15 +69424,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8952079594340500061, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9065726993175458582, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9221196896332259590, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2901189424da3242b57681c3a7073d5, type: 3}

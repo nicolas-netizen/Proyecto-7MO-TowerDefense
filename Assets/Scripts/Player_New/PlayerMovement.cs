@@ -49,6 +49,8 @@ public class PlayerMovement
     [SerializeField] private float _currentSpeed;
 
     private Player _player;
+
+
     public void SetPlayer(Player player)
     {
         _player = player;
@@ -108,9 +110,7 @@ public class PlayerMovement
             _controller.Move(camRel * Time.deltaTime * _currentSpeed);
     
             _player.RotationController.SetForward(camRel);
-
     }
-
     #region STATES
     private float velocity;
 
