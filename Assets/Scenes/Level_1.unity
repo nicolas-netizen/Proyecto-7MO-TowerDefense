@@ -9516,7 +9516,7 @@ MonoBehaviour:
       enemyCount: 70
     - enemyPrefab: {fileID: 5387846913401240631, guid: c2901189424da3242b57681c3a7073d5, type: 3}
       enemyCount: 3
-    spawnDelay: 5
+    spawnDelay: 0
   - enemies:
     - enemyPrefab: {fileID: 5107827491753722974, guid: 0d9418c088c40ce44b60c3e8a44c2c6b, type: 3}
       enemyCount: 170
@@ -57705,7 +57705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1613756136
 MonoBehaviour:
   m_ObjectHideFlags: 0
