@@ -20,7 +20,7 @@ MonoBehaviour:
     PoseToolPivotMode:
       valueInternal: 0
     PoseToolMode:
-      valueInternal: 0
+      valueInternal: 2
     PoseMirrorMode:
       valueInternal: 0
     ConfigMode:
@@ -36,9 +36,9 @@ MonoBehaviour:
     TimelineViewMode:
       valueInternal: 0
     FramesScrollPosition:
-      valueInternal: -40
+      valueInternal: 8.139319
     FramesZoom:
-      valueInternal: 0.33113074
+      valueInternal: 0.5754394
     PropertiesScrollPosition:
       valueInternal: 0
     PropertiesZoom:
@@ -302,9 +302,9 @@ MonoBehaviour:
             valueInternal: 0
           newKeyListSerialized: 00000000
     - CurrentValue:
-        valueInternal: -1.114
+        valueInternal: -1.462
       ReferencePoseValue:
-        valueInternal: -1.114
+        valueInternal: -1.462
       PoseValueList: []
       ChannelPerClipList:
       - LayerList:
@@ -341,7 +341,7 @@ MonoBehaviour:
           newKeyListSerialized: 00000000
       - LayerList:
         - CurrentOriginalValue:
-            valueInternal: -1.114
+            valueInternal: -1.462
           newKeyListSerialized: 00000000
     - CurrentValue:
         valueInternal: 0
@@ -1750,7 +1750,7 @@ MonoBehaviour:
             valueInternal: 0.0007344078
           newKeyListSerialized: 00000000
     LocalRotationSelected:
-      valueInternal: 0
+      valueInternal: 1
     RotationModePerClip:
     - valueInternal: 0
     - valueInternal: 0
