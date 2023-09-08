@@ -9,7 +9,6 @@ public class PlayerHealth
     [SerializeField] public int currentHealth;
     [SerializeField] private Animator _animator;
 
-    public EnemySpawner enemySpawner;
 
     public void Start()
     {

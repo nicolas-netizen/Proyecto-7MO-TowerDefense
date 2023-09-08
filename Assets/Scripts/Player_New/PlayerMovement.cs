@@ -34,6 +34,11 @@ public class PlayerMovement
     [SerializeField] private Speeds _speeds;
     [SerializeField] private MovementState _movementState;
 
+    
+    [SerializeField] private float _reduceSpeed;
+    [SerializeField] private float _reduceDuration;
+    private bool _flagReduce;
+
     Vector3 vel;
 
     [Header("PARAMS")]
@@ -111,6 +116,26 @@ public class PlayerMovement
     
             _player.RotationController.SetForward(camRel);
     }
+
+    
+    public void ReduceMoveSpeed()
+    {
+        _player.StartCoroutine(CO_ReduceMoveSpeed());
+    }
+
+    private IEnumerator CO_ReduceMoveSpeed()
+    {
+        float actualTime = Time.time;
+        _flagReduce = true;
+        while (Time.time < actualTime + _reduceDuration)
+        {
+            _currentSpeed = _reduceSpeed;
+            yield return new WaitForEndOfFrame();
+        }
+        _flagReduce = false;
+
+    }
+
     #region STATES
     private float velocity;
 
@@ -125,8 +150,11 @@ public class PlayerMovement
 
     public void Run()
     {
-        _currentSpeed = Mathf.SmoothDamp(_currentSpeed, _speeds.runSpeed, ref velocity, _speeds.runTransition);
-        _movementState = MovementState.Running;
+        if (!_flagReduce)
+        {
+            _currentSpeed = Mathf.SmoothDamp(_currentSpeed, _speeds.runSpeed, ref velocity, _speeds.runTransition);
+            _movementState = MovementState.Running;
+        }
     }
     #endregion
 

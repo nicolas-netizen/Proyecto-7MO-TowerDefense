@@ -6,14 +6,26 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> _spawnPoints;
 
+    [System.Serializable]
+    public class EnemyInfo
+    {
+        public GameObject enemyPrefab;
+        public int enemyCount;
+    }
+
+    [System.Serializable]
+    public class Wave
+    {
+        public List<EnemyInfo> enemies;
+        public float spawnDelay;
+    }
+
     public List<Wave> waves;
     public float timeBetweenWaves = 5f;
 
     private int currentWaveIndex = 0;
     private bool isSpawningWave = false;
-
-
-    Coroutine _coroutineWave;
+    private Coroutine _coroutineWave;
 
     public static WaveManager Instance;
 
@@ -24,7 +36,6 @@ public class WaveManager : MonoBehaviour
             Instance = this;
         }
     }
-
 
     private void Start()
     {
@@ -40,18 +51,22 @@ public class WaveManager : MonoBehaviour
             Wave currentWave = waves[currentWaveIndex];
             isSpawningWave = true;
 
-            for (int i = 0; i < currentWave.enemyCount; i++)
+            foreach (var enemyInfo in currentWave.enemies)
             {
-                Vector3 spawnPos = _spawnPoints[Random.Range(0,_spawnPoints.Count)].position + Random.insideUnitSphere * 5f;
-                Instantiate(currentWave.enemyPrefab, spawnPos, Quaternion.identity);
-
-                if (i < currentWave.enemyCount - 1)
+                for (int i = 0; i < enemyInfo.enemyCount; i++)
                 {
-                    yield return new WaitForSeconds(currentWave.spawnDelay);
+                    Vector3 spawnPos = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position + Random.insideUnitSphere * 5f;
+
+                    Instantiate(enemyInfo.enemyPrefab, spawnPos, Quaternion.identity);
+
+                    if (i < enemyInfo.enemyCount - 1)
+                    {
+                        yield return new WaitForSeconds(currentWave.spawnDelay);
+                    }
                 }
             }
 
-            while (GameObject.FindWithTag("Enemy") != null)
+            while (FindObjectsOfType<Enemy>().Length != 0)
             {
                 yield return null;
             }
@@ -67,9 +82,9 @@ public class WaveManager : MonoBehaviour
     {
         StopCoroutine(_coroutineWave);
     }
+
     public bool AllWavesCompleted()
     {
         return currentWaveIndex >= waves.Count;
     }
-
 }

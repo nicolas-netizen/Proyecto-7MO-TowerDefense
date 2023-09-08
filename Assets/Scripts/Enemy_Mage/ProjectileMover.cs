@@ -16,6 +16,8 @@ public class ProjectileMover : MonoBehaviour
     private Transform playerTransform;
     private bool hasHitPlayer = false;
 
+    [SerializeField] Player player;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,38 +55,41 @@ public class ProjectileMover : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        speed = 0;
-
-        ContactPoint contact = collision.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        Vector3 pos = contact.point + contact.normal * hitOffset;
-        Debug.Log("Proyectil ha colisionado con: " + collision.gameObject.tag);
-        if (hit != null)
+        if (collision.gameObject.tag == "Player")
         {
-            var hitInstance = Instantiate(hit, pos, rot);
-            if (UseFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
-            else if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
-            else { hitInstance.transform.LookAt(contact.point + contact.normal); }
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            speed = 0;
+            ContactPoint contact = collision.contacts[0];
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+            Vector3 pos = contact.point + contact.normal * hitOffset;
+            Debug.Log("Proyectil ha colisionado con: " + collision.gameObject.tag);
+            if (hit != null)
+            {
+                collision.gameObject.GetComponent<Player>().MovementController.ReduceMoveSpeed();
+                var hitInstance = Instantiate(hit, pos, rot);
+                if (UseFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
+                else if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
+                else { hitInstance.transform.LookAt(contact.point + contact.normal); }
 
-            var hitPs = hitInstance.GetComponent<ParticleSystem>();
-            if (hitPs != null)
-            {
-                Destroy(hitInstance, hitPs.main.duration);
+                var hitPs = hitInstance.GetComponent<ParticleSystem>();
+                if (hitPs != null)
+                {
+                    Destroy(hitInstance, hitPs.main.duration);
+                }
+                else
+                {
+                    var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(hitInstance, hitPsParts.main.duration);
+                }
             }
-            else
+            foreach (var detachedPrefab in Detached)
             {
-                var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(hitInstance, hitPsParts.main.duration);
+                if (detachedPrefab != null)
+                {
+                    detachedPrefab.transform.parent = null;
+                }
             }
+            Destroy(gameObject);
         }
-        foreach (var detachedPrefab in Detached)
-        {
-            if (detachedPrefab != null)
-            {
-                detachedPrefab.transform.parent = null;
-            }
-        }
-        Destroy(gameObject);
     }
 }

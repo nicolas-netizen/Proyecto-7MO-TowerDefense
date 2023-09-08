@@ -23,6 +23,10 @@ public class EnemyM : MonoBehaviour
     private NodeEscape _lastNode;
     private NodeEscape _targetNode;
     private bool isEscaping = false;
+    private void Awake()
+    {
+        _player = GameObject.FindObjectOfType<Player>().transform;
+    }
     private void Start()
     {
         _agent.speed = _followSpeed;
@@ -107,7 +111,6 @@ public class EnemyM : MonoBehaviour
     {
         _agent.SetDestination(transform.position);
         _animator.SetBool("Attack", true);
-        // Aquí puedes agregar lógica para el ataque al jugador si estás en rango de ataque.
     }
 
     public void LookForClosestEmptyNode()
