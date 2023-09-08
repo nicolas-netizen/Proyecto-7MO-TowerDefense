@@ -20,10 +20,6 @@ public class EnemyM : MonoBehaviour
     [Header("ESCAPE")]
     [SerializeField] private float _escapeRange = 5f;
 
-    [Header("Healt")]
-    [SerializeField] private float _currentHealth;
-    [SerializeField] private float _enemyHealth = 100f;
-
     private NodeEscape _lastNode;
     private NodeEscape _targetNode;
     private bool isEscaping = false;
@@ -141,21 +137,6 @@ public class EnemyM : MonoBehaviour
 
         _targetNode = targetNode;
     }
-    public void UpdateHealth(float mod)
-    {
-        _currentHealth += mod;
-        if (_currentHealth <= 0)
-        {
-            Die();
-        }
-
-    }
-    void Die()
-    {
-        _enemy.gameObject.layer = LayerMask.NameToLayer("Ignore");
-        GameObject.Destroy(_enemy.gameObject, 5);
-    }
-
 
     private void OnDrawGizmosSelected()
     {

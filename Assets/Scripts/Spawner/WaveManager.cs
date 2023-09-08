@@ -82,7 +82,6 @@ public class WaveManager : MonoBehaviour
     {
         StopCoroutine(_coroutineWave);
     }
-
     public bool AllWavesCompleted()
     {
         return currentWaveIndex >= waves.Count;
