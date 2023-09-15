@@ -4833,6 +4833,7 @@ MonoBehaviour:
   rotationOffset: {x: 0, y: 0, z: 0}
   hit: {fileID: 1479186786842274, guid: 8c07f41bda85c0e41abde22f9f27ed83, type: 3}
   flash: {fileID: 1460800425478370, guid: c2721edf07119f74ea2f68f2cad99755, type: 3}
+  stunEffect: {fileID: 100000, guid: f5c0e942d3263e042a353258f72c0cc3, type: 3}
   Detached:
   - {fileID: 1697517302274748}
   player: {fileID: 0}

@@ -10,6 +10,7 @@ public class ProjectileMover : MonoBehaviour
     public Vector3 rotationOffset = new Vector3(0, 0, 0);
     public GameObject hit;
     public GameObject flash;
+    public GameObject stunEffect; // Agregamos un efecto visual de aturdimiento.
     private Rigidbody rb;
     public GameObject[] Detached;
 
@@ -45,7 +46,6 @@ public class ProjectileMover : MonoBehaviour
     {
         if (speed != 0 && !hasHitPlayer)
         {
-
             Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
 
             rb.velocity = directionToPlayer * speed;
@@ -63,6 +63,12 @@ public class ProjectileMover : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 pos = contact.point + contact.normal * hitOffset;
             Debug.Log("Proyectil ha colisionado con: " + collision.gameObject.tag);
+            if (stunEffect != null)
+            {
+                var stunInstance = Instantiate(stunEffect, collision.transform.position, Quaternion.identity);
+                Destroy(stunInstance, 2f); 
+            }
+
             if (hit != null)
             {
                 collision.gameObject.GetComponent<Player>().MovementController.ReduceMoveSpeed();
