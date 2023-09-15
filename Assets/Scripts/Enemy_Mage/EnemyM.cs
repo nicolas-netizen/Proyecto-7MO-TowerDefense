@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 
-public class EnemyM : MonoBehaviour
+public class EnemyM : MonoBehaviour, IDamageable
 {
     [Header("GENERAL")]
     [SerializeField] private Transform _player;
@@ -20,10 +20,15 @@ public class EnemyM : MonoBehaviour
     [Header("ESCAPE")]
     [SerializeField] private float _escapeRange = 5f;
 
+    [SerializeField] private EnemyMhealth _enemyMHealth;
+    [SerializeField] private EnemyVFX _enemyVFX;
+    [SerializeField] private EnemyRig _enemyRig;
+
     private NodeEscape _lastNode;
     private NodeEscape _targetNode;
     private bool isEscaping = false;
-    private EnemyM _enemy;
+
+
     private void Awake()
     {
         _player = GameObject.FindObjectOfType<Player>().transform;
@@ -31,11 +36,16 @@ public class EnemyM : MonoBehaviour
     private void Start()
     {
         _agent.speed = _followSpeed;
+        _enemyMHealth.ManualStart();
+        _enemyRig.ManualStart();
     }
 
     private bool _movement;
 
     public bool Movement { get => _movement; set => _movement = value; }
+    public EnemyMhealth EnemyMHealth { get => _enemyMHealth; set => _enemyMHealth = value; }
+    public EnemyRig EnemyRig { get => _enemyRig; set => _enemyRig = value; }
+    public EnemyVFX EnemyVFX { get => _enemyVFX; set => _enemyVFX = value; }
 
     private void Update()
     {
@@ -75,7 +85,6 @@ public class EnemyM : MonoBehaviour
             _agent.speed = 0;
         }
     }
-
     public void Escape()
     {
         if (isEscaping)
@@ -148,5 +157,19 @@ public class EnemyM : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(_agent.destination, _escapeRange);
+    }
+    public void TakeDamage(float mod, Vector3 dir)
+    {
+        _enemyMHealth.UpdateHealth(-mod, dir);
+    }
+
+    public void TakeDamage(float mod)
+    {
+        _enemyMHealth.UpdateHealth(-mod);
+    }
+
+    public GameObject GetObject()
+    {
+        return gameObject;
     }
 }

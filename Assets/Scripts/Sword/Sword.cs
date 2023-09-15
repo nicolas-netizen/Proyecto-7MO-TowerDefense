@@ -64,6 +64,7 @@ public class Sword : MonoBehaviour
                     _cameraShake.Shake(_cameraShake.ShakeMagnitude);
 
                 }
+                Debug.Log("La espada permanece en colisión con: " + col.GetObject().name); // Mensaje de depuración
             }
         }
     }
