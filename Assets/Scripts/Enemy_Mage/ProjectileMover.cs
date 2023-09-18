@@ -2,31 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ProjectileEffect
+{
+    Stun,
+    Slow
+}
+
 public class ProjectileMover : MonoBehaviour
 {
-    public float speed = 15f;
-    public float hitOffset = 0f;
-    public bool UseFirePointRotation;
-    public Vector3 rotationOffset = new Vector3(0, 0, 0);
-    public GameObject hit;
-    public GameObject flash;
-    public GameObject stunEffect; // Agregamos un efecto visual de aturdimiento.
+    public float _speed = 15f;
+    public float _hitOffset = 0f;
+    public bool _UseFirePointRotation;
+    public Vector3 _rotationOffset = new Vector3(0, 0, 0);
+    public GameObject _hit;
+    public GameObject _flash;
+    public GameObject _stunEffect;
+    public GameObject _slowEffect;
+    public ProjectileEffect _effectType;
     private Rigidbody rb;
     public GameObject[] Detached;
+    [SerializeField] private float _stunDuration = 2.0f;
+    [SerializeField] private float _slowDuration = 2.0f;
 
-    private Transform playerTransform;
-    private bool hasHitPlayer = false;
+    private Transform _playerTransform;
+    private bool _hasHitPlayer = false;
 
-    [SerializeField] Player player;
+    [SerializeField] Player _player;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
-        if (flash != null)
+        if (_flash != null)
         {
-            var flashInstance = Instantiate(flash, transform.position, Quaternion.identity);
+            var flashInstance = Instantiate(_flash, transform.position, Quaternion.identity);
             flashInstance.transform.forward = gameObject.transform.forward;
             var flashPs = flashInstance.GetComponent<ParticleSystem>();
             if (flashPs != null)
@@ -44,50 +54,44 @@ public class ProjectileMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (speed != 0 && !hasHitPlayer)
+        if (_speed != 0 && !_hasHitPlayer)
         {
-            Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+            Vector3 directionToPlayer = (_playerTransform.position - transform.position).normalized;
 
-            rb.velocity = directionToPlayer * speed;
-            transform.position += directionToPlayer * (speed * Time.deltaTime);
+            rb.velocity = directionToPlayer * _speed;
+            transform.position += directionToPlayer * (_speed * Time.deltaTime);
         }
     }
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            speed = 0;
+            _speed = 0;
             ContactPoint contact = collision.contacts[0];
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            Vector3 pos = contact.point + contact.normal * hitOffset;
+            Vector3 pos = contact.point + contact.normal * _hitOffset;
             Debug.Log("Proyectil ha colisionado con: " + collision.gameObject.tag);
-            if (stunEffect != null)
+
+            if (_effectType == ProjectileEffect.Stun && _stunEffect != null)
             {
-                var stunInstance = Instantiate(stunEffect, collision.transform.position, Quaternion.identity);
-                Destroy(stunInstance, 2f); 
+                var stunInstance = Instantiate(_stunEffect, collision.transform.position, Quaternion.identity);
+                Destroy(stunInstance, _stunDuration);
+
+                StunManager.ApplyStunToPlayer(collision.gameObject.GetComponent<Player>(), _stunDuration);
             }
-
-            if (hit != null)
+            else if (_effectType == ProjectileEffect.Slow && _slowEffect != null)
             {
-                collision.gameObject.GetComponent<Player>().MovementController.ReduceMoveSpeed();
-                var hitInstance = Instantiate(hit, pos, rot);
-                if (UseFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
-                else if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
-                else { hitInstance.transform.LookAt(contact.point + contact.normal); }
-
-                var hitPs = hitInstance.GetComponent<ParticleSystem>();
-                if (hitPs != null)
+                Debug.Log("Slow effect triggered."); // Agrega este mensaje de depuración
+                var slowInstance = Instantiate(_slowEffect, collision.transform.position, Quaternion.identity);
+                Destroy(slowInstance, _slowDuration);
+                var playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
+                if (playerMovement != null)
                 {
-                    Destroy(hitInstance, hitPs.main.duration);
-                }
-                else
-                {
-                    var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(hitInstance, hitPsParts.main.duration);
+                    playerMovement.ReduceMoveSpeed(_slowDuration);
                 }
             }
+
             foreach (var detachedPrefab in Detached)
             {
                 if (detachedPrefab != null)
@@ -95,7 +99,9 @@ public class ProjectileMover : MonoBehaviour
                     detachedPrefab.transform.parent = null;
                 }
             }
+
             Destroy(gameObject);
         }
     }
 }
+

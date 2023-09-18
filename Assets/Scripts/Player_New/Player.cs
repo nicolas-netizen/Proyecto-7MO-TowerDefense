@@ -66,4 +66,14 @@ public class Player : MonoBehaviour, ISwordOwner
     {
         return _playerCombat.AttackDirection;
     }
+    public void Stun(float duration)
+    {
+        StartCoroutine(StunCoroutine(duration));
+    }
+
+    private IEnumerator StunCoroutine(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+    }
+
 }

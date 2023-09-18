@@ -4827,14 +4827,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605a456cfc02f6b499a64717539a27e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  hitOffset: 0.1
-  UseFirePointRotation: 1
-  rotationOffset: {x: 0, y: 10, z: 0}
-  hit: {fileID: 1216502132209632, guid: daa50d159094a9d4d8d33225d9b578d2, type: 3}
-  flash: {fileID: 1777536642811984, guid: aca16543616e2db4490aa9890ecdb4b5, type: 3}
+  _speed: 15
+  _hitOffset: 1
+  _UseFirePointRotation: 0
+  _rotationOffset: {x: 0, y: 0, z: 0}
+  _hit: {fileID: 1216502132209632, guid: daa50d159094a9d4d8d33225d9b578d2, type: 3}
+  _flash: {fileID: 1777536642811984, guid: aca16543616e2db4490aa9890ecdb4b5, type: 3}
+  _stunEffect: {fileID: 0}
+  _slowEffect: {fileID: 1216502132209632, guid: daa50d159094a9d4d8d33225d9b578d2, type: 3}
+  _effectType: 1
   Detached:
   - {fileID: 1368247427101420}
+  _stunDuration: 2
+  _slowDuration: 2
+  _player: {fileID: 0}
 --- !u!199 &199639085220881082
 ParticleSystemRenderer:
   serializedVersion: 6

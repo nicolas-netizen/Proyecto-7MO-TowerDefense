@@ -27,7 +27,7 @@ public enum GroundedState
 }
 
 [System.Serializable]
-public class PlayerMovement
+public class PlayerMovement 
 {
 
     [Header("SPEEDS")]
@@ -64,6 +64,7 @@ public class PlayerMovement
     public void ManualStart()
     {
         _currentSpeed = 0;
+        _flagReduce = false; // Asegúrate de que _flagReduce se restablezca aquí.
     }
 
     public void ManualUpdate()
@@ -116,25 +117,29 @@ public class PlayerMovement
     
             _player.RotationController.SetForward(camRel);
     }
-
-    
-    public void ReduceMoveSpeed()
+    public void ReduceMoveSpeed(float duration)
     {
-        _player.StartCoroutine(CO_ReduceMoveSpeed());
+        if (!_flagReduce)
+        {
+            _reduceDuration = duration;
+            _reduceSpeed = _speeds.walkSpeed; 
+            _flagReduce = true;
+            _player.StartCoroutine(CO_ReduceMoveSpeed());
+        }
     }
 
     private IEnumerator CO_ReduceMoveSpeed()
     {
-        float actualTime = Time.time;
-        _flagReduce = true;
-        while (Time.time < actualTime + _reduceDuration)
+        float startTime = Time.time;
+        while (Time.time < startTime + _reduceDuration)
         {
             _currentSpeed = _reduceSpeed;
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
         _flagReduce = false;
-
+        _currentSpeed = _speeds.walkSpeed;
     }
+
 
     #region STATES
     private float velocity;
