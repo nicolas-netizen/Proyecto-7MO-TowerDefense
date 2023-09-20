@@ -160,7 +160,7 @@ public class EnemyM : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float mod, Vector3 dir)
     {
-        _enemyMHealth.UpdateHealth(-mod, dir);
+        _enemyMHealth.UpdateHealth(-mod);
     }
 
     public void TakeDamage(float mod)

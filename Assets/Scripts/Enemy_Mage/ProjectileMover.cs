@@ -82,13 +82,13 @@ public class ProjectileMover : MonoBehaviour
             }
             else if (_effectType == ProjectileEffect.Slow && _slowEffect != null)
             {
-                Debug.Log("Slow effect triggered."); // Agrega este mensaje de depuración
+                Debug.Log("slow"); 
                 var slowInstance = Instantiate(_slowEffect, collision.transform.position, Quaternion.identity);
                 Destroy(slowInstance, _slowDuration);
-                var playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
+                var playerMovement = collision.gameObject.GetComponent<Player>();
                 if (playerMovement != null)
                 {
-                    playerMovement.ReduceMoveSpeed(_slowDuration);
+                    playerMovement.MovementController.ReduceMoveSpeed(_slowDuration);
                 }
             }
 
