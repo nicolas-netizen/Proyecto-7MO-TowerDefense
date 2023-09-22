@@ -6,6 +6,7 @@ public class EnemyHealth
     [SerializeField] private float _currentHealth;
     [SerializeField] private float _enemyHealth = 100f;
 
+
     private Enemy _enemy;
     public void SetEnemy(Enemy enemy)
     {
@@ -35,6 +36,7 @@ public class EnemyHealth
             Die();
         }
 
+
     }
 
     void Die()
@@ -42,6 +44,4 @@ public class EnemyHealth
         _enemy.gameObject.layer = LayerMask.NameToLayer("Ignore");
         GameObject.Destroy(_enemy.gameObject, 5);
     }
-
-
 }

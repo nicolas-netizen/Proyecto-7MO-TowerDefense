@@ -4838,7 +4838,7 @@ MonoBehaviour:
   _effectType: 0
   Detached:
   - {fileID: 1697517302274748}
-  _stunDuration: 2
+  _stunDuration: 0.2
   _slowDuration: 2
   _player: {fileID: 0}
 --- !u!199 &199809148600042808

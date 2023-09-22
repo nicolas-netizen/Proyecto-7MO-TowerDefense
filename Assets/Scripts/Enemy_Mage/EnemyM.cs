@@ -22,7 +22,9 @@ public class EnemyM : MonoBehaviour, IDamageable
 
     [SerializeField] private EnemyMhealth _enemyMHealth;
     [SerializeField] private EnemyVFX _enemyVFX;
-    [SerializeField] private EnemyRig _enemyRig;
+    [SerializeField] private EnemyMRig _enemyRig;
+    public CoinManager coinManager;
+
 
     private NodeEscape _lastNode;
     private NodeEscape _targetNode;
@@ -32,20 +34,23 @@ public class EnemyM : MonoBehaviour, IDamageable
     private void Awake()
     {
         _player = GameObject.FindObjectOfType<Player>().transform;
+        _enemyMHealth.SetEnemy(this);
     }
     private void Start()
     {
         _agent.speed = _followSpeed;
         _enemyMHealth.ManualStart();
-        _enemyRig.ManualStart();
+        _enemyRig.SetEnemy(this);
+        coinManager = FindObjectOfType<CoinManager>();
     }
 
     private bool _movement;
 
     public bool Movement { get => _movement; set => _movement = value; }
     public EnemyMhealth EnemyMHealth { get => _enemyMHealth; set => _enemyMHealth = value; }
-    public EnemyRig EnemyRig { get => _enemyRig; set => _enemyRig = value; }
     public EnemyVFX EnemyVFX { get => _enemyVFX; set => _enemyVFX = value; }
+    public NavMeshAgent Agent { get => _agent; set => _agent = value; }
+    public EnemyMRig EnemyRig { get => _enemyRig; set => _enemyRig = value; }
 
     private void Update()
     {
@@ -101,9 +106,11 @@ public class EnemyM : MonoBehaviour, IDamageable
                 if (!_movement)
                 {
                     transform.DOLookAt(_targetNode.transform.position, 0.5f, AxisConstraint.Y);
-                    _agent.speed = _followSpeed;
-                    _agent.SetDestination(_targetNode.transform.position);
-
+                    if (_agent != null)
+                    {
+                        _agent.speed = _followSpeed;
+                        _agent.SetDestination(_targetNode.transform.position);
+                    }
                 }
 
                 var a = new Vector3(transform.position.x, 0, transform.position.z);
@@ -119,8 +126,11 @@ public class EnemyM : MonoBehaviour, IDamageable
     }
     public void Attack()
     {
-        _agent.SetDestination(transform.position);
-        _animator.SetBool("Attack", true);
+        if (_agent != null)
+        {
+            _agent.SetDestination(transform.position);
+            _animator.SetBool("Attack", true);
+        }
     }
 
     public void LookForClosestEmptyNode()
@@ -160,12 +170,12 @@ public class EnemyM : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float mod, Vector3 dir)
     {
-        _enemyMHealth.UpdateHealth(-mod);
+        _enemyMHealth.UpdateHealth(mod);
     }
 
     public void TakeDamage(float mod)
     {
-        _enemyMHealth.UpdateHealth(-mod);
+        _enemyMHealth.UpdateHealth(mod);
     }
 
     public GameObject GetObject()

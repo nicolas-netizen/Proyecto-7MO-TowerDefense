@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjetiveManager : MonoBehaviour
 {
@@ -8,6 +7,8 @@ public class ObjetiveManager : MonoBehaviour
 
     [Header("DEBUG")]
     [SerializeField] private int _enemiesAtEndMax;
+    [SerializeField] private Image _progressImage;
+
 
     private int _countEnemiesAtEnd;
     private bool _gameIsOver = false;
@@ -50,8 +51,21 @@ public class ObjetiveManager : MonoBehaviour
         _countEnemiesAtEnd++;
         _enemiesAtEnd++;
 
+        float progress = (float)_countEnemiesAtEnd / (float)_enemiesAtEndMax;
+        _progressImage.fillAmount = progress;
+
         UIManager.Instance.SetEnemyAtEndCounter(_countEnemiesAtEnd, _enemiesAtEndMax);
+
+        if (_countEnemiesAtEnd >= _enemiesAtEndMax)
+        {
+            GameOver();
+        }
+        else if (_countEnemiesAtEnd <= _enemiesAtEndMax && WaveManager.Instance.AllWavesCompleted())
+        {
+            Win();
+        }
     }
+
 
     public void GameOver()
     {

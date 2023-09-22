@@ -8,8 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("IN GAME MENU")]
     [SerializeField] private RawImage _imgFade;
-    [SerializeField] private TextMeshProUGUI _txtEnemyEndCounter;
-
+    [SerializeField] private GameObject[] _enemyIcons;
     private bool _isFading = false;
     public static UIManager Instance;
 
@@ -24,9 +23,20 @@ public class UIManager : MonoBehaviour
 
     public void SetEnemyAtEndCounter(int count, int enemiesMax)
     {
-        _txtEnemyEndCounter.text = count + "/" + enemiesMax;
-    }
+        count = Mathf.Clamp(count, 0, enemiesMax);
 
+        for (int i = 0; i < _enemyIcons.Length; i++)
+        {
+            if (i < count)
+            {
+                _enemyIcons[i].SetActive(true);
+            }
+            else
+            {
+                _enemyIcons[i].SetActive(false);
+            }
+        }
+    }
     public void FadeIn()
     {
         if (_isFading)
