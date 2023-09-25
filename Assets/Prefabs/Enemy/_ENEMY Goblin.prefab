@@ -61,6 +61,7 @@ MonoBehaviour:
   _enemyHealth:
     _currentHealth: 0
     _enemyHealth: 1
+    coinManager: {fileID: 0}
   _enemyRig:
     _rig: {fileID: 5342342123242601391}
     _hips: {fileID: 5325408249445013748}

@@ -23,7 +23,7 @@ public class EnemyM : MonoBehaviour, IDamageable
     [SerializeField] private EnemyMhealth _enemyMHealth;
     [SerializeField] private EnemyVFX _enemyVFX;
     [SerializeField] private EnemyMRig _enemyRig;
-    public CoinManager coinManager;
+
 
 
     private NodeEscape _lastNode;
@@ -41,7 +41,6 @@ public class EnemyM : MonoBehaviour, IDamageable
         _agent.speed = _followSpeed;
         _enemyMHealth.ManualStart();
         _enemyRig.SetEnemy(this);
-        coinManager = FindObjectOfType<CoinManager>();
     }
 
     private bool _movement;

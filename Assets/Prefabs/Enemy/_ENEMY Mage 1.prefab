@@ -61,6 +61,7 @@ MonoBehaviour:
   _enemyMHealth:
     _currentHealth: 200
     _enemyHealth: 200
+    coinManager: {fileID: 0}
   _enemyVFX:
     _bloodParticles: {fileID: 0}
   _enemyRig:

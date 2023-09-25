@@ -48,7 +48,11 @@ public class EnemyChase
             //}
             //else
             //{
+            if (_agent != null && _agent.isActiveAndEnabled)
+            {
                 _agent.SetDestination(_nextPoint.transform.position);
+            }
+
             //}
         }
     }

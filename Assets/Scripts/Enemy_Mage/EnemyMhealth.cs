@@ -5,7 +5,6 @@ public class EnemyMhealth
 {
     [SerializeField] private float _currentHealth;
     [SerializeField] private float _enemyHealth = 100f;
-    public CoinManager coinManager;
 
     private EnemyM _enemy;
 
@@ -47,9 +46,6 @@ public class EnemyMhealth
             _enemy.EnemyRig.ActiveRagdoll(dir);
         }
         _enemy.gameObject.layer = LayerMask.NameToLayer("Ignore");
-
-        coinManager.AddCoins(2);
-
         GameObject.Destroy(_enemy.gameObject, 5);
     }
 }

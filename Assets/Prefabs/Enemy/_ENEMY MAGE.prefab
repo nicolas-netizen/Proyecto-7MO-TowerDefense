@@ -74,6 +74,7 @@ MonoBehaviour:
   _enemyMHealth:
     _currentHealth: 200
     _enemyHealth: 100
+    coinManager: {fileID: 0}
   _enemyVFX:
     _bloodParticles: {fileID: 6379507903966896361}
   _enemyRig:
@@ -82,7 +83,6 @@ MonoBehaviour:
     _mainCollider: {fileID: 977687020502703573}
     _player: {fileID: 977687020502703573}
     magnitude: 40
-  coinManager: {fileID: 0}
 --- !u!54 &1171173079582335971
 Rigidbody:
   m_ObjectHideFlags: 0
