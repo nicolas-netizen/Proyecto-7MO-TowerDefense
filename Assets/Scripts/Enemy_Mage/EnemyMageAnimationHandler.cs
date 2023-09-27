@@ -8,12 +8,12 @@ public class EnemyMageAnimationHandler : MonoBehaviour
 
     public void StartAttack()
     {
-        _animator.SetBool("IsAttacking", true);
+        _animator.SetBool("Attack", true);
     }
 
     public void StopAttack()
     {
-        _animator.SetBool("IsAttacking", false);
+        _animator.SetBool("Attack", false);
     }
 
     public void ShootProjectile()

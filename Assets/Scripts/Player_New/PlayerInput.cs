@@ -9,6 +9,7 @@ public class PlayerInput
 
     private Player _player;
     private bool _blockInputs;
+    private bool _blockInputsEffect;
     public void SetPlayer(Player player)
     {
         _player = player;
@@ -18,26 +19,36 @@ public class PlayerInput
     {
         if (!_blockInputs)
         {
-
-
-            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
-            Vector3 rawAxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-
-            if (rawAxis == Vector3.zero)
+            if (!_blockInputsEffect)
             {
-                _player.StateController.Idle();
-            }
-            else
-            {
-                //if(Input.GetKey(_run))
-                //    _player.StateController.Run();
-                //else
-                _player.StateController.Run();
+                Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-                _player.MovementController.Move(move.normalized);
+                Vector3 rawAxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+                if (rawAxis == Vector3.zero)
+                {
+                    _player.StateController.Idle();
+                }
+                else
+                {
+                    //if(Input.GetKey(_run))
+                    //    _player.StateController.Run();
+                    //else
+                    _player.StateController.Run();
+
+                    _player.MovementController.Move(move.normalized);
+                }
             }
         }
+    }
+    public void BlockInputsEffect()
+    {
+        _blockInputsEffect = true;
+    }
+
+    public void UnlockInputsEffect()
+    {
+        _blockInputsEffect = false;
     }
 
     public void BlockInputs()
@@ -49,4 +60,6 @@ public class PlayerInput
     {
         _blockInputs = false;
     }
+
+
 }

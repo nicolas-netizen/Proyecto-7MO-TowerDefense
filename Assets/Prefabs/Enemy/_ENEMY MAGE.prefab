@@ -69,12 +69,11 @@ MonoBehaviour:
   _animator: {fileID: 1059489270403683408}
   _followSpeed: 5
   _attackRange: 10
-  _attackCooldown: 2
+  _attackCooldown: 3
   _escapeRange: 6
   _enemyMHealth:
     _currentHealth: 200
     _enemyHealth: 100
-    coinManager: {fileID: 0}
   _enemyVFX:
     _bloodParticles: {fileID: 6379507903966896361}
   _enemyRig:
@@ -1332,15 +1331,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4752334129343382, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.011089437
+      value: 0.078
       objectReference: {fileID: 0}
     - target: {fileID: 4752334129343382, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1587262
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 4752334129343382, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.19987366
+      value: -0.508
       objectReference: {fileID: 0}
     - target: {fileID: 4752334129343382, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
       propertyPath: m_LocalRotation.w

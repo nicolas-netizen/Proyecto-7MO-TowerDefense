@@ -16,6 +16,7 @@ public class EnemyM : MonoBehaviour, IDamageable
     [Header("ATTACK")]
     [SerializeField] private float _attackRange = 2f;
     [SerializeField] private float _attackCooldown = 2f;
+    private float _timerAttack;
 
     [Header("ESCAPE")]
     [SerializeField] private float _escapeRange = 5f;
@@ -55,39 +56,45 @@ public class EnemyM : MonoBehaviour, IDamageable
     {
         var escapeRangeColliders = Physics.OverlapSphere(transform.position, _escapeRange, _playerMask);
 
-        if (escapeRangeColliders.Length > 0)
+        if(!_animator.GetBool("Attack"))
         {
-            isEscaping = true; // Activar el modo de escape.
-            Escape();
-        }
-        else
-        {
-            isEscaping = false; // Desactivar el modo de escape.
+            _timerAttack += Time.deltaTime;
 
-            var attackRangeColliders = Physics.OverlapSphere(transform.position, _attackRange, _playerMask);
-
-            transform.DOLookAt(_player.position, 0.2f, AxisConstraint.Y);
-
-            _targetNode = null;
-
-            if (attackRangeColliders.Length <= 0) // SI NO ESTÁ CERCA DEL PLAYER
+            if (escapeRangeColliders.Length > 0)
             {
-                if (!_movement)
+                isEscaping = true; // Activar el modo de escape.
+                Escape();
+            }
+            else
+            {
+                isEscaping = false; // Desactivar el modo de escape.
+
+                var attackRangeColliders = Physics.OverlapSphere(transform.position, _attackRange, _playerMask);
+
+                transform.DOLookAt(_player.position, 0.2f, AxisConstraint.Y);
+
+                _targetNode = null;
+
+                if (attackRangeColliders.Length <= 0) // SI NO ESTÁ CERCA DEL PLAYER
                 {
-                    _agent.speed = _followSpeed;
-                    _agent.SetDestination(_player.position);
-                    _animator.SetBool("Attack", false);
+                    if (!_movement)
+                    {
+                        _agent.speed = _followSpeed;
+                        _agent.SetDestination(_player.position);
+                        _animator.SetBool("Attack", false);
+                    }
+                }
+                else // SI ESTÁ CERCA DEL PLAYER
+                {
+                    Attack();
                 }
             }
-            else // SI ESTÁ CERCA DEL PLAYER
+            if (_movement)
             {
-                Attack();
+                _agent.speed = 0;
             }
         }
-        if (_movement)
-        {
-            _agent.speed = 0;
-        }
+
     }
     public void Escape()
     {
@@ -125,10 +132,14 @@ public class EnemyM : MonoBehaviour, IDamageable
     }
     public void Attack()
     {
-        if (_agent != null)
+        if (_timerAttack > _attackCooldown)
         {
-            _agent.SetDestination(transform.position);
-            _animator.SetBool("Attack", true);
+            if (_agent != null)
+            {
+                _timerAttack = 0;
+                _agent.SetDestination(transform.position);
+                _animator.SetBool("Attack", true);
+            }
         }
     }
 

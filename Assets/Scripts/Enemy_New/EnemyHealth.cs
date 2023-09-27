@@ -5,9 +5,11 @@ public class EnemyHealth
 {
     [SerializeField] private float _currentHealth;
     [SerializeField] private float _enemyHealth = 100f;
-    public CoinManager coinManager;
 
     private Enemy _enemy;
+
+    public float CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
+
     public void SetEnemy(Enemy enemy)
     {
         _enemy = enemy;
@@ -23,7 +25,6 @@ public class EnemyHealth
         {
             Die(dir);
             _enemy.EnemyRig.ActiveRagdoll(dir);
-            coinManager.AddCoins(25);
         }
 
     }

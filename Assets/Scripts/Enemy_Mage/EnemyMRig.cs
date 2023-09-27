@@ -40,7 +40,7 @@ public class EnemyMRig
     {
         _agent.isStopped = true;
         _agent.speed = 0;
-        _enemy.Agent = null;
+        _enemy.Agent.isStopped = true;
 
         _rig.GetComponent<Animator>().enabled = false;
         foreach (var item in ragDollCols)

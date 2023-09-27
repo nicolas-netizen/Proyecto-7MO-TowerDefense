@@ -56,11 +56,11 @@ MonoBehaviour:
   _animator: {fileID: 733095273044498425}
   _followSpeed: 5
   _attackRange: 7
-  _attackCooldown: 4
+  _attackCooldown: 3
   _escapeRange: 5
   _enemyMHealth:
-    _currentHealth: 200
-    _enemyHealth: 200
+    _currentHealth: 100
+    _enemyHealth: 100
   _enemyVFX:
     _bloodParticles: {fileID: 1918213370359336332}
   _enemyRig:
