@@ -9598,15 +9598,21 @@ MonoBehaviour:
     spawnDelay: 0.5
   - enemies:
     - enemyPrefab: {fileID: 6577208110572514659, guid: 801f8275dc64a2945ba3de614be5fc50, type: 3}
-      enemyCount: 5
+      enemyCount: 2
     - enemyPrefab: {fileID: 5107827491753722974, guid: 0d9418c088c40ce44b60c3e8a44c2c6b, type: 3}
+      enemyCount: 20
+    - enemyPrefab: {fileID: 154813989203430437, guid: 6cd01010fecffa34fb68dfb7fe67aee3, type: 3}
       enemyCount: 10
+    - enemyPrefab: {fileID: 5387846913401240631, guid: c2901189424da3242b57681c3a7073d5, type: 3}
+      enemyCount: 2
     spawnDelay: 0
   - enemies:
     - enemyPrefab: {fileID: 6577208110572514659, guid: 801f8275dc64a2945ba3de614be5fc50, type: 3}
-      enemyCount: 5
+      enemyCount: 3
     - enemyPrefab: {fileID: 5107827491753722974, guid: 0d9418c088c40ce44b60c3e8a44c2c6b, type: 3}
-      enemyCount: 10
+      enemyCount: 25
+    - enemyPrefab: {fileID: 5387846913401240631, guid: c2901189424da3242b57681c3a7073d5, type: 3}
+      enemyCount: 3
     spawnDelay: 0
   - enemies:
     - enemyPrefab: {fileID: 6577208110572514659, guid: 801f8275dc64a2945ba3de614be5fc50, type: 3}
