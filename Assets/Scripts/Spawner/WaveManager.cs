@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> _spawnPoints;
+    public Text waveText;
 
     [System.Serializable]
     public class EnemyInfo
@@ -51,6 +53,13 @@ public class WaveManager : MonoBehaviour
             Wave currentWave = waves[currentWaveIndex];
             isSpawningWave = true;
 
+
+            waveText.text = "Oleada " + (currentWaveIndex + 1);
+
+
+            yield return new WaitForSeconds(4f);
+            waveText.gameObject.SetActive(false);
+
             foreach (var enemyInfo in currentWave.enemies)
             {
                 for (int i = 0; i < enemyInfo.enemyCount; i++)
@@ -74,6 +83,11 @@ public class WaveManager : MonoBehaviour
             isSpawningWave = false;
             currentWaveIndex++;
 
+            if (currentWaveIndex < waves.Count)
+            {
+                waveText.gameObject.SetActive(true);
+            }
+
             yield return new WaitForSeconds(timeBetweenWaves);
         }
     }
@@ -82,6 +96,7 @@ public class WaveManager : MonoBehaviour
     {
         StopCoroutine(_coroutineWave);
     }
+
     public bool AllWavesCompleted()
     {
         return currentWaveIndex >= waves.Count;

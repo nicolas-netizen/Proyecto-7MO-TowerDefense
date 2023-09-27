@@ -23,6 +23,7 @@ public class EnemyHealth
         {
             Die(dir);
             _enemy.EnemyRig.ActiveRagdoll(dir);
+            coinManager.AddCoins(25);
         }
 
     }
@@ -40,12 +41,17 @@ public class EnemyHealth
     }
     private void Die(Vector3 dir)
     {
+        if (_enemy != null)
+        {
             if (_enemy.EnemyRig != null)
             {
                 _enemy.EnemyRig.ActiveRagdoll(dir);
             }
+            _enemy.gameObject.layer = LayerMask.NameToLayer("Ignore");
             GameObject.Destroy(_enemy.gameObject, 5);
-        coinManager.AddCoins(25);
+
+        }
     }
+
 
 }
