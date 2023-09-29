@@ -64,6 +64,7 @@ public class EnemyM : MonoBehaviour, IDamageable
             {
                 isEscaping = true; // Activar el modo de escape.
                 Escape();
+                _animator.SetBool("Run", true);
             }
             else
             {
@@ -77,6 +78,8 @@ public class EnemyM : MonoBehaviour, IDamageable
 
                 if (attackRangeColliders.Length <= 0) // SI NO ESTÁ CERCA DEL PLAYER
                 {
+                    _animator.SetBool("Run", true);
+
                     if (!_movement)
                     {
                         _agent.speed = _followSpeed;
@@ -86,6 +89,7 @@ public class EnemyM : MonoBehaviour, IDamageable
                 }
                 else // SI ESTÁ CERCA DEL PLAYER
                 {
+                    _animator.SetBool("Run", false);
                     Attack();
                 }
             }

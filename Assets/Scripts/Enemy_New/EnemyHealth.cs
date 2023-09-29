@@ -32,11 +32,13 @@ public class EnemyHealth
     public void UpdateHealth(float mod)
     {
         _currentHealth += mod;
-        _enemy.EnemyVFX.Blood();
+        //_enemy.EnemyVFX.Blood();
         if (_currentHealth <= 0)
         {
             Die(Vector3.zero);
-        }
+        } else
+            _enemy.EnemyVFX.Blood();
+
 
 
     }

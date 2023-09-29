@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Tower : MonoBehaviour
 {
     public Transform target;
     private Enemy targetEnemy;
+    private EnemyM targetEnemyM;
+    private  bool isActive = false;
 
     [Header("General")]
+    [SerializeField] private GameObject _player;
     public float range = 15f;
 
     [Header("Use Bullet(default)")]
@@ -20,6 +24,8 @@ public class Tower : MonoBehaviour
     public int damageOverTime = 30;
     public float slowAmount = .5f;
 
+    public ParticleSystem hit;
+    public ParticleSystem flash;
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
@@ -30,18 +36,41 @@ public class Tower : MonoBehaviour
     public float turnSpeed = 10f;
     public Transform firePoint;
 
+    public float maxDistanceToActivate = 5f;
+
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
+    List<GameObject> _onRange = new List<GameObject>();
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == enemyTag)
+        {
+            if(!_onRange.Contains(other.gameObject))
+                _onRange.Add(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == enemyTag)
+        {
+            if (_onRange.Contains(other.gameObject))
+                _onRange.Remove(other.gameObject);
+        }
+    }
+
     void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
-        foreach (GameObject enemy in enemies)
+        var temp = _onRange.Where(x => x != null).ToList();
+        _onRange = temp;
+
+        foreach (GameObject enemy in _onRange)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
 
@@ -58,7 +87,16 @@ public class Tower : MonoBehaviour
         if (nearestEnemy != null)
         {
             target = nearestEnemy.transform;
-            targetEnemy = nearestEnemy.GetComponent<Enemy>();
+
+            if (nearestEnemy.GetComponent<Enemy>() != null)
+            {
+                targetEnemy = nearestEnemy.GetComponent<Enemy>();
+            }
+
+            if (nearestEnemy.GetComponent<EnemyM>() != null)
+            {
+                targetEnemyM = nearestEnemy.GetComponent<EnemyM>();
+            }
         }
         else
         {
@@ -68,6 +106,18 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
+        if (!isActive)
+        {
+            var near = IsPlayerNearTower();
+            var afford = CanAffordTower();
+
+            if (Input.GetKeyDown(KeyCode.Q) && near && afford)
+            {
+                ActivateTower();
+            }
+            return;
+        }
+
         if (target == null)
         {
             if (useLaser)
@@ -106,27 +156,85 @@ public class Tower : MonoBehaviour
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
+    bool CanAffordTower()
+    {
+        return CoinManager.Instance.HasEnoughCoins(10);
+    }
+
+    bool IsPlayerNearTower()
+    {
+            float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
+            return distanceToPlayer <= maxDistanceToActivate;
+    }
+
+    void ActivateTower()
+    {
+        if (CanAffordTower())
+        {
+            CoinManager.Instance.SubtractCoins(10); // Resta las monedas necesarias.
+            isActive = true;
+
+            // Actualiza el texto de las monedas en el CoinManager.
+            CoinManager.Instance.UpdateUI();
+        }
+    }
+
+
+
     void Laser()
     {
-        if (targetEnemy != null)
+        if (targetEnemy != null || targetEnemyM != null)
         {
-            targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+            float currentHealth = 0;
 
-            if (!lineRenderer.enabled)
+            if (targetEnemy != null)
             {
-                lineRenderer.enabled = true;
-                impactEffect.Play();
-                impactLight.enabled = true;
+                currentHealth = targetEnemy.EnemyHealth.CurrentHealth;
+                targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
             }
 
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, target.position);
+            if (targetEnemyM != null)
+            {
+                currentHealth = targetEnemyM.EnemyMHealth.CurrentHealth;
+                targetEnemyM.EnemyMHealth.UpdateHealth(damageOverTime * Time.deltaTime);
 
-            Vector3 dir = firePoint.position - target.position;
+            }
 
-            impactEffect.transform.position = target.position + dir.normalized;
+            if (currentHealth > 0)
+            {
+                if (!lineRenderer.enabled)
+                {
+                    lineRenderer.enabled = true;
+                    impactEffect.Play();
+                    hit.Play();
+                    flash.Play();
+                    impactLight.enabled = true;
+                }
 
-            impactEffect.transform.rotation = Quaternion.LookRotation(dir);
+                lineRenderer.SetPosition(0, firePoint.position);
+                lineRenderer.SetPosition(1, target.position);
+
+                Vector3 dir = firePoint.position - target.position;
+
+                impactEffect.transform.position = target.position + dir.normalized;
+
+                impactEffect.transform.rotation = Quaternion.LookRotation(dir);
+            }
+            else
+            {
+                targetEnemy = null;
+                targetEnemyM = null;
+                lineRenderer.enabled = false;
+                flash.Stop();
+                hit.Stop();
+            }
+        } else
+        {
+            targetEnemy = null;
+            targetEnemyM = null;
+            lineRenderer.enabled = false;
+            flash.Stop();
+            hit.Stop();
         }
     }
 

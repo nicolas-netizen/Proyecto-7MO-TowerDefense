@@ -8,6 +8,8 @@ public class EnemyMhealth
 
     private EnemyM _enemy;
 
+    public float CurrentHealth { get => _currentHealth; }
+
     public void SetEnemy(EnemyM enemy)
     {
         _enemy = enemy;
@@ -32,12 +34,13 @@ public class EnemyMhealth
     public void UpdateHealth(float mod)
     {
         _currentHealth -= mod;
-        _enemy.EnemyVFX.Blood();
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
             Die(Vector3.zero); 
-        }
+        } else
+            _enemy.EnemyVFX.Blood();
+
     }
 
     private void Die(Vector3 dir)
