@@ -28,7 +28,8 @@ public class Tower : MonoBehaviour
     public ParticleSystem flash;
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
-    public Light impactLight;
+
+    public int towerPrice = 10;
 
     [Header("Unity Setup")]
     public string enemyTag = "Enemy";
@@ -126,7 +127,6 @@ public class Tower : MonoBehaviour
                 {
                     lineRenderer.enabled = false;
                     impactEffect.Stop();
-                    impactLight.enabled = false;
                 }
             }
             return;
@@ -167,14 +167,12 @@ public class Tower : MonoBehaviour
             return distanceToPlayer <= maxDistanceToActivate;
     }
 
-    void ActivateTower()
+   public void ActivateTower()
     {
         if (CanAffordTower())
         {
-            CoinManager.Instance.SubtractCoins(10); // Resta las monedas necesarias.
+            CoinManager.Instance.SubtractCoins(10);
             isActive = true;
-
-            // Actualiza el texto de las monedas en el CoinManager.
             CoinManager.Instance.UpdateUI();
         }
     }
@@ -208,7 +206,6 @@ public class Tower : MonoBehaviour
                     impactEffect.Play();
                     hit.Play();
                     flash.Play();
-                    impactLight.enabled = true;
                 }
 
                 lineRenderer.SetPosition(0, firePoint.position);

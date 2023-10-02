@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> _spawnPoints;
-    public Text waveText;
+    public TextMeshProUGUI waveText;
 
     [System.Serializable]
     public class EnemyInfo
@@ -55,6 +56,8 @@ public class WaveManager : MonoBehaviour
 
 
             waveText.text = "Oleada " + (currentWaveIndex + 1);
+            waveText.fontSize = 36; // Tamaño de fuente
+            waveText.color = Color.yellow;
 
 
             yield return new WaitForSeconds(4f);
