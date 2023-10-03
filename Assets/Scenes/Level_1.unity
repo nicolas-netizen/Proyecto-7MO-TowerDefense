@@ -579,6 +579,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a24bd1bbbcfd12d44a34da2c81929209, type: 3}
   m_PrefabInstance: {fileID: 1009487139}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &11549915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f048fdc29033295458bb9a638c441ca2, type: 3}
+  m_PrefabInstance: {fileID: 739630810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &11549917
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11549915}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fa7d2496ba9b084ab865537f3cb00c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &12434567
 GameObject:
   m_ObjectHideFlags: 0
@@ -20292,7 +20317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f048fdc29033295458bb9a638c441ca2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09
+      value: -0.227
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f048fdc29033295458bb9a638c441ca2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20329,6 +20354,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f048fdc29033295458bb9a638c441ca2, type: 3}
       propertyPath: m_Name
       value: Content
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f048fdc29033295458bb9a638c441ca2, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 951011102456138778, guid: f048fdc29033295458bb9a638c441ca2, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f048fdc29033295458bb9a638c441ca2, type: 3}
@@ -53694,7 +53727,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1328813463}
-  m_Layer: 0
+  - component: {fileID: 1328813465}
+  - component: {fileID: 1328813464}
+  m_Layer: 13
   m_Name: Tramp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53709,7 +53744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328813462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.38, y: 1.01, z: 12.62}
+  m_LocalPosition: {x: -65.25, y: 1.01, z: 12.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53717,6 +53752,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 72
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1328813464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328813462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1b041b0dba5654ebc8db271ea4e9ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 928178665}
+  _trapCost: 10
+  _damage: 30
+  _activationRange: 5
+  _activationKey: 113
+  _trapAnimator: {fileID: 11549917}
+--- !u!65 &1328813465
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328813462}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2045364, y: 1, z: 2.665657}
+  m_Center: {x: -0.03155136, y: 0, z: 0.013978958}
 --- !u!1 &1329516935
 GameObject:
   m_ObjectHideFlags: 0
@@ -66695,6 +66761,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 54649d087eea500458ae06039b3efc9a, type: 3}
       propertyPath: m_Name
       value: tramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 54649d087eea500458ae06039b3efc9a, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 951011102456138778, guid: 54649d087eea500458ae06039b3efc9a, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6741210398040927171, guid: 54649d087eea500458ae06039b3efc9a, type: 3}
       propertyPath: m_Enabled
