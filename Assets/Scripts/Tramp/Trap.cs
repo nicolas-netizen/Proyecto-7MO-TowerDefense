@@ -16,6 +16,22 @@ public class Trap : MonoBehaviour
 
     private bool isTrapActive = false;
 
+    private bool _activeSwitch;
+    private bool _canDamage;
+    public void StateSwitch(bool state)
+    {
+        _activeSwitch = state;
+        if(state == true)
+        {
+            _trapAnimator.Play("TrapUp");
+        }
+    }
+
+    public void StateDamage(bool state)
+    {
+        _canDamage = state;
+    }
+
     private void Update()
     {
         if (!isTrapActive)
@@ -33,17 +49,28 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-      if (other.CompareTag("Enemy") && isTrapActive)
+        if (other.CompareTag("Enemy") && isTrapActive)
         {
-            // Aplicar daño al enemigo
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
+
+            if (!_activeSwitch)
             {
-                enemy.TakeDamage(_damage);
+                StateSwitch(true);
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(_damage);
+                }
+
             }
-            if (_trapAnimator != null)
+
+            if (_canDamage)
             {
-                _trapAnimator.SetTrigger("Activate");
+                // Aplicar daño al enemigo
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(_damage);
+                }
             }
         }
     }

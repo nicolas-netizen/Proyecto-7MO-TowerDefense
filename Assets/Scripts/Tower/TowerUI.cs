@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 public class TowerUI : MonoBehaviour
 {
     public SpriteRenderer priceSpriteRenderer1;
@@ -34,14 +33,19 @@ public class TowerUI : MonoBehaviour
             {
                 tower.ActivateTower();
                 isTowerActive = true;
-                priceSpriteRenderer1.enabled = false;
-                priceSpriteRenderer2.enabled = false;
+                HidePriceSprites();
             }
         }
         if (!canAfford && playerInRange && !isFlashing)
         {
             StartCoroutine(FlashSprite());
         }
+    }
+
+    private void HidePriceSprites()
+    {
+        priceSpriteRenderer1.enabled = false;
+        priceSpriteRenderer2.enabled = false;
     }
 
     private IEnumerator FlashSprite()
@@ -83,5 +87,10 @@ public class TowerUI : MonoBehaviour
                 priceSpriteRenderer2.enabled = false;
             }
         }
+    }
+
+    public void SetCanAfford(bool canAffordValue)
+    {
+        canAfford = canAffordValue;
     }
 }

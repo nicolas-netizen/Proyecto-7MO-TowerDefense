@@ -8,7 +8,7 @@ public class SceneChanger : MonoBehaviour
 
     public void PlayWithFade()
     {
-        fadeAnimator.SetTrigger("FadeinMenu");
+        fadeAnimator.SetTrigger("Menu");
         Invoke("ChangeScene", fadeAnimator.GetCurrentAnimatorStateInfo(0).length);
     }
 
