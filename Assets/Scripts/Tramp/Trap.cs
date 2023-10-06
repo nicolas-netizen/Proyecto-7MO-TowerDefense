@@ -15,7 +15,7 @@ public class Trap : MonoBehaviour
     [SerializeField] private Animator _trapAnimator;
 
     private bool isTrapActive = false;
-
+    public TowerUI ui;
     private bool _activeSwitch;
     private bool _canDamage;
     public void StateSwitch(bool state)
@@ -86,6 +86,7 @@ public class Trap : MonoBehaviour
         {
             CoinManager.Instance.SubtractCoins(_trapCost);
             isTrapActive = true;
+            ui.HidePriceSprites();
             CoinManager.Instance.UpdateUI();
         }
     }

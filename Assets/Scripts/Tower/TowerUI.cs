@@ -42,10 +42,10 @@ public class TowerUI : MonoBehaviour
         }
     }
 
-    private void HidePriceSprites()
+    public void HidePriceSprites()
     {
-        priceSpriteRenderer1.enabled = false;
-        priceSpriteRenderer2.enabled = false;
+        priceSpriteRenderer1.gameObject.SetActive(false);
+        priceSpriteRenderer2.gameObject.SetActive(false);
     }
 
     private IEnumerator FlashSprite()

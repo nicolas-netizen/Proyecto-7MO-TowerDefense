@@ -39,6 +39,8 @@ public class Tower : MonoBehaviour
 
     public float maxDistanceToActivate = 5f;
 
+    public TowerUI ui;
+
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -171,7 +173,9 @@ public class Tower : MonoBehaviour
     {
         if (CanAffordTower())
         {
+
             CoinManager.Instance.SubtractCoins(10);
+            ui.HidePriceSprites();
             isActive = true;
             CoinManager.Instance.UpdateUI();
         }
