@@ -12,6 +12,7 @@ public class DropCoinAtDie : MonoBehaviour
         {
             CoinManager.Instance.AddCoins(25);
             _flagOnce = true;
+            _enemy.EnemyVFX.MoneyDie();
         }
     }
 }

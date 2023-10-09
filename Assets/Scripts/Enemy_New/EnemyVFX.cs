@@ -6,6 +6,7 @@ public class EnemyVFX
     [Header("PARTICLES")]
     [SerializeField] private ParticleSystem _bloodParticles;
     [SerializeField] private ParticleSystem _MoneyParticles;
+    [SerializeField] private ParticleSystem _MoneyDie;
 
     public void Blood()
     {
@@ -15,4 +16,9 @@ public class EnemyVFX
     {
         _MoneyParticles.Play();
     }
+    public void MoneyDie()
+    {
+        _MoneyDie.Play();
+    }
+
 }

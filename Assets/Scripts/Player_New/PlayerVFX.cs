@@ -12,6 +12,7 @@ public class PlayerVFX
     [SerializeField] private ParticleSystem _groundParticles;
     [SerializeField] private ParticleSystem _DownParticles;
     [SerializeField] private ParticleSystem _SlashParticles;
+    [SerializeField] private ParticleSystem _Escud;
     [Header("CAMERA")]
     [SerializeField] private CameraFollow _shake;
 
@@ -19,6 +20,10 @@ public class PlayerVFX
     {
         _dashParticles.Play();
         _dashCamera.Play();
+    }
+    public void Escud()
+    {
+        _Escud.Play();
     }
     public void Slash()
     {

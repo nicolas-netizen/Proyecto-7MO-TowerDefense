@@ -21,7 +21,7 @@ public class EnemyHealth
     public void UpdateHealth(float mod, Vector3 dir) {
         _currentHealth += mod;
         _enemy.EnemyVFX.Blood();
-        if(_currentHealth <= 0)
+        if (_currentHealth <= 0)
         {
             Die(dir);
             _enemy.EnemyRig.ActiveRagdoll(dir);
@@ -37,11 +37,9 @@ public class EnemyHealth
         {
             Die(Vector3.zero);
         } else
-            _enemy.EnemyVFX.Blood();
-
-
-
+        _enemy.EnemyVFX.Blood();
     }
+
     private void Die(Vector3 dir)
     {
         if (_enemy != null)

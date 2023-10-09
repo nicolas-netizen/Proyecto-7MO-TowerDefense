@@ -65,7 +65,6 @@ public class Trap : MonoBehaviour
 
             if (_canDamage)
             {
-                // Aplicar daño al enemigo
                 Enemy enemy = other.GetComponent<Enemy>();
                 if (enemy != null)
                 {
@@ -77,7 +76,7 @@ public class Trap : MonoBehaviour
 
     public bool CanAffordTrap()
     {
-        return CoinManager.Instance.HasEnoughCoins(10);
+        return CoinManager.Instance.HasEnoughCoins(150);
     }
 
     private void TryToActivateTrap()
