@@ -76,7 +76,7 @@ public class Trap : MonoBehaviour
 
     public bool CanAffordTrap()
     {
-        return CoinManager.Instance.HasEnoughCoins(150);
+        return CoinManager.Instance.HasEnoughCoins(_trapCost);
     }
 
     private void TryToActivateTrap()

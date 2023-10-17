@@ -77,6 +77,7 @@ MonoBehaviour:
   _enemyVFX:
     _bloodParticles: {fileID: 6379507903966896361}
     _MoneyParticles: {fileID: 0}
+    _MoneyDie: {fileID: 0}
   _enemyRig:
     _rig: {fileID: 4466925465005967999}
     _hips: {fileID: 4483857099238025508}
@@ -1306,6 +1307,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1043487540048914, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1068832164013310, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -1313,6 +1318,10 @@ PrefabInstance:
     - target: {fileID: 1444788337368614, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444788337368614, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1855497614338780, guid: a5996143e03b11c45a2b7e3982464374, type: 3}
       propertyPath: m_Name
