@@ -25,7 +25,7 @@ public class MenuPausa : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0f; // Congela el juego
+        Time.timeScale = 0f;
         _pausedCanvas.SetActive(true);
         _paused = true;
         Cursor.lockState = CursorLockMode.None;
@@ -33,7 +33,7 @@ public class MenuPausa : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1f; // Reanuda el juego
+        Time.timeScale = 1f; 
         _pausedCanvas.SetActive(false);
         _paused = false;
         Cursor.lockState = CursorLockMode.Locked;
