@@ -38,10 +38,17 @@ public class KnightAbility : MonoBehaviour
                 if (hitCollider.CompareTag("Enemy"))
                 {
                     Enemy enemy = hitCollider.GetComponent<Enemy>();
+                    EnemyM enemyM = hitCollider.GetComponent<EnemyM>();
                     if (enemy != null)
                     {
                         Vector3 dir = hitCollider.transform.position - transform.position;
                         enemy.TakeDamage(damage, dir);
+                    }
+                    if (enemy != null)
+                    {
+                        Vector3 dir = hitCollider.transform.position - transform.position;
+                        enemyM.EnemyMHealth.UpdateHealth(damage, dir);
+
                     }
                 }
             }
