@@ -5,11 +5,16 @@ public class Sword : MonoBehaviour
 {
     private ISwordOwner _owner;
     private CameraShake _cameraShake;
+    private AudioSource _audioSource; 
+
+    public AudioClip hitSoundRight; 
+    public AudioClip hitSoundLeft;  
 
     private void Start()
     {
         _owner = transform.root.GetComponent<ISwordOwner>();
         _cameraShake = Camera.main.GetComponent<CameraShake>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,9 +29,17 @@ public class Sword : MonoBehaviour
                 {
                     case AttackDir.Right:
                         col.TakeDamage(_owner.GetDamage(), -_owner.GetOwner().transform.forward);
+                        if (hitSoundRight != null && _audioSource != null)
+                        {
+                            _audioSource.PlayOneShot(hitSoundRight);
+                        }
                         break;
                     case AttackDir.Left:
                         col.TakeDamage(_owner.GetDamage(), _owner.GetOwner().transform.forward);
+                        if (hitSoundLeft != null && _audioSource != null)
+                        {
+                            _audioSource.PlayOneShot(hitSoundLeft);
+                        }
                         break;
                     default:
                         break;
