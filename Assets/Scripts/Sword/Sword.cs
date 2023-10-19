@@ -8,8 +8,6 @@ public class Sword : MonoBehaviour
     private AudioSource _audioSource; 
 
     public AudioClip hitSoundRight; 
-    public AudioClip hitSoundLeft;  
-
     private void Start()
     {
         _owner = transform.root.GetComponent<ISwordOwner>();
@@ -29,17 +27,9 @@ public class Sword : MonoBehaviour
                 {
                     case AttackDir.Right:
                         col.TakeDamage(_owner.GetDamage(), -_owner.GetOwner().transform.forward);
-                        if (hitSoundRight != null && _audioSource != null)
-                        {
-                            _audioSource.PlayOneShot(hitSoundRight);
-                        }
                         break;
                     case AttackDir.Left:
                         col.TakeDamage(_owner.GetDamage(), _owner.GetOwner().transform.forward);
-                        if (hitSoundLeft != null && _audioSource != null)
-                        {
-                            _audioSource.PlayOneShot(hitSoundLeft);
-                        }
                         break;
                     default:
                         break;
@@ -49,6 +39,10 @@ public class Sword : MonoBehaviour
                 {
                     _cameraShake.Shake(_cameraShake.ShakeMagnitude);
                 }
+
+                if(!_audioSource.isPlaying)
+                    _audioSource.Play();
+
             }
         }
     }

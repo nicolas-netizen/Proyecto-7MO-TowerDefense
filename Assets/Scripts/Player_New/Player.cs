@@ -15,6 +15,9 @@ public class Player : MonoBehaviour, ISwordOwner
     [SerializeField] private PlayerVFX _playerVFX;
     [SerializeField] private KnightAbility _knightAbility;
     [SerializeField] private ChargeAbility _chargeAbility;
+    
+    [Header("SOUND")]
+    [SerializeField] private AudioSource _audioSlash;
 
     public PlayerMovement MovementController { get => _movementController; set => _movementController = value; }
     public PlayerInput InputController { get => _inputController; set => _inputController = value; }
@@ -27,6 +30,7 @@ public class Player : MonoBehaviour, ISwordOwner
     public KnightAbility KnightAbility { get => _knightAbility; set => _knightAbility = value; }
     public PlayerVFX PlayerVFX { get => _playerVFX; set => _playerVFX = value; }
     public ChargeAbility ChargeAbility { get => _chargeAbility; set => _chargeAbility = value; }
+    public AudioSource AudioSlash { get => _audioSlash; }
 
     void Start()
     {

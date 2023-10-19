@@ -57,4 +57,9 @@ public class PlayerHandlerAnimation : MonoBehaviour
     {
         _player.InputController.UnlockInputs();
     }
+
+    public void SFX_Slash()
+    {
+        _player.AudioSlash.Play();
+    }
 }
