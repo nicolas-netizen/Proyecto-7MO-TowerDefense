@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, ISwordOwner
     
     [Header("SOUND")]
     [SerializeField] private AudioSource _audioSlash;
-
+    [SerializeField] private AudioSource ToonEXplot;
     public PlayerMovement MovementController { get => _movementController; set => _movementController = value; }
     public PlayerInput InputController { get => _inputController; set => _inputController = value; }
     public PlayerState StateController { get => _stateController; set => _stateController = value; }
@@ -31,6 +31,7 @@ public class Player : MonoBehaviour, ISwordOwner
     public PlayerVFX PlayerVFX { get => _playerVFX; set => _playerVFX = value; }
     public ChargeAbility ChargeAbility { get => _chargeAbility; set => _chargeAbility = value; }
     public AudioSource AudioSlash { get => _audioSlash; }
+    public AudioSource ToonEXplot1 { get => ToonEXplot; }
 
     void Start()
     {

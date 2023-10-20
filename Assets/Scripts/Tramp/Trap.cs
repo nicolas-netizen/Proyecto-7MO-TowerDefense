@@ -18,6 +18,7 @@ public class Trap : MonoBehaviour
     public TowerUI ui;
     private bool _activeSwitch;
     private bool _canDamage;
+    [SerializeField] private AudioSource BuYtower;
     public void StateSwitch(bool state)
     {
         _activeSwitch = state;
@@ -83,6 +84,7 @@ public class Trap : MonoBehaviour
     {
         if (CanAffordTrap())
         {
+            BuYtower.Play();
             CoinManager.Instance.SubtractCoins(_trapCost);
             isTrapActive = true;
             ui.HidePriceSprites();

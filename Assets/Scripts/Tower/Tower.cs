@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
     private Enemy targetEnemy;
     private EnemyM targetEnemyM;
     private  bool isActive = false;
+    private bool isLaserActive = false;
 
     [Header("General")]
     [SerializeField] private GameObject _player;
@@ -40,6 +41,9 @@ public class Tower : MonoBehaviour
     public float maxDistanceToActivate = 5f;
 
     public TowerUI ui;
+    [SerializeField] private AudioSource BuYtower;
+    [SerializeField] private AudioSource attackSound;
+
 
     void Start()
     {
@@ -47,6 +51,9 @@ public class Tower : MonoBehaviour
     }
 
     List<GameObject> _onRange = new List<GameObject>();
+
+    public AudioSource BuYtower1 { get => BuYtower; }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == enemyTag)
@@ -173,7 +180,7 @@ public class Tower : MonoBehaviour
     {
         if (CanAffordTower())
         {
-
+            BuYtower1.Play();
             CoinManager.Instance.SubtractCoins(10);
             ui.HidePriceSprites();
             isActive = true;
@@ -199,7 +206,6 @@ public class Tower : MonoBehaviour
             {
                 currentHealth = targetEnemyM.EnemyMHealth.CurrentHealth;
                 targetEnemyM.EnemyMHealth.UpdateHealth(damageOverTime * Time.deltaTime);
-
             }
 
             if (currentHealth > 0)
@@ -210,6 +216,12 @@ public class Tower : MonoBehaviour
                     impactEffect.Play();
                     hit.Play();
                     flash.Play();
+                    isLaserActive = true; // está activo.
+
+                    if (isLaserActive && attackSound != null && !attackSound.isPlaying)
+                    {
+                        attackSound.Play();
+                    }
                 }
 
                 lineRenderer.SetPosition(0, firePoint.position);
@@ -218,7 +230,6 @@ public class Tower : MonoBehaviour
                 Vector3 dir = firePoint.position - target.position;
 
                 impactEffect.transform.position = target.position + dir.normalized;
-
                 impactEffect.transform.rotation = Quaternion.LookRotation(dir);
             }
             else
@@ -229,7 +240,8 @@ public class Tower : MonoBehaviour
                 flash.Stop();
                 hit.Stop();
             }
-        } else
+        }
+        else
         {
             targetEnemy = null;
             targetEnemyM = null;
@@ -238,6 +250,7 @@ public class Tower : MonoBehaviour
             hit.Stop();
         }
     }
+
 
     void Shoot()
     {
