@@ -4,11 +4,14 @@ using UnityEngine.UI;
 public class ObjetiveManager : MonoBehaviour
 {
     [SerializeField] private Player _player;
-
+    [SerializeField] private Canvas gameOverCanvas;
+    [SerializeField] private Canvas WinCanvas;
+    [SerializeField] private Canvas CanvaDesca;
+    [SerializeField] private GameObject SwordFlas;
+    [SerializeField] private AudioSource WinSound;
     [Header("DEBUG")]
     [SerializeField] private int _enemiesAtEndMax;
     [SerializeField] private Image _progressImage;
-
 
     private int _countEnemiesAtEnd;
     private bool _gameIsOver = false;
@@ -29,6 +32,8 @@ public class ObjetiveManager : MonoBehaviour
     private void Start()
     {
         UIManager.Instance.SetEnemyAtEndCounter(0, _enemiesAtEndMax);
+        gameOverCanvas.gameObject.SetActive(false);
+        WinCanvas.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -66,7 +71,6 @@ public class ObjetiveManager : MonoBehaviour
         }
     }
 
-
     public void GameOver()
     {
         if (_gameIsOver == false)
@@ -77,6 +81,9 @@ public class ObjetiveManager : MonoBehaviour
             CameraManager.Instance.GameOver();
             _player.InputController.BlockInputs();
             _player.AnimationController.Animator.SetTrigger("Praying");
+            gameOverCanvas.gameObject.SetActive(true); 
+            CanvaDesca.gameObject.SetActive(false);
+            AudioListener.pause = true;
         }
     }
 
@@ -87,8 +94,13 @@ public class ObjetiveManager : MonoBehaviour
             _gameIsOver = true;
             Debug.Log("You win!");
             CameraManager.Instance.Win();
+            CameraManager.Instance.GameOver();
             _player.InputController.BlockInputs();
             _player.AnimationController.Animator.SetTrigger("Victory");
+            WinCanvas.gameObject.SetActive(true);
+            CanvaDesca.gameObject.SetActive(false);
+            SwordFlas.gameObject.SetActive(false);
+            AudioListener.pause = true;
         }
     }
 }

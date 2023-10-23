@@ -25,18 +25,17 @@ public class MenuPausa : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0f;
+        Time.timeScale = 0.05f;
         _pausedCanvas.SetActive(true);
-        _paused = true;
         Cursor.lockState = CursorLockMode.None;
+        AudioListener.pause = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f; 
         _pausedCanvas.SetActive(false);
-        _paused = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        AudioListener.pause = false;
     }
 
     public void Quit()

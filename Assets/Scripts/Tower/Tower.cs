@@ -37,10 +37,13 @@ public class Tower : MonoBehaviour
     public Transform partToRotate;
     public float turnSpeed = 10f;
     public Transform firePoint;
+    public Light towerLight;
+
 
     public float maxDistanceToActivate = 5f;
 
     public TowerUI ui;
+    [Header("Sound Tower")]
     [SerializeField] private AudioSource BuYtower;
     [SerializeField] private AudioSource attackSound;
 
@@ -180,6 +183,7 @@ public class Tower : MonoBehaviour
     {
         if (CanAffordTower())
         {
+            towerLight.enabled = true;
             BuYtower1.Play();
             CoinManager.Instance.SubtractCoins(10);
             ui.HidePriceSprites();

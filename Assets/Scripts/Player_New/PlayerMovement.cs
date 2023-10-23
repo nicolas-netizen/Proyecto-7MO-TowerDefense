@@ -153,10 +153,10 @@ public class PlayerMovement
     {
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, 0, ref velocity, _speeds.idleTransition);
         _movementState = MovementState.Idle;
-        if (IdleAudio != null)
-        {
+
+  
             IdleAudio.Play();
-        }
+
     }
 
     public void Run()
@@ -173,6 +173,4 @@ public class PlayerMovement
 
     }
     #endregion
-
-
 }

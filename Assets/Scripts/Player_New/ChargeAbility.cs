@@ -26,7 +26,7 @@ public class ChargeAbility : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
 
-        if (Input.GetKeyDown(KeyCode.Space) && _canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
         {
             Dash(movement.normalized);
         }
