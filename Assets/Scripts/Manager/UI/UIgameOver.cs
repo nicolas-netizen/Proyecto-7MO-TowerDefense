@@ -8,6 +8,7 @@ public class UIgameOver : MonoBehaviour
     public void ChangeScene()
     {
         SceneManager.LoadScene(sceneName);
+        AudioListener.pause = false;
     }
     public void RestartGame()
     {
