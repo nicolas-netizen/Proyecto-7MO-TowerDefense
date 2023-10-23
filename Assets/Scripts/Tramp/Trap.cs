@@ -19,6 +19,10 @@ public class Trap : MonoBehaviour
     private bool _activeSwitch;
     private bool _canDamage;
     [SerializeField] private AudioSource BuYtower;
+    [SerializeField] private AudioSource DamageTrap;
+
+    public AudioSource DamageTrap1 { get => DamageTrap;}
+
     public void StateSwitch(bool state)
     {
         _activeSwitch = state;

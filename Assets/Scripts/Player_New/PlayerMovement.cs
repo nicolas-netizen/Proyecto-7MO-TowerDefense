@@ -55,6 +55,7 @@ public class PlayerMovement
 
     private Player _player;
     [SerializeField] private AudioSource RunAudio;
+    [SerializeField] private AudioSource IdleAudio;
 
 
     public void SetPlayer(Player player)
@@ -152,6 +153,10 @@ public class PlayerMovement
     {
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, 0, ref velocity, _speeds.idleTransition);
         _movementState = MovementState.Idle;
+        if (IdleAudio != null)
+        {
+            IdleAudio.Play();
+        }
     }
 
     public void Run()
@@ -160,8 +165,11 @@ public class PlayerMovement
         {
             _currentSpeed = Mathf.SmoothDamp(_currentSpeed, _speeds.runSpeed, ref velocity, _speeds.runTransition);
             _movementState = MovementState.Running;
+            if (RunAudio != null)
+            {
+                RunAudio.Play();
+            }
         }
-        RunAudio.Play();
 
     }
     #endregion

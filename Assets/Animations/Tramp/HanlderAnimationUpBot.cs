@@ -14,6 +14,7 @@ public class HanlderAnimationUpBot : MonoBehaviour
     public void StartDamage()
     {
         _trap.StateDamage(true);
+        _trap.DamageTrap1.Play();
     }
 
     public void StopDamage()
