@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, ISwordOwner
     [SerializeField] private PlayerVFX _playerVFX;
     [SerializeField] private KnightAbility _knightAbility;
     [SerializeField] private ChargeAbility _chargeAbility;
-    
+
     [Header("SOUND")]
     [SerializeField] private AudioSource _audioSlash;
     [SerializeField] private AudioSource ToonEXplot;

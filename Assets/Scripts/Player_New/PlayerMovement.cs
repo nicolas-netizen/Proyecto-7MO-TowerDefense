@@ -141,8 +141,13 @@ public class PlayerMovement
         _flagReduce = false;
         _currentSpeed = _speeds.walkSpeed;
     }
-
-
+    public void IncreaseSpeed(float multiplier)
+    {
+        if (!_flagReduce)
+        {
+            _speeds.runSpeed *= multiplier;
+        }
+    }
     #region STATES
     private float velocity;
 
