@@ -16,7 +16,6 @@ public class ObjetiveManager : MonoBehaviour
     private int _countEnemiesAtEnd;
     private bool _gameIsOver = false;
     private int _enemiesAtEnd;
-
     public static ObjetiveManager Instance;
 
     public bool GameIsOver { get => _gameIsOver; }
@@ -47,7 +46,6 @@ public class ObjetiveManager : MonoBehaviour
             Win();
         }
     }
-
     public void AddEnemyAtEnd()
     {
         if (_gameIsOver)
@@ -70,7 +68,6 @@ public class ObjetiveManager : MonoBehaviour
             Win();
         }
     }
-
     public void GameOver()
     {
         if (_gameIsOver == false)

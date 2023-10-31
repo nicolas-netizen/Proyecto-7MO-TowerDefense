@@ -62,6 +62,12 @@ public class TowerUI : MonoBehaviour
         }
         isFlashing = false;
     }
+    public void ShowPriceSprites()
+    {
+        priceSpriteRenderer1.enabled = true;
+        priceSpriteRenderer2.enabled = true;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

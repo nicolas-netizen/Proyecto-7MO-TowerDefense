@@ -26,11 +26,13 @@ public class Buff : MonoBehaviour
     [SerializeField] private GameObject _endParticle;
 
     private bool isBuffActive = false;
+    private bool isScaleBuffActive = false;
     private bool isOnCooldown = false;
     private float cooldownDuration = 30.0f;
     private float cooldownTimer = 0.0f;
 
-    private Vector3 originalScale; 
+    private Vector3 originalScale;
+    public TowerUI towerUI;
 
     public TowerUI ui;
     [SerializeField] private AudioSource BuYtower;
@@ -60,8 +62,12 @@ public class Buff : MonoBehaviour
             if (cooldownTimer <= 0)
             {
                 isOnCooldown = false;
-
-                _buffPlayer.transform.localScale = originalScale;
+                if (_currentBuff == BuffType.Scale)
+                {
+                    _endParticle.SetActive(false);
+                    isScaleBuffActive = false;
+                    towerUI.ShowPriceSprites();
+                }
             }
         }
     }
@@ -123,6 +129,7 @@ public class Buff : MonoBehaviour
         _buffPlayer.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
         _LuzBufo.SetActive(true);
         _startParticle.SetActive(true);
+        isScaleBuffActive = true;
     }
 
     private void ApplyAttackSpeedBuff()
@@ -130,6 +137,8 @@ public class Buff : MonoBehaviour
         if (_playerAnimator != null)
         {
             _playerAnimator.SetFloat("AttackSpeed", _BuffValue);
+            _LuzBufo.SetActive(true);
+            _startParticle.SetActive(true);
         }
     }
 
@@ -137,10 +146,15 @@ public class Buff : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldownDuration);
         _buffPlayer.transform.localScale = originalScale;
-        _LuzBufo.SetActive(false);
-        _endParticle.SetActive(false);
         isBuffActive = false;
         isOnCooldown = true;
         cooldownTimer = cooldownDuration;
+
+        if (_currentBuff == BuffType.Scale && isScaleBuffActive)
+        {
+            _endParticle.SetActive(true);
+            isScaleBuffActive = false;
+            towerUI.ShowPriceSprites();
+        }
     }
 }

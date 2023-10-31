@@ -77668,7 +77668,7 @@ MonoBehaviour:
   CanvaDesca: {fileID: 1057069709}
   SwordFlas: {fileID: 1647721083}
   WinSound: {fileID: 475844038}
-  _enemiesAtEndMax: 150
+  _enemiesAtEndMax: 20
   _progressImage: {fileID: 540859618}
 --- !u!1 &1989841988 stripped
 GameObject:
