@@ -11,7 +11,7 @@ public class ObjetiveManager : MonoBehaviour
     [SerializeField] private AudioSource WinSound;
     [Header("DEBUG")]
     [SerializeField] private int _enemiesAtEndMax;
-    [SerializeField] private Image _progressImage;
+    [SerializeField] private Text _enemiesRemainingText;
 
     private int _countEnemiesAtEnd;
     private bool _gameIsOver = false;
@@ -55,9 +55,12 @@ public class ObjetiveManager : MonoBehaviour
         _enemiesAtEnd++;
 
         float progress = (float)_countEnemiesAtEnd / (float)_enemiesAtEndMax;
-        _progressImage.fillAmount = progress;
 
         UIManager.Instance.SetEnemyAtEndCounter(_countEnemiesAtEnd, _enemiesAtEndMax);
+
+        // Actualiza el objeto de texto
+        int remainingEnemies = _enemiesAtEndMax - _countEnemiesAtEnd;
+        _enemiesRemainingText.text = "" + remainingEnemies;
 
         if (_countEnemiesAtEnd >= _enemiesAtEndMax)
         {
@@ -68,6 +71,7 @@ public class ObjetiveManager : MonoBehaviour
             Win();
         }
     }
+
     public void GameOver()
     {
         if (_gameIsOver == false)

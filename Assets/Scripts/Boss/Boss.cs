@@ -24,6 +24,9 @@ public class Boss : MonoBehaviour, IDamageable
     [SerializeField] private BossHealth bossHealth;
     [SerializeField] private EnemyVFX enemyVFX;
     [SerializeField] private BossRig bossRig;
+    [Header("Kick")]
+    [SerializeField] private float kickForce = 10f;
+    [SerializeField] private float kickRange = 1.5f;
 
     private NodeEscape lastNode;
     private NodeEscape targetNode;
@@ -163,7 +166,18 @@ public class Boss : MonoBehaviour, IDamageable
 
         this.targetNode = targetNode;
     }
+    public void PerformKick()
+    {
+        if (Vector3.Distance(transform.position, player.position) <= kickRange)
+        {
+            // Calcula la dirección en la que se empujará al jugador (hacia atrás)
+            Vector3 kickDirection = (player.position - transform.position).normalized;
 
+            // Aplica una fuerza al jugador para empujarlo hacia atrás
+            Rigidbody playerRigidbody = player.GetComponent<Rigidbody>();
+            playerRigidbody.AddForce(kickDirection * kickForce, ForceMode.Impulse);
+        }
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
