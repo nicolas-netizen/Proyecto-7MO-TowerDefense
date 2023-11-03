@@ -1,16 +1,16 @@
 using UnityEngine;
 
 [System.Serializable]
-public class EnemyMhealth
+public class BossHealth
 {
     [SerializeField] private float _currentHealth;
     [SerializeField] private float _enemyHealth = 100f;
 
-    private EnemyM _enemy;
+    private Boss _enemy;
 
     public float CurrentHealth { get => _currentHealth; }
 
-    public void SetEnemy(EnemyM enemy)
+    public void SetEnemy(Boss enemy)
     {
         _enemy = enemy;
     }
@@ -36,8 +36,9 @@ public class EnemyMhealth
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
-            Die(Vector3.zero); 
-        } else
+            Die(Vector3.zero);
+        }
+        else
             _enemy.EnemyVFX.Blood();
 
     }
