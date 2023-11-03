@@ -252,7 +252,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -295,7 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7546506613518691738}
   - component: {fileID: 3076132650582768282}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: MinimapIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,9 +376,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5107827491753722975}
     m_Modifications:
+    - target: {fileID: 1023673112915848, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210675362871840, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501884459798558, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555257158963558, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575690280716392, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628777301421748, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658028946683500, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664808724942172, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1904432780994438, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
       propertyPath: m_Name
       value: Lightning bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904432780994438, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908984946018530, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4899410989138970, guid: 24ce64b1d995394438c999f86a0b86b8, type: 3}
       propertyPath: m_RootOrder

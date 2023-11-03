@@ -35,8 +35,6 @@ public class InvocationSkill : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             Vector3 randomPosition = RandomPositionInsideRange(_castPoint.position, _castRange);
-
-            // Instancia el enemigo en la posición aleatoria.
             Quaternion spawnRotation = Quaternion.identity;
             Instantiate(_enemyPrefab, randomPosition, spawnRotation);
         }

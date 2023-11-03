@@ -4,145 +4,138 @@ using DG.Tweening;
 
 public class Boss : MonoBehaviour, IDamageable
 {
-    [Header("GENERAL")]
-    [SerializeField] private Transform _player;
-    [SerializeField] private LayerMask _playerMask;
-    [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private Animator _animator;
+    [Header("General")]
+    [SerializeField] private Transform player;
+    [SerializeField] private LayerMask playerMask;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
 
-    [Header("CHASE")]
-    [SerializeField] private float _followSpeed = 3f;
+    [Header("Chase")]
+    [SerializeField] private float followSpeed = 3f;
 
-    [Header("ATTACK")]
-    [SerializeField] private float _attackRange = 2f;
-    [SerializeField] private float _attackCooldown = 2f;
-    private float _timerAttack;
+    [Header("Attack")]
+    [SerializeField] private float attackRange = 2f;
+    [SerializeField] private float attackCooldown = 2f;
+    private float timerAttack;
 
-    [Header("ESCAPE")]
-    [SerializeField] private float _escapeRange = 5f;
+    [Header("Escape")]
+    [SerializeField] private float escapeRange = 5f;
 
-    [SerializeField] private BossHealth _enemyMHealth;
-    [SerializeField] private EnemyVFX _enemyVFX;
-    [SerializeField] private BossRig _enemyRig;
+    [SerializeField] private BossHealth bossHealth;
+    [SerializeField] private EnemyVFX enemyVFX;
+    [SerializeField] private BossRig bossRig;
 
-
-
-    private NodeEscape _lastNode;
-    private NodeEscape _targetNode;
+    private NodeEscape lastNode;
+    private NodeEscape targetNode;
     private bool isEscaping = false;
 
+    private bool movement;
+
+    public bool Movement { get => movement; set => movement = value; }
+    public EnemyVFX EnemyVFX { get => enemyVFX; set => enemyVFX = value; }
+    public NavMeshAgent Agent { get => agent; set => agent = value; }
+    public BossRig BossRig { get => bossRig; set => bossRig = value; }
+    public BossHealth BossHealth { get => bossHealth; set => bossHealth = value; }
 
     private void Awake()
     {
-        _player = GameObject.FindObjectOfType<Player>().transform;
-        _enemyMHealth.SetEnemy(this);
+        player = GameObject.FindObjectOfType<Player>().transform;
+        bossHealth.SetEnemy(this);
     }
+
     private void Start()
     {
-        _agent.speed = _followSpeed;
-        _enemyMHealth.ManualStart();
-        _enemyRig.SetEnemy(this);
+        agent.speed = followSpeed;
+        bossHealth.ManualStart();
+        bossRig.SetEnemy(this);
     }
-
-    private bool _movement;
-
-    public bool Movement { get => _movement; set => _movement = value; }
-    public EnemyVFX EnemyVFX { get => _enemyVFX; set => _enemyVFX = value; }
-    public NavMeshAgent Agent { get => _agent; set => _agent = value; }
-    public BossRig EnemyRig { get => _enemyRig; set => _enemyRig = value; }
-    public BossHealth EnemyMHealth { get => _enemyMHealth; set => _enemyMHealth = value; }
 
     private void Update()
     {
-        var escapeRangeColliders = Physics.OverlapSphere(transform.position, _escapeRange, _playerMask);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (!_animator.GetBool("Attack"))
+        if (!animator.GetBool("Attack"))
         {
-            _timerAttack += Time.deltaTime;
+            timerAttack += Time.deltaTime;
 
-            if (escapeRangeColliders.Length > 0)
+            if (distanceToPlayer <= escapeRange)
             {
-                isEscaping = true; // Activar el modo de escape.
+                isEscaping = true;
                 Escape();
-                _animator.SetBool("Run", true);
+                animator.SetBool("Run", true);
             }
             else
             {
-                isEscaping = false; // Desactivar el modo de escape.
+                isEscaping = false;
 
-                var attackRangeColliders = Physics.OverlapSphere(transform.position, _attackRange, _playerMask);
-
-                transform.DOLookAt(_player.position, 0.2f, AxisConstraint.Y);
-
-                _targetNode = null;
-
-                if (attackRangeColliders.Length <= 0) // SI NO ESTÁ CERCA DEL PLAYER
+                if (distanceToPlayer > attackRange)
                 {
-                    _animator.SetBool("Run", true);
+                    animator.SetBool("Run", true);
 
-                    if (!_movement)
+                    if (!movement)
                     {
-                        _agent.speed = _followSpeed;
-                        _agent.SetDestination(_player.position);
-                        _animator.SetBool("Attack", false);
+                        agent.speed = followSpeed;
+                        agent.SetDestination(player.position);
+                        animator.SetBool("Attack", false);
                     }
                 }
-                else // SI ESTÁ CERCA DEL PLAYER
+                else
                 {
-                    _animator.SetBool("Run", false);
+                    animator.SetBool("Run", false);
                     Attack();
                 }
             }
-            if (_movement)
+
+            if (movement)
             {
-                _agent.speed = 0;
+                agent.speed = 0;
             }
         }
-
     }
+
     public void Escape()
     {
         if (isEscaping)
         {
-            _animator.SetBool("Attack", false);
+            animator.SetBool("Attack", false);
 
-            if (_targetNode == null)
+            if (targetNode == null)
             {
                 LookForClosestEmptyNode();
             }
             else
             {
-
-                if (!_movement)
+                if (!movement)
                 {
-                    transform.DOLookAt(_targetNode.transform.position, 0.5f, AxisConstraint.Y);
-                    if (_agent != null)
+                    transform.DOLookAt(targetNode.transform.position, 0.5f, AxisConstraint.Y);
+                    if (agent != null)
                     {
-                        _agent.speed = _followSpeed;
-                        _agent.SetDestination(_targetNode.transform.position);
+                        agent.speed = followSpeed;
+                        agent.SetDestination(targetNode.transform.position);
                     }
                 }
 
                 var a = new Vector3(transform.position.x, 0, transform.position.z);
-                var b = new Vector3(_targetNode.transform.position.x, 0, _targetNode.transform.position.z);
+                var b = new Vector3(targetNode.transform.position.x, 0, targetNode.transform.position.z);
 
                 if (Vector3.Distance(a, b) <= 0.3f)
                 {
-                    _lastNode = _targetNode;
-                    _targetNode = null;
+                    lastNode = targetNode;
+                    targetNode = null;
                 }
             }
         }
     }
+
     public void Attack()
     {
-        if (_timerAttack > _attackCooldown)
+        if (timerAttack > attackCooldown)
         {
-            if (_agent != null)
+            if (agent != null)
             {
-                _timerAttack = 0;
-                _agent.SetDestination(transform.position);
-                _animator.SetBool("Attack", true);
+                timerAttack = 0;
+                agent.SetDestination(transform.position);
+                animator.SetBool("Attack", true);
             }
         }
     }
@@ -152,15 +145,15 @@ public class Boss : MonoBehaviour, IDamageable
         float distance = float.MaxValue;
         NodeEscape targetNode = null;
 
-        if (_targetNode != null)
-            _lastNode = _targetNode;
+        if (targetNode != null)
+            lastNode = targetNode;
 
         foreach (var item in EnemyManager.Instance.EscapeNodes)
         {
-            if (!item.CheckPlayerPosition() && item != _lastNode)
+            if (!item.CheckPlayerPosition() && item != lastNode)
             {
                 float distanceToNode = Vector3.Distance(transform.position, item.transform.position);
-                if (Vector3.Distance(transform.position, item.transform.position) < distance)
+                if (distanceToNode < distance)
                 {
                     distance = distanceToNode;
                     targetNode = item;
@@ -168,28 +161,29 @@ public class Boss : MonoBehaviour, IDamageable
             }
         }
 
-        _targetNode = targetNode;
+        this.targetNode = targetNode;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _attackRange);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, _escapeRange);
+        Gizmos.DrawWireSphere(transform.position, escapeRange);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(_agent.destination, _escapeRange);
+        Gizmos.DrawWireSphere(agent.destination, escapeRange);
     }
+
     public void TakeDamage(float mod, Vector3 dir)
     {
-        _enemyMHealth.UpdateHealth(mod);
+        bossHealth.UpdateHealth(mod);
     }
 
     public void TakeDamage(float mod)
     {
-        _enemyMHealth.UpdateHealth(mod);
+        bossHealth.UpdateHealth(mod);
     }
 
     public GameObject GetObject()

@@ -6,7 +6,6 @@ public class EnemyM : MonoBehaviour, IDamageable
 {
     [Header("GENERAL")]
     [SerializeField] private Transform _player;
-    [SerializeField] private LayerMask _playerMask;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private Animator _animator;
 
@@ -25,24 +24,9 @@ public class EnemyM : MonoBehaviour, IDamageable
     [SerializeField] private EnemyVFX _enemyVFX;
     [SerializeField] private EnemyMRig _enemyRig;
 
-
-
     private NodeEscape _lastNode;
     private NodeEscape _targetNode;
     private bool isEscaping = false;
-
-
-    private void Awake()
-    {
-        _player = GameObject.FindObjectOfType<Player>().transform;
-        _enemyMHealth.SetEnemy(this);
-    }
-    private void Start()
-    {
-        _agent.speed = _followSpeed;
-        _enemyMHealth.ManualStart();
-        _enemyRig.SetEnemy(this);
-    }
 
     private bool _movement;
 
@@ -52,31 +36,38 @@ public class EnemyM : MonoBehaviour, IDamageable
     public NavMeshAgent Agent { get => _agent; set => _agent = value; }
     public EnemyMRig EnemyRig { get => _enemyRig; set => _enemyRig = value; }
 
+    private void Awake()
+    {
+        _player = GameObject.FindObjectOfType<Player>().transform;
+        _enemyMHealth.SetEnemy(this);
+    }
+
+    private void Start()
+    {
+        _agent.speed = _followSpeed;
+        _enemyMHealth.ManualStart();
+        _enemyRig.SetEnemy(this);
+    }
+
     private void Update()
     {
-        var escapeRangeColliders = Physics.OverlapSphere(transform.position, _escapeRange, _playerMask);
+        float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
 
-        if(!_animator.GetBool("Attack"))
+        if (!_animator.GetBool("Attack"))
         {
             _timerAttack += Time.deltaTime;
 
-            if (escapeRangeColliders.Length > 0)
+            if (distanceToPlayer <= _escapeRange)
             {
-                isEscaping = true; // Activar el modo de escape.
+                isEscaping = true; // Activa el modo de escape.
                 Escape();
                 _animator.SetBool("Run", true);
             }
             else
             {
-                isEscaping = false; // Desactivar el modo de escape.
+                isEscaping = false; // Desactiva el modo de escape.
 
-                var attackRangeColliders = Physics.OverlapSphere(transform.position, _attackRange, _playerMask);
-
-                transform.DOLookAt(_player.position, 0.2f, AxisConstraint.Y);
-
-                _targetNode = null;
-
-                if (attackRangeColliders.Length <= 0) // SI NO ESTÁ CERCA DEL PLAYER
+                if (distanceToPlayer > _attackRange) 
                 {
                     _animator.SetBool("Run", true);
 
@@ -87,19 +78,20 @@ public class EnemyM : MonoBehaviour, IDamageable
                         _animator.SetBool("Attack", false);
                     }
                 }
-                else // SI ESTÁ CERCA DEL PLAYER
+                else 
                 {
                     _animator.SetBool("Run", false);
                     Attack();
                 }
             }
+
             if (_movement)
             {
                 _agent.speed = 0;
             }
         }
-
     }
+
     public void Escape()
     {
         if (isEscaping)
@@ -112,7 +104,6 @@ public class EnemyM : MonoBehaviour, IDamageable
             }
             else
             {
-
                 if (!_movement)
                 {
                     transform.DOLookAt(_targetNode.transform.position, 0.5f, AxisConstraint.Y);
@@ -134,6 +125,7 @@ public class EnemyM : MonoBehaviour, IDamageable
             }
         }
     }
+
     public void Attack()
     {
         if (_timerAttack > _attackCooldown)
@@ -182,6 +174,7 @@ public class EnemyM : MonoBehaviour, IDamageable
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(_agent.destination, _escapeRange);
     }
+
     public void TakeDamage(float mod, Vector3 dir)
     {
         _enemyMHealth.UpdateHealth(mod);
