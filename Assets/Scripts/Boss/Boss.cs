@@ -76,6 +76,7 @@ public class Boss : MonoBehaviour, IDamageable
                     {
                         agent.speed = followSpeed;
                         agent.SetDestination(player.position);
+                        transform.LookAt(player.position);
                         animator.SetBool("Attack", false);
                     }
                 }
@@ -91,6 +92,7 @@ public class Boss : MonoBehaviour, IDamageable
                 agent.speed = 0;
             }
         }
+
     }
 
     public void Escape()
@@ -136,6 +138,7 @@ public class Boss : MonoBehaviour, IDamageable
                 timerAttack = 0;
                 agent.SetDestination(transform.position);
                 animator.SetBool("Attack", true);
+                transform.LookAt(player.position);
             }
         }
     }

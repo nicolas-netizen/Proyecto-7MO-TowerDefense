@@ -29,8 +29,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019054629656254}
-  m_LocalRotation: {x: -0.004962473, y: 0.9932356, z: 0.106351, w: 0.046345633}
-  m_LocalPosition: {x: -101.49193, y: 0.66839087, z: -4.6556306}
+  m_LocalRotation: {x: -0.09248242, y: -0.049614903, z: -0.0046140365, w: 0.9944667}
+  m_LocalPosition: {x: -119.67064, y: 0.6410669, z: -3.0206995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4835,11 +4835,13 @@ MonoBehaviour:
   _flash: {fileID: 1777536642811984, guid: aca16543616e2db4490aa9890ecdb4b5, type: 3}
   _stunEffect: {fileID: 0}
   _slowEffect: {fileID: 1216502132209632, guid: daa50d159094a9d4d8d33225d9b578d2, type: 3}
+  _postEfect: {fileID: 0}
   _effectType: 1
   Detached:
   - {fileID: 1368247427101420}
   _stunDuration: 2
   _slowDuration: 2
+  _postDuration: 2
   _player: {fileID: 0}
 --- !u!199 &199639085220881082
 ParticleSystemRenderer:

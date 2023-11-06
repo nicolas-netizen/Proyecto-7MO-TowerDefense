@@ -48,6 +48,7 @@ public class BossHealth
         if (_enemy.BossHealth != null)
         {
             _enemy.BossRig.ActiveRagdoll(dir);
+            _enemy.EnemyVFX.DieBoss();
         }
         _enemy.gameObject.layer = LayerMask.NameToLayer("Ignore");
         GameObject.Destroy(_enemy.gameObject, 5);

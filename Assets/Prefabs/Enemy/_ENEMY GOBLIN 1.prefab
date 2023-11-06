@@ -46,7 +46,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347767555620973028}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5099046, y: 3.521713, z: 2.6217697}
@@ -110,8 +110,8 @@ MonoBehaviour:
     _nextPoint: {fileID: 0}
     _agent: {fileID: 4080054500818206459}
   _enemyHealth:
-    _currentHealth: 500
-    _enemyHealth: 500
+    _currentHealth: 3000
+    _enemyHealth: 3000
   _enemyRig:
     _rig: {fileID: 3751512418297097026}
     _hips: {fileID: 4022952407199729689}
@@ -122,6 +122,7 @@ MonoBehaviour:
     _bloodParticles: {fileID: 4771218430967507559}
     _MoneyParticles: {fileID: 0}
     _MoneyDie: {fileID: 0}
+    _DieBoss: {fileID: 0}
   _visitedNode: []
 --- !u!1 &8412364168866801505
 GameObject:
@@ -148,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8412364168866801505}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 17.16, z: 0}
+  m_LocalPosition: {x: 0, y: 31.12, z: 0}
   m_LocalScale: {x: 7.68344, y: 13.891359, z: 0.74564}
   m_ConstrainProportionsScale: 0
   m_Children: []

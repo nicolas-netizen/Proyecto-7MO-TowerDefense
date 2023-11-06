@@ -1329,10 +1329,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0
+    value: 10
   threshold:
     overrideState: 0
-    value: 0.33
+    value: 0
   softKnee:
     overrideState: 0
     value: 0
@@ -1442,7 +1442,7 @@ MonoBehaviour:
     value: 0
   intensity:
     overrideState: 1
-    value: 2.27
+    value: 4
   color:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -1465,7 +1465,7 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   radius:
-    overrideState: 0
+    overrideState: 1
     value: 0.25
   quality:
     overrideState: 0

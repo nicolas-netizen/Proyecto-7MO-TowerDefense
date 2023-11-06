@@ -14605,17 +14605,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 15
   _hitOffset: 1
-  _UseFirePointRotation: 0
+  _UseFirePointRotation: 1
   _rotationOffset: {x: 0, y: 0, z: 0}
   _hit: {fileID: 1216502132209632, guid: daa50d159094a9d4d8d33225d9b578d2, type: 3}
   _flash: {fileID: 1460800425478370, guid: c2721edf07119f74ea2f68f2cad99755, type: 3}
   _stunEffect: {fileID: 1479186786842274, guid: 8c07f41bda85c0e41abde22f9f27ed83, type: 3}
   _slowEffect: {fileID: 1216502132209632, guid: daa50d159094a9d4d8d33225d9b578d2, type: 3}
+  _postEfect: {fileID: 1397205833975230, guid: dbc3a9490497a0f4fb6853c2844fa534, type: 3}
   _effectType: 0
   Detached:
   - {fileID: 1564468091806366}
   _stunDuration: 2
   _slowDuration: 2
+  _postDuration: 2
   _player: {fileID: 0}
 --- !u!199 &199180086395833270
 ParticleSystemRenderer:

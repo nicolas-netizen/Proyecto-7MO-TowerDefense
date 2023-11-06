@@ -4,12 +4,12 @@ using UnityEngine;
 [System.Serializable]
 public class CameraShake : MonoBehaviour
 {
-    [SerializeField] private float _shakeDuration = 0.5f; 
-    [SerializeField] private float _shakeMagnitude = 0.5f;
-    [SerializeField] private float _shakeMagnitudeAbility = 0.5f;
+    [SerializeField] private float _shakeDuration = 0.1f; 
+    [SerializeField] private float _shakeMagnitude = 0.3f;
+    [SerializeField] private float _shakeMagnitudeAbility = 0.4f;
 
     private Transform cameraTransform;
-    private Vector3 originalPosition;
+    private Vector3 originalPosition; 
 
     public float ShakeMagnitudeAbility { get => _shakeMagnitudeAbility; set => _shakeMagnitudeAbility = value; }
     public float ShakeMagnitude { get => _shakeMagnitude; set => _shakeMagnitude = value; }
@@ -17,11 +17,11 @@ public class CameraShake : MonoBehaviour
     void Awake()
     {
         cameraTransform = GetComponent<Transform>();
+        originalPosition = cameraTransform.localPosition; 
     }
 
     public void Shake(float magnitude)
     {
-        originalPosition = cameraTransform.localPosition;
         StartCoroutine(ShakeCoroutine(magnitude));
     }
 
@@ -40,7 +40,6 @@ public class CameraShake : MonoBehaviour
 
             yield return null;
         }
-
         cameraTransform.localPosition = originalPosition;
     }
 }

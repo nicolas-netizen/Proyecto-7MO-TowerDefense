@@ -21,7 +21,6 @@ public class CameraFollow : MonoBehaviour
 
     private IEnumerator ShakeCoroutine()
     {
-        Vector3 initialPosition = transform.position;
         float shakeDuration = 0.1f;
         float shakeMagnitude = 0.1f;
 
@@ -30,17 +29,17 @@ public class CameraFollow : MonoBehaviour
         while (shakeDuration > 0)
         {
             Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;
-            transform.position = _target.position + _offset + randomOffset;
+            transform.position += randomOffset;
             shakeDuration -= Time.deltaTime;
 
             yield return null;
         }
 
         isShaking = false;
-        transform.position = initialPosition;
     }
 
-    private void LateUpdate()
+
+private void LateUpdate()
     {
         if (!isShaking)
         {

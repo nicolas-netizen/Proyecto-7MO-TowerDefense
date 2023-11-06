@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class InvocationSkill : MonoBehaviour
 {
-    [SerializeField] public GameObject _enemyPrefab;
+    [SerializeField] private GameObject[] _enemyPrefabs;
     [SerializeField] public Transform _castPoint;
     [SerializeField] public float _castRange = 5f;
     [SerializeField] public float _cooldown = 10f;
@@ -34,15 +34,20 @@ public class InvocationSkill : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
+            int randomIndex = Random.Range(0, _enemyPrefabs.Length);
+            GameObject selectedPrefab = _enemyPrefabs[randomIndex];
+
             Vector3 randomPosition = RandomPositionInsideRange(_castPoint.position, _castRange);
             Quaternion spawnRotation = Quaternion.identity;
-            Instantiate(_enemyPrefab, randomPosition, spawnRotation);
+
+            Instantiate(selectedPrefab, randomPosition, spawnRotation);
         }
 
         yield return new WaitForSeconds(_cooldown);
 
         isOnCooldown = false;
     }
+
 
     private Vector3 RandomPositionInsideRange(Vector3 center, float range)
     {
