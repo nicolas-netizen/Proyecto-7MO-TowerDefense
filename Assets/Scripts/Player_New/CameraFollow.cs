@@ -28,7 +28,7 @@ public class CameraFollow : MonoBehaviour
 
         while (shakeDuration > 0)
         {
-            Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;
+            Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;    
             transform.position += randomOffset;
             shakeDuration -= Time.deltaTime;
 
