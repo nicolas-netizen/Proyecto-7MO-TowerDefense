@@ -233,6 +233,7 @@ MonoBehaviour:
     _bloodParticles: {fileID: 4762306244960830972}
     _MoneyParticles: {fileID: 0}
     _MoneyDie: {fileID: 0}
+    _DieBoss: {fileID: 0}
   _visitedNode: []
 --- !u!195 &5107827491753722976
 NavMeshAgent:
