@@ -7,13 +7,17 @@ public class Sword : MonoBehaviour
     private CameraShake _cameraShake;
     private AudioSource _audioSource;
     public GameObject collisionEffect;
+    public GameObject collisionEffect2;
 
-    public AudioClip hitSoundRight; 
+    private bool showFirstEffect = true;
+
+    public AudioClip hitSoundRight;
+
     private void Start()
     {
         _owner = transform.root.GetComponent<ISwordOwner>();
         _cameraShake = Camera.main.GetComponent<CameraShake>();
-        _audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent <AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +28,16 @@ public class Sword : MonoBehaviour
         {
             if (col.GetObject() != _owner.GetOwner() && _owner.CheckAttacking())
             {
-                ShowCollisionEffect(other.transform.position);
+                if (showFirstEffect)
+                {
+                    ShowCollisionEffect(collisionEffect, transform.position);
+                }
+                else
+                {
+                    ShowCollisionEffect(collisionEffect2, transform.position);
+                }
+                showFirstEffect = !showFirstEffect;
+
                 switch (_owner.CheckAttackDir())
                 {
                     case AttackDir.Right:
@@ -42,7 +55,7 @@ public class Sword : MonoBehaviour
                     _cameraShake.Shake(_cameraShake.ShakeMagnitude);
                 }
 
-                if(!_audioSource.isPlaying)
+                if (!_audioSource.isPlaying)
                     _audioSource.Play();
 
             }
@@ -71,18 +84,18 @@ public class Sword : MonoBehaviour
                 if (_cameraShake != null)
                 {
                     _cameraShake.Shake(_cameraShake.ShakeMagnitude);
-
                 }
+
                 Debug.Log("La espada permanece en colisión con: " + col.GetObject().name); // Mensaje de depuración
             }
         }
     }
-    private void ShowCollisionEffect(Vector3 position)
+
+    private void ShowCollisionEffect(GameObject effectPrefab, Vector3 position)
     {
-        if (collisionEffect != null)
+        if (effectPrefab != null)
         {
-            GameObject effect = Instantiate(collisionEffect, position, Quaternion.identity);
+            GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity,transform);
         }
     }
 }
-

@@ -8,6 +8,8 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> _spawnPoints;
     public TextMeshProUGUI waveText;
+    private bool isFinalWave = false;
+
 
     [System.Serializable]
     public class EnemyInfo
@@ -54,11 +56,19 @@ public class WaveManager : MonoBehaviour
             Wave currentWave = waves[currentWaveIndex];
             isSpawningWave = true;
 
-
-            waveText.text = "Oleada " + (currentWaveIndex + 1);
-            waveText.fontSize = 36; // Tamaño de fuente
-            waveText.color = Color.yellow;
-
+            if (currentWaveIndex == waves.Count - 1)
+            {
+                isFinalWave = true;
+                waveText.text = "¡Jefe Final se acerca!";
+                waveText.fontSize = 48; // Tamaño de fuente más grande
+                waveText.color = Color.red;
+            }
+            else
+            {
+                waveText.text = "Oleada " + (currentWaveIndex + 1);
+                waveText.fontSize = 36;
+                waveText.color = Color.yellow;
+            }
 
             yield return new WaitForSeconds(4f);
             waveText.gameObject.SetActive(false);
@@ -94,6 +104,7 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenWaves);
         }
     }
+
 
     public void GameOver()
     {

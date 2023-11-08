@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     private EnemyM targetEnemyM;
     private  bool isActive = false;
     private bool isLaserActive = false;
+    private bool hasCollided = false;
 
     [Header("General")]
     [SerializeField] private GameObject _player;
@@ -17,13 +18,14 @@ public class Tower : MonoBehaviour
 
     [Header("Use Bullet(default)")]
     public GameObject projectilePrefab;
-    public float fireRate = 1f;
+    public float fireRate = 0.5f;
     private float fireCountdown = 0f;
 
     [Header("Use Laser")]
     public bool useLaser = false;
     public int damageOverTime = 30;
     public float slowAmount = .5f;
+    public GameObject laserImpactPrefab;
 
     public ParticleSystem hit;
     public ParticleSystem flash;
@@ -50,7 +52,7 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        InvokeRepeating("UpdateTarget", 0f, 0.1f);  
     }
 
     List<GameObject> _onRange = new List<GameObject>();
@@ -153,12 +155,12 @@ public class Tower : MonoBehaviour
         {
             if (fireCountdown <= 0f)
             {
-                Shoot();
-                fireCountdown = 1f / fireRate;
+                Shoot(); 
             }
             fireCountdown -= Time.deltaTime;
         }
     }
+
 
     void LockOnTarget()
     {
@@ -193,7 +195,6 @@ public class Tower : MonoBehaviour
     }
 
 
-
     void Laser()
     {
         if (targetEnemy != null || targetEnemyM != null)
@@ -214,13 +215,22 @@ public class Tower : MonoBehaviour
 
             if (currentHealth > 0)
             {
+                if (!hasCollided)
+                {
+                    if (laserImpactPrefab != null)
+                    {
+                        Instantiate(laserImpactPrefab, impactEffect.transform.position, impactEffect.transform.rotation);
+                    }
+                    hasCollided = true;
+                }
+
                 if (!lineRenderer.enabled)
                 {
                     lineRenderer.enabled = true;
                     impactEffect.Play();
                     hit.Play();
                     flash.Play();
-                    isLaserActive = true; // está activo.
+                    isLaserActive = true;
 
                     if (isLaserActive && attackSound != null && !attackSound.isPlaying)
                     {
@@ -238,8 +248,8 @@ public class Tower : MonoBehaviour
             }
             else
             {
-                targetEnemy = null;
-                targetEnemyM = null;
+                hasCollided = false;
+                target = null;
                 lineRenderer.enabled = false;
                 flash.Stop();
                 hit.Stop();
@@ -247,13 +257,15 @@ public class Tower : MonoBehaviour
         }
         else
         {
-            targetEnemy = null;
-            targetEnemyM = null;
+            hasCollided = false;
+            target = null;
             lineRenderer.enabled = false;
             flash.Stop();
             hit.Stop();
         }
     }
+
+
 
 
     void Shoot()

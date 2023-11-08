@@ -47,6 +47,7 @@ public class PlayerHandlerAnimation : MonoBehaviour
         _player.KnightAbility.ActivateAbility();
         _player.ToonEXplot1.Play();
         _player.PlayerVFX.Ground();
+        _player.PlayerVFX.Escud();
     }
 
     public void StartExpansive()
