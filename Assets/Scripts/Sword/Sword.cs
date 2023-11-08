@@ -5,7 +5,8 @@ public class Sword : MonoBehaviour
 {
     private ISwordOwner _owner;
     private CameraShake _cameraShake;
-    private AudioSource _audioSource; 
+    private AudioSource _audioSource;
+    public GameObject collisionEffect;
 
     public AudioClip hitSoundRight; 
     private void Start()
@@ -23,6 +24,7 @@ public class Sword : MonoBehaviour
         {
             if (col.GetObject() != _owner.GetOwner() && _owner.CheckAttacking())
             {
+                ShowCollisionEffect(other.transform.position);
                 switch (_owner.CheckAttackDir())
                 {
                     case AttackDir.Right:
@@ -73,6 +75,13 @@ public class Sword : MonoBehaviour
                 }
                 Debug.Log("La espada permanece en colisión con: " + col.GetObject().name); // Mensaje de depuración
             }
+        }
+    }
+    private void ShowCollisionEffect(Vector3 position)
+    {
+        if (collisionEffect != null)
+        {
+            GameObject effect = Instantiate(collisionEffect, position, Quaternion.identity);
         }
     }
 }

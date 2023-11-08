@@ -60,7 +60,7 @@ MonoBehaviour:
     _agent: {fileID: 5107827491753722976}
   _enemyHealth:
     _currentHealth: 0
-    _enemyHealth: 24
+    _enemyHealth: 21
   _enemyRig:
     _rig: {fileID: 5342342123242601391}
     _hips: {fileID: 5325408249445013748}
@@ -71,6 +71,7 @@ MonoBehaviour:
     _bloodParticles: {fileID: 4762306244960830972}
     _MoneyParticles: {fileID: 0}
     _MoneyDie: {fileID: 0}
+    _DieBoss: {fileID: 0}
   _visitedNode: []
 --- !u!195 &5107827491753722976
 NavMeshAgent:
