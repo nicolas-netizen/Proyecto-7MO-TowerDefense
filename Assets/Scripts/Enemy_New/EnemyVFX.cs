@@ -8,6 +8,7 @@ public class EnemyVFX
     [SerializeField] private ParticleSystem _MoneyParticles;
     [SerializeField] private ParticleSystem _MoneyDie;
     [SerializeField] private ParticleSystem _DieBoss;
+    [SerializeField] private ParticleSystem _AbailityBoss;
 
     public void Blood()
     {
@@ -24,6 +25,10 @@ public class EnemyVFX
     public void DieBoss()
     {
         _DieBoss.Play();
+    }
+    public void AbilityBoss()
+    {
+        _AbailityBoss.Play();
     }
 
 }
