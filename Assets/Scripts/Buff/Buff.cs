@@ -130,6 +130,7 @@ public class Buff : MonoBehaviour
         _LuzBufo.SetActive(true);
         _startParticle.SetActive(true);
         isScaleBuffActive = true;
+
     }
 
     private void ApplyAttackSpeedBuff()

@@ -140,6 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20778990af02f624eb2d46f2e13a71b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionEffect: {fileID: 0}
+  collisionEffect2: {fileID: 0}
+  hitSoundRight: {fileID: 0}
 --- !u!65 &31136180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10001,6 +10004,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20778990af02f624eb2d46f2e13a71b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionEffect: {fileID: 0}
+  collisionEffect2: {fileID: 0}
+  hitSoundRight: {fileID: 0}
 --- !u!54 &1647721086
 Rigidbody:
   m_ObjectHideFlags: 0
