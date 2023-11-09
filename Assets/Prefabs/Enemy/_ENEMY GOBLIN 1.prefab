@@ -110,8 +110,8 @@ MonoBehaviour:
     _nextPoint: {fileID: 0}
     _agent: {fileID: 4080054500818206459}
   _enemyHealth:
-    _currentHealth: 3000
-    _enemyHealth: 3000
+    _currentHealth: 1500
+    _enemyHealth: 1500
   _enemyRig:
     _rig: {fileID: 3751512418297097026}
     _hips: {fileID: 4022952407199729689}

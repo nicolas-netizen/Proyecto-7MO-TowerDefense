@@ -48,17 +48,24 @@ public class InvocationSkill : MonoBehaviour
         isOnCooldown = false;
     }
 
-
     private Vector3 RandomPositionInsideRange(Vector3 center, float range)
     {
         Vector3 randomDirection = Random.insideUnitSphere * range;
         randomDirection += center;
         NavMeshHit hit;
-        Vector3 finalPosition = Vector3.zero;
-        if (NavMesh.SamplePosition(randomDirection, out hit, range, 1))
+        Vector3 finalPosition = center; 
+        int maxAttempts = 10;
+        for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
-            finalPosition = hit.position;
+            Vector3 randomPosition = randomDirection + Random.insideUnitSphere * range;
+            if (NavMesh.SamplePosition(randomPosition, out hit, range, 1))
+            {
+                finalPosition = hit.position;
+                break;
+            }
         }
+
         return finalPosition;
     }
+
 }
