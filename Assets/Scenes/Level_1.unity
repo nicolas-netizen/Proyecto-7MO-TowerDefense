@@ -10923,6 +10923,8 @@ MonoBehaviour:
       enemyCount: 5
     - enemyPrefab: {fileID: 5107827491753722974, guid: 0d9418c088c40ce44b60c3e8a44c2c6b, type: 3}
       enemyCount: 20
+    - enemyPrefab: {fileID: 4113113905564935978, guid: 3d770df4bf802654480de462f619338a, type: 3}
+      enemyCount: 1
     spawnDelay: 0
   timeBetweenWaves: 5
 --- !u!1 &325561184
