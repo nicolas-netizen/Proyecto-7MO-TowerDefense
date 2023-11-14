@@ -2221,7 +2221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Menu
-  _sceneLevel: Level_2_New
+  _sceneLevel: Level_2_New 1
 --- !u!114 &65989976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66897,7 +66897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1613756136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77795,7 +77795,7 @@ MonoBehaviour:
   CanvaDesca: {fileID: 1101515693}
   SwordFlas: {fileID: 1647721083}
   WinSound: {fileID: 475844038}
-  _enemiesAtEndMax: 1000
+  _enemiesAtEndMax: 150
   _enemiesRemainingText: {fileID: 1865538393}
 --- !u!1 &1989841988 stripped
 GameObject:
